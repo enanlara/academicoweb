@@ -10,7 +10,7 @@ require_once "../Views/disciplinaviewmostra.class.php";
 require_once "../Models/disciplinamodel.class.php";
 require_once "../Ados/disciplinaado.class.php";
 
-class EstudanteController {
+class DisciplinaController {
 
     private $disciplinaView = null;
     private $disciplinaModel = null;
@@ -18,9 +18,9 @@ class EstudanteController {
     private $acao = null;
 
     public function __construct() {
-        $this->disciplinaView = new EstudanteView();
-        $this->disciplinaModel = new EstudantesModel();
-        $this->disciplinaAdo = new EstudantesAdo();
+        $this->disciplinaView = new DisciplinaView();
+        $this->disciplinaModel = new DisciplinaModel();
+        $this->disciplinaAdo = new DisciplinaAdo();
 
         $this->acao = $this->disciplinaView->getAcao();
         switch ($this->acao) {
@@ -55,7 +55,7 @@ class EstudanteController {
     private function consultaDisciplina() {
         $this->disciplinaModel = $this->disciplinaView->getDados();
 
-        $this->disciplinaModel = $this->disciplinaAdo->buscaMatriculaPelaMatricula($this->disciplinaModel->getEstuMatricula());
+        $this->disciplinaModel = $this->disciplinaAdo->buscaDisciplinaPeloCodigo($this->disciplinaModel->getDiscCodigo());
 
         if ($this->disciplinaModel) {
             //continue
@@ -74,7 +74,7 @@ class EstudanteController {
         try {
             if ($this->disciplinaAdo->insereObjeto($this->disciplinaModel)) {
                 // Limpa os dados
-                $this->disciplinaModel = new disciplinasmodel();
+                $this->disciplinaModel = new DisciplinaModel();
             }
             $this->disciplinaView->adicionaMensagem($this->disciplinaAdo->getMensagem());
         } catch (ErroNoBD $e) {

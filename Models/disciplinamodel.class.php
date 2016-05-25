@@ -1,6 +1,6 @@
 <?php
-
-class disciplinamodel extends Model {
+require_once 'model.class.php';
+class DisciplinaModel extends Model {
 
     private $disc_codigo;
     private $disc_nome;
@@ -12,27 +12,27 @@ class disciplinamodel extends Model {
         $this->disc_ementa = $disc_ementa;
     }
 
-    function getCodigo() {
+    function getDiscCodigo() {
         return $this->disc_codigo;
     }
 
-    function getNome() {
+    function getDiscNome() {
         return $this->disc_nome;
     }
 
-    function getEmenta() {
+    function getDiscEmenta() {
         return $this->disc_ementa;
     }
 
-    function setCodigo($disc_codigo) {
+    function setDiscCodigo($disc_codigo) {
         $this->disc_codigo = $disc_codigo;
     }
 
-    function setNome($disc_nome) {
+    function setDiscNome($disc_nome) {
         $this->disc_nome = $disc_nome;
     }
 
-    function setEmenta($disc_ementa) {
+    function setDiscEmenta($disc_ementa) {
         $this->disc_ementa = $disc_ementa;
     }
 

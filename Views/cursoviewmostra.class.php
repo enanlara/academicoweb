@@ -10,9 +10,9 @@ class EstudanteViewMostra extends MinhaInterface {
     public function montaMeio($matriculaModel = null) {
         $meio = "<center><b>Dados da inscrição</b></center>";
         
-        $meio .="<br>Matricula: " . $matriculaModel ->getmatricula();
+        $meio .="<br>Matricula: " . $matriculaModel ->getCursId();
         
-        $meio .="<br>Nome do aluno: " . $matriculaModel ->getnome();
+        $meio .="<br>Nome do aluno: " . $matriculaModel ->getCursNome();
         
         $this->meio = $meio;
     }
@@ -22,8 +22,8 @@ class EstudanteViewMostra extends MinhaInterface {
     }
 
     public function getDados() {
-        $matricula = $_POST['matricula'];
-        $nome = $_POST['nome'];
+        $matricula = $_POST['cursId'];
+        $nome = $_POST['cursNome'];
         
         return new MatriculaModel ($matricula, $nome);
     }

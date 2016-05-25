@@ -33,7 +33,7 @@ class CursoAdo extends ADO {
     }
 
     public function buscaCurso($nome) {
-        $query = "select curs_nome from Cursos where curs_id = {$nome}";
+        $query = "select curs_nome from Cursos where curs_nome = {$nome}";
         try{
             $resultado = parent::executaQuery($query);
             if($resultado){
@@ -51,7 +51,7 @@ class CursoAdo extends ADO {
         $curs_id = $objetoModelo->getCursId();
         $curs_nome = $objetoModelo->getCursNome();
          
-        $query = "delete from Cursos where curs_id = {$curs_id}"; 
+        $query = "delete from Cursos where curs_nome = {$curs_nome}"; 
         
          try {
             $resultado = parent::executaQuery($query);

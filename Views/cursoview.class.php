@@ -7,7 +7,7 @@ class CursoView extends MinhaInterface {
     public function montaMeio($cursomodel) {
         echo 'df';
         $cursNome = $cursomodel->getCursNome();
-        
+        $cursId = $cursomodel->getCursId();
         $arrayDeBotoes = parent::montaArrayDeBotoes();
 
         $this->meio = " 
@@ -15,6 +15,7 @@ class CursoView extends MinhaInterface {
                 <b>Entre com os dados</b> <br>
                     <br>
                 <br>Nome <input type='text' name='cursNome' value='{$cursNome}'>{$arrayDeBotoes['con']}
+                    <input type='hidden' name='cursId' value='{$cursId}'>
                 <br><br>
                 {$arrayDeBotoes['inc']}{$arrayDeBotoes['alt']}{$arrayDeBotoes['exc']}
             </form></div>";
@@ -26,8 +27,9 @@ class CursoView extends MinhaInterface {
 
     public function getDados() {
         $cursNome = $_POST['cursNome'];
+        $cursId = $_POST['cursId'];
 
-        return new CursoModel( $cursNome);
+        return new CursoModel($cursId, $cursNome);
     }
 
 }

@@ -10,9 +10,11 @@ class DisciplinaViewMostra extends MinhaInterface {
     public function montaMeio($disciplinaModel = null) {
         $meio = "<center><b>Dados da inscrição</b></center>";
         
-        $meio .="<br>Matricula: " . $matriculaModel ->getmatricula();
+        $meio .="<br>Matricula: " . $disciplinaModel ->getDiscCodigo();
         
-        $meio .="<br>Nome do aluno: " . $matriculaModel ->getnome();
+        $meio .="<br>Nome do aluno: " . $disciplinaModel ->getDiscNome();
+        
+        $meio .="<br>Ementa ". $disciplinaModel->getDiscEmenta();
         
         $this->meio = $meio;
     }
@@ -22,10 +24,12 @@ class DisciplinaViewMostra extends MinhaInterface {
     }
 
     public function getDados() {
-        $matricula = $_POST['matricula'];
-        $nome = $_POST['nome'];
         
-        return new MatriculaModel ($matricula, $nome);
+        $discCodigo= $_POST['discCodigo'];
+        $discNome = $_POST['discNome'];
+        $discEmenta = $_POST['discEmenta'];
+        
+        return new DisciplinaModel ($discCodigo, $discNome, $discEmenta);
     }
 
 }

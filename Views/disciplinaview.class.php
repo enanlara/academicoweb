@@ -2,21 +2,22 @@
 
 require_once 'minhainterface.class.php';
 
-class EstudanteView extends MinhaInterface {
+class DisciplinaView extends MinhaInterface {
 
-    public function montaMeio($estudantesmodel) {
-        $estuMatricula = $estudantesmodel->getEstuMatricula();
-        $estuNome = $estudantesmodel->getEstuNome();
+    public function montaMeio($disciplinamodel) {
+        $discCodigo = $disciplinamodel->getDiscCodigo();
+        $discNome = $disciplinamodel->getDiscNome();
+        $discEmenta = $disciplinamodel->getDiscEmenta();
         
         $arrayDeBotoes = parent::montaArrayDeBotoes();
 
         $this->meio = " 
             <div id= 'meio'> <form method='post' action=''>
                 <b>Entre com os dados</b> <br>
-                <br>Ementa <input type='text' name='Ementa' value='{$discementa}'>{$arrayDeBotoes['con']}
+                <br>Codigo <input type='text' name='discCodigo' value='{$discCodigo}'>{$arrayDeBotoes['con']}
                     <br>
-                <br>Nome <input type='text' name='Nome' value='{$discnome}'>
-                    <br>Codigo <input type='hidden' name='Codigo' value='{$disccodigo}'>
+                <br>Nome <input type='text' name='discNome' value='{$discNome}'>
+                    <br>Ementa <input type='text' name='discEmenta' value='{$discEmenta}'>
                 <br><br>
                 {$arrayDeBotoes['inc']}{$arrayDeBotoes['alt']}{$arrayDeBotoes['exc']}
             </form></div>";
@@ -31,7 +32,11 @@ class EstudanteView extends MinhaInterface {
         $discNome = $_POST['discNome'];
         $discEmenta = $_POST['discEmenta'];
 
-        return new disciplinamodel($disc_codigo, $disc_nome, $disc_ementa);
+        return new DisciplinaModel($discCodigo, $discNome, $discEmenta);
     }
+
+
+
+ 
 
 }
