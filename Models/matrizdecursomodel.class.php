@@ -1,6 +1,6 @@
 <?php
-
-class matrizesDeCursos extends Model {
+require_once 'model.class.php';
+class MatrizCursoModel extends Model {
 
     private $matrz_curs_id;
     private $matrz_disc_codigo;
@@ -10,19 +10,19 @@ class matrizesDeCursos extends Model {
         $this->matrz_disc_codigo = $matrz_disc_codigo;
     }
 
-    function getMatrz_curs_id() {
+    function getMatrzCursId() {
         return $this->matrz_curs_id;
     }
 
-    function getMatrz_disc_codigo() {
+    function getMatrzDiscCodigo() {
         return $this->matrz_disc_codigo;
     }
 
-    function setMatrz_curs_id($matrz_curs_id) {
+    function setMatrzCursId($matrz_curs_id) {
         $this->matrz_curs_id = $matrz_curs_id;
     }
 
-    function setMatrz_disc_codigo($matrz_disc_codigo) {
+    function setMatrzDiscCodigo($matrz_disc_codigo) {
         $this->matrz_disc_codigo = $matrz_disc_codigo;
     }
 

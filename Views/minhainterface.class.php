@@ -8,6 +8,7 @@ Abstract Class MinhaInterface {
     protected $meio = null;
     protected $boasVindas = null;
     private $mensagem = null;
+    private $menu = null;
 
     final function __construct() {
         $this->montaTitulo();
@@ -29,11 +30,15 @@ Abstract Class MinhaInterface {
     final private function montaMenu() {
         $this->menu = "<div id='menu' > 
                         <h3>Menu</h3>
-                        <h4><li><a href='http://localhost/AcademicoWeb/Modulos/estudante.php'>Cadastro de Alunos</a></li> 
-                        <li><a href=''>Cadastro de Professores</a></li> 
-                        <li><a href=''>Cadastro de Disciplinas</a></li>
-                        <li><a href=''>Cadastro de Cursos</a></li></h4>
-
+                        <h4>
+                            <li><a href='http://localhost/academicoWeb/Modulos/estudante.php'>Alunos</a></li> 
+                            <li><a href='http://localhost/academicoWeb/Modulos/professor.php'>Professores</a></li> 
+                            <li><a href='http://localhost/academicoWeb/Modulos/disciplina.php'>Disciplinas</a></li>
+                            <li><a href='http://localhost/academicoWeb/Modulos/curso.php'>Cursos</a></li>
+                            <li><a href='http://localhost/academicoWeb/Modulos/matrizCurso.php'>Matrizes</a></li>
+                            <li><a href='http://localhost/academicoWeb/Modulos/responsavel.php'>Responsavel</a></li>
+                            
+                        </h4>
 
                          </div>";
     }
@@ -79,6 +84,8 @@ Abstract Class MinhaInterface {
 
         echo $this->cabecalho;
         echo $this->mensagem;
+                echo $this->menu;
+
         echo $this->meio;
         echo $this->rodape;
     }

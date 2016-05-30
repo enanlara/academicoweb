@@ -3,12 +3,11 @@
 div#cabecalho {
     background-color: #f3f3f2 ;
     background-image: url("../IMG/foto.png");
-    background-attachment: fixed;
-    background-position: top center;
     background-repeat: no-repeat;
-    color: gray;
-    text-align:center;
+    //text-align:center;
     padding: 10px;
+   
+    //margin: -22px -100px 0px 0px;
 }
 
 /*remorve o sublinhado dos link's*/
@@ -18,14 +17,18 @@ a:link {
 
 div#menu{
     float: left;
-    border-style: solid; 
+    border-style: groove; 
     margin: 0px 0px auto 0px;
-    width: 250px;
+    width: 200px;
+    
+}
+div#menu h4 li a{
+    color: gray;
 }
 
 #meio{
     text-align: left;
-    margin: 250px 250px 500px 240px;
+    margin: 0px  19% 400px;
 }
 
 div#boasVindas{ 
@@ -38,11 +41,14 @@ div#boasVindas{
 }
 
 div#rodape{
+    clear: both;
     background-color:green;
     color:white;
-    text-align: center;
+    //text-align: center;
     padding: 10px;
-    margin: 20px 260px 500px 240px; 
+    margin-left: 10%;
+    margin-right: 10%;
+   // margin: 0px 260px 0px 240px; 
 }
 
 div#conteudo {
@@ -60,7 +66,7 @@ body{
 h1#topo {
     font-size: x-large;
 
-    margin-top: 11%;
+    margin-top: 150px;
 }
 
 #corpo{

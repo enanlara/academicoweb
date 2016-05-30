@@ -55,7 +55,7 @@ class CursoController {
     private function buscaCurso() {
         $this->cursoModel = $this->cursoView->getDados();
 
-        $this->cursoModel = $this->cursoAdo->buscaCurso( $this->cursoModel->getCursNome());
+        $this->cursoModel = $this->cursoAdo->buscaCurso( $this->cursoModel->getCursId());
 
         if ($this->cursoModel) {
             //continue

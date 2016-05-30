@@ -5,7 +5,7 @@
  * @author aluno
  */
 
-class EstudanteViewMostra extends MinhaInterface {
+class CursoViewMostra extends MinhaInterface {
 
     public function montaMeio($matriculaModel = null) {
         $meio = "<center><b>Dados da inscrição</b></center>";
@@ -25,7 +25,7 @@ class EstudanteViewMostra extends MinhaInterface {
         $matricula = $_POST['cursId'];
         $nome = $_POST['cursNome'];
         
-        return new MatriculaModel ($matricula, $nome);
+        return new CursoModel($matricula, $nome);
     }
 
 }

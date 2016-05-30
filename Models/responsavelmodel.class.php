@@ -1,25 +1,31 @@
 <?php
+require_once 'model.class.php';
 
-class responsaveismodel extends Model {
+class ResponsavelModel extends Model {
 
-    private $resp_disc_id;
-    private $resp_prof_siape;
+    private $resp_disc;
+    private $resp_prof;
     private $resp_ano;
     private $resp_semestre;
+   
 
-    function __construct($resp_disc_id = null, $resp_prof_siape = null, $resp_ano = null, $resp_semestre = null) {
-        $this->resp_disc_id = $resp_disc_id;
-        $this->resp_prof_siape = $resp_prof_siape;
+    function __construct($resp_disc = null, $resp_prof = null, $resp_ano = null, $resp_semestre = null) {
+        $this->resp_disc = $resp_disc;
+        $this->resp_prof = $resp_prof;
         $this->resp_ano = $resp_ano;
         $this->resp_semestre = $resp_semestre;
+       
+    }
+    
+
+   
+
+    function getDisc() {
+        return $this->resp_disc;
     }
 
-    function getIdDisciplina() {
-        return $this->resp_disc_id;
-    }
-
-    function getSiapeProfessor() {
-        return $this->resp_prof_siape;
+    function getProf() {
+        return $this->resp_prof;
     }
 
     function getAno() {
@@ -30,12 +36,12 @@ class responsaveismodel extends Model {
         return $this->resp_semestre;
     }
 
-    function setIdDisciplina($resp_disc_id) {
-        $this->resp_disc_id = $resp_disc_id;
+    function setDisc($resp_disc) {
+        $this->resp_disc = $resp_disc;
     }
 
-    function setSiapeProfessor($resp_prof_siape) {
-        $this->resp_prof_siape = $resp_prof_siape;
+    function setProf($resp_prof) {
+        $this->resp_prof = $resp_prof;
     }
 
     function setAno($resp_ano) {

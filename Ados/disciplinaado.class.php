@@ -86,6 +86,7 @@ class DisciplinaAdo extends ADO {
                 $disciplinaArray = parent::leTabelaBD();
                 $disciplinaModel = new DisciplinaModel($disciplinaArray['disc_codigo'], $disciplinaArray['disc_nome'], $disciplinaArray['disc_ementa']);
                 return $disciplinaModel;
+                
             } else {
                 parent::setMensagem("Erro no select");
                 return false;
@@ -95,5 +96,6 @@ class DisciplinaAdo extends ADO {
             return FALSE;
         }
     }
+    
 
 }

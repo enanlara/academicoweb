@@ -9,15 +9,15 @@ class ErroNoBD extends Exception {
 class CursoAdo extends ADO {
 
     public function alteraObjeto(\Model $objetoModelo) {
-        $curs_nome = $objetoModelo->getNome();
 
-        $query = "update Cursos set curs_nome= '{$curs_nome}'";
+        $query = "update Cursos set curs_nome= ? where curs_id = ?";
         
          try {
-            $resultado = parent::executaQuery($query);
+             $arrayDeDados = array($objetoModelo->getCursNome(), $objetoModelo->getCursId());
+            $resultado = parent::executaPs($query, $arrayDeDados);
 
             if ($resultado) {
-                parent::setMensagem("O curso {$curs_nome} foi alterado com sucesso!");
+                parent::setMensagem("O curso {$objetoModelo->getCursNome()} foi alterado com sucesso!");
                 return true;
             } else {
                 parent::setMensagem("Erro ao alterar curso, contate do administrador do sistema!");
@@ -33,11 +33,13 @@ class CursoAdo extends ADO {
     }
 
     public function buscaCurso($nome) {
-        $query = "select curs_nome from Cursos where curs_nome = {$nome}";
+        $query = "select * from Cursos where curs_id = {$nome}";
         try{
             $resultado = parent::executaQuery($query);
             if($resultado){
-                return true;
+                $cursoArray = parent::leTabelaBD();
+                $cursoModel = new CursoModel($cursoArray['curs_id'], $cursoArray['curs_nome']);
+                return $cursoModel;
             }  else {
                 parent::setMensagem("Erro ao buscar curso");
                 return false;
@@ -48,16 +50,16 @@ class CursoAdo extends ADO {
     }
 
     public function excluiObjeto(\Model $objetoModelo) {
-        $curs_id = $objetoModelo->getCursId();
-        $curs_nome = $objetoModelo->getCursNome();
-         
-        $query = "delete from Cursos where curs_nome = {$curs_nome}"; 
+        
+         //echo ;
+        $query = "delete from Cursos where curs_id = {$objetoModelo->getCursId()}"; 
+        //echo $query;
         
          try {
             $resultado = parent::executaQuery($query);
 
             if ($resultado) {
-                parent::setMensagem("O curso {$curs_nome} foi excluido com sucesso!");
+                parent::setMensagem("O curso {$objetoModelo->getCursNome()} foi excluido com sucesso!");
                 return true;
             } else {
                 parent::setMensagem("Erro ao excluir curso, contate do administrador do sistema!");
@@ -89,6 +91,7 @@ class CursoAdo extends ADO {
     }
 
     public function consultaObjetoPeloId($id) {
+           
         
     }
 
