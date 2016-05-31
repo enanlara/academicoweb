@@ -19,8 +19,8 @@ class DisciplinaView extends MinhaInterface {
                                 <select name='discCodigo'>";
         if ($disciplinas) {
             foreach ($disciplinas as $disciplina) {
-                $selecionado = ($discCodigo == $disciplina->disc_id) ? ' selected="true" ' : null;
-                $this->meio .= "        <option $selecionado value='{$disciplina->curs_id}'> {$disciplina->curs_nome}</option>";
+                $selecionado = ($discCodigo == $disciplina->disc_codigo) ? ' selected="true" ' : null;
+                $this->meio .= "        <option $selecionado value='{$disciplina->disc_codigo}'> {$disciplina->disc_nome}</option>";
             }
         } else {
             $this->meio .= "        <option value=''> Nenhuma opção selecionada </option>";

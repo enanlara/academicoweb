@@ -29,7 +29,6 @@ class CursoView extends MinhaInterface
             $this->meio .= "        <option value=''> Nenhuma opção selecionada </option>";
         }
         $this->meio .= "        </select>";
-
         $this->meio .= " 
                                 {$arrayDeBotoes['con']}
                                 <br><br>
