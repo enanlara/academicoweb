@@ -17,6 +17,24 @@ abstract class ADO extends BancoDeDadosPdo {
     function setMensagem($mensagem) {
         $this->mensagem = $mensagem;
     }
+    
+    function lista($query) {
+        try {
+            if ($linhas = parent::executaQuery($query)) {
+
+                while ($linhas = parent::leTabelaBD(5)) {
+                    $arrayObjeto [] = clone ($linhas);
+                }
+
+                $arrayObjeto = (isset($arrayObjeto)) ? $arrayObjeto : false;
+
+                return $arrayObjeto;
+            }
+
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
+    }
 
     abstract public function consultaObjetoPeloId($id);
 

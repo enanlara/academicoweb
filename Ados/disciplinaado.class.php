@@ -35,6 +35,12 @@ class DisciplinaAdo extends ADO {
         
     }
 
+    function lista() {
+        $query = " SELECT * FROM Disciplinas ";
+
+        return parent::lista($query);
+    }
+
     public function excluiObjeto(\Model $objetoModelo) {
         $query = "delete from Disciplinas where disc_codigo = ?";
         

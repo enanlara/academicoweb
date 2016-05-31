@@ -35,18 +35,7 @@ class CursoAdo extends ADO {
     function listaCursos() {
         $query = " SELECT * FROM Cursos";
 
-        try {
-            $linhas = parent::executaQuery($query);
-
-            while ($linhas = parent::leTabelaBD(5)) {
-                $arrayObjeto [] = clone ($linhas);
-            }
-            
-            return $arrayObjeto;
-            
-        } catch (Exception $ex) {
-            echo $ex->getMessage();
-        }
+        return parent::lista($query);
     }
 
     public function buscaCurso($nome) {

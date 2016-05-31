@@ -7,11 +7,8 @@ class CursoView extends MinhaInterface
 
     public function montaMeio($cursomodel)
     {
-
         $cursoAdo = new CursoAdo();
         $cursos = $cursoAdo->listaCursos();
-
-//        var_dump($cursos);
 
         $cursNome = $cursomodel->getCursNome();
         $cursId = $cursomodel->getCursId();
@@ -21,11 +18,15 @@ class CursoView extends MinhaInterface
         $this->meio = " <div id= 'meio'> 
                             <form method='post' action=''>
                                 <select name='cursId'>";
-        foreach ($cursos as $curso) {
+        if ($cursos) {
+            foreach ($cursos as $curso) {
 
-            $selecionado = ($cursId == $curso->curs_id) ? ' selected="true" ' : null;
+                $selecionado = ($cursId == $curso->curs_id) ? ' selected="true" ' : null;
 
-            $this->meio .= "        <option $selecionado value='{$curso->curs_id}'> {$curso->curs_nome}</option>";
+                $this->meio .= "        <option $selecionado value='{$curso->curs_id}'> {$curso->curs_nome}</option>";
+            }
+        } else {
+            $this->meio .= "        <option value=''> Nenhuma opção selecionada </option>";
         }
         $this->meio .= "        </select>";
 
