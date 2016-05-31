@@ -9,6 +9,12 @@ class ErroNoBD extends Exception {
 
 class ResponsavelAdo extends ADO {
 
+    function lista() {
+        $query = " SELECT * FROM Responsaveis ";
+
+        return parent::lista($query);
+    }
+
     public function alteraObjeto(\Model $objetoModelo) {
         
     }

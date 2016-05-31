@@ -5,6 +5,9 @@ require_once 'minhainterface.class.php';
 class ResponsavelView extends MinhaInterface {
 
     public function montaMeio($responsavelmodel) {
+        $responsaveisAdo = new ResponsavelAdo();
+        $responsaveis = $responsaveisAdo->lista();
+        
         $dadosProf = $responsavelmodel->getProf();
         $dadosDisc = $responsavelmodel->getDisc();
         $respAno = $responsavelmodel->getAno();
@@ -25,7 +28,7 @@ class ResponsavelView extends MinhaInterface {
                 Disciplina
                 <select name='resp_disc_id'>
                     <option value='-1'>Selecione a disciplina</option>";
-        var_dump($dadosDisc);
+
         if ($dadosDisc != null && $dadosDisc != '-1') {
             foreach ($dadosDisc as $disc) {
                 $this->meio .="<option value='{$disc->discCodigo}'>{$disc->discNome}</option>";

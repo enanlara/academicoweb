@@ -53,8 +53,9 @@ class EstudanteController {
     }
 
     private function consultaMatricula() {
-        $this->estudanteModel = $this->estudanteView->getDados();
 
+        $this->estudanteModel = $this->estudanteView->getDados();
+var_dump($this->estudanteModel);
         $this->estudanteModel = $this->estudanteAdo->buscaMatriculaPelaMatricula($this->estudanteModel->getEstuMatricula());
 
         if ($this->estudanteModel) {

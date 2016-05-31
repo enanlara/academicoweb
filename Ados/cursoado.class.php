@@ -2,9 +2,9 @@
 
 require_once 'ado.class.php';
 
-class ErroNoBD extends Exception {
-    
-}
+/*class ErroNoBD extends Exception {
+
+}*/
 
 class CursoAdo extends ADO {
 
@@ -24,7 +24,7 @@ class CursoAdo extends ADO {
                 return false;
             }
         } catch (PDOException $exc) {
-            throw new ErroNoBD($exc->getMessage());
+            throw new Exception($exc->getMessage());
         }
     }
 

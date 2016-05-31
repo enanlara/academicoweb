@@ -12,6 +12,12 @@ class EstudantesAdo extends ADO {
         
     }
 
+    function lista() {
+        $query = " SELECT * FROM Estudantes ";
+
+        return parent::lista($query);
+    }
+
     public function insereObjeto(\Model $objetoModelo) {
         $query = "insert into Estudantes (estu_matricula, estu_nome) "
                 . "               values (?,?)";

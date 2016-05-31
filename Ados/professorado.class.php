@@ -29,6 +29,12 @@ class ProfessorAdo extends ADO {
         }
     }
 
+    function lista() {
+        $query = " SELECT * FROM Professores ";
+
+        return parent::lista($query);
+    }
+
     public function consultaArrayDeObjeto() {
         
     }

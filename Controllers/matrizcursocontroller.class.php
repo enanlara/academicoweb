@@ -15,6 +15,7 @@ require_once '../Views/matrizcursoview.class.php';
 require_once '../Views/matrizcursoviewmostra.class.php';
 require_once '../Models/matrizdecursomodel.class.php';
 require_once '../Ados/matrizdecursoado.class.php';
+require_once '../Ados/cursoado.class.php';
 
 class matrizCursoController {
 
