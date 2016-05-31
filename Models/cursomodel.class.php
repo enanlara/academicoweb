@@ -9,7 +9,6 @@ class CursoModel extends Model {
     function __construct($curs_id = null, $curs_nome = null) {
         $this->curs_id = $curs_id;
         $this->curs_nome = $curs_nome;
-        
     }
 
     function getCursId() {

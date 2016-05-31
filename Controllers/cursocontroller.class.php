@@ -22,6 +22,8 @@ class CursoController {
         $this->cursoModel = new CursoModel();
         $this->cursoAdo = new CursoAdo();
 
+        
+        
         $this->acao = $this->cursoView->getAcao();
         switch ($this->acao) {
             case 'con' :
@@ -42,6 +44,10 @@ class CursoController {
             case 'exc' :
                 $this->excluiCurso();
 
+                break;
+            
+             default: 
+                                 
                 break;
         }
 
