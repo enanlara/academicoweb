@@ -26,7 +26,7 @@ class ResponsavelAdo extends ADO {
     }
 
     public function insereObjeto(\Model $objetoModelo) {
-        $query = "insert into Responsaveis values ?,?,?,?";
+        $query = "insert into Responsaveis values (?,?,?,?)";
         
         try{
             $arrayDeDados = array($objetoModelo->getDisc(), $objetoModelo->getProf(), $objetoModelo->getAno(), $objetoModelo->getSemestre());

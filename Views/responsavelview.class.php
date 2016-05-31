@@ -9,13 +9,13 @@ class ResponsavelView extends MinhaInterface {
         $dadosDisc = $responsavelmodel->getDisc();
         $respAno = $responsavelmodel->getAno();
         $respSemestre = $responsavelmodel->getSemestre();
-        
+
         $arrayDeBotoes = parent::montaArrayDeBotoes();
         $sem1 = null;
         $sem2 = null;
-        if($respSemestre == 1){
+        if ($respSemestre == 1) {
             $sem1 = 'selected';
-        }else if ($respSemestre == 2) {
+        } else if ($respSemestre == 2) {
             $sem2 = 'selected';
         }
 
@@ -25,17 +25,21 @@ class ResponsavelView extends MinhaInterface {
                 Disciplina
                 <select name='resp_disc_id'>
                     <option value='-1'>Selecione a disciplina</option>";
-        foreach ($dadosDisc as $disc) {
-            $this->meio .="<option value='{$disc->discCodigo}'>{$disc->discNome}</option>";
+        var_dump($dadosDisc);
+        if ($dadosDisc != null && $dadosDisc != '-1') {
+            foreach ($dadosDisc as $disc) {
+                $this->meio .="<option value='{$disc->discCodigo}'>{$disc->discNome}</option>";
+            }
         }
         $this->meio .="</select>{$arrayDeBotoes['con']}
                 <br>
                 Professor Responsavel
                 <select name='resp_prof_siape'>
                     <option value='-1'>Selecione o professor</option>";
-        foreach ($dadosProf as $prof) {
-            $this->meio .= "<option value='{$prof->profSiape}'>{$prof->profNome}</option>";
-        }
+        if ($dadosProf != null && $dadosProf != '-1')
+            foreach ($dadosProf as $prof) {
+                $this->meio .= "<option value='{$prof->profSiape}'>{$prof->profNome}</option>";
+            }
         $this->meio .="</select>
                 <br>Ano <input type='text' name='resp_ano' value='{$respAno}'>
                     <br>

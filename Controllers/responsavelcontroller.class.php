@@ -76,11 +76,18 @@ class ResponsavelController {
 
     private function incluiResponsavel() {
         $this->responsavelModel = $this->responsavelView->getDados();
+        if($this->responsavelModel->getDisc() == '-1' || $this->responsavelModel->getProf()){
+            $this->responsavelView->adicionaMensagem("Selecione uma Disciplina!!!");
+            
+        }
+        
 
         try {
             if ($this->responsavelAdo->insereObjeto($this->responsavelModel)) {
                 // Limpa os dados
                 $this->responsavelModel = new responsavelmodel();
+                                $this->buscaDados();
+
             }
             $this->responsavelView->adicionaMensagem($this->responsavelAdo->getMensagem());
         } catch (ErroNoBD $e) {
