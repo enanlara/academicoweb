@@ -14,7 +14,7 @@ class DisciplinaView extends MinhaInterface {
         
         $arrayDeBotoes = parent::montaArrayDeBotoes();
 
-        $this->meio = " <div id= 'meio'> 
+        /*$this->meio = " <div id= 'meio'> 
                             <form method='post' action=''>
                                 <select name='discCodigo'>";
         if ($disciplinas) {
@@ -26,7 +26,11 @@ class DisciplinaView extends MinhaInterface {
             $this->meio .= "        <option value=''> Nenhuma opção selecionada </option>";
         }
         $this->meio .= "        </select>";
+        */
         $this->meio .= " 
+<div id= 'meio'> 
+                            <form method='post' action=''>
+				<input type='text' name='discCodigo'>
                                 {$arrayDeBotoes['con']}
                                 <br><br>
                                 <b>Entre com os dados</b><br>
