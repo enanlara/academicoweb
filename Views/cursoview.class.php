@@ -2,11 +2,9 @@
 
 require_once 'minhainterface.class.php';
 
-class CursoView extends MinhaInterface
-{
+class CursoView extends MinhaInterface {
 
-    public function montaMeio($cursomodel)
-    {
+    public function montaMeio($cursomodel) {
         $cursoAdo = new CursoAdo();
         $cursos = $cursoAdo->listaCursos();
 
@@ -19,6 +17,8 @@ class CursoView extends MinhaInterface
                             <form method='post' action=''>
                                 <select name='cursId'>";
         if ($cursos) {
+            $this->meio .= "        <option selected value='-1'> Selecione o curso</option>";
+
             foreach ($cursos as $curso) {
 
                 $selecionado = ($cursId == $curso->curs_id) ? ' selected="true" ' : null;
@@ -26,7 +26,7 @@ class CursoView extends MinhaInterface
                 $this->meio .= "        <option $selecionado value='{$curso->curs_id}'> {$curso->curs_nome}</option>";
             }
         } else {
-            $this->meio .= "        <option value=''> Nenhuma opção selecionada </option>";
+            $this->meio .= "        <option value=''> Selecione o Curso </option>";
         }
         $this->meio .= "        </select>";
         $this->meio .= " 
@@ -45,13 +45,11 @@ class CursoView extends MinhaInterface
         // Codigo  <input type='text' name='cursId' value='{$cursId}'>
     }
 
-    public function montaTitulo()
-    {
+    public function montaTitulo() {
         $this->titulo = "Inscrição do curso";
     }
 
-    public function getDados()
-    {
+    public function getDados() {
         $cursNome = $_POST['cursNome'];
         $cursId = $_POST['cursId'];
 

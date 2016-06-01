@@ -65,17 +65,17 @@ class ProfessorAdo extends ADO {
 
     public function insereObjeto(\Model $objetoModelo) {
         
-        $query = "insert into Professores (prof_siape, prof_nome) values (?,?)";
-        
-        $arrayDeValores = array($objetoModelo->getProfSiape(), $objetoModelo->getProfNome());
-        
+        $query = "insert into Professores (prof_nome) values (?)";
+        echo $query;
+        $arrayDeValores = array( $objetoModelo->getProfNome());
+         echo $objetoModelo->getProfSiape();
         try{
             $resultado = parent::executaPs($query, $arrayDeValores);
             if($resultado){
             parent::setMensagem("O professor{$objetoModelo->getProfNome()}, foi inserido com sucesso!");
             return true;
             }else {
-                parent::setMensagem("Erro ao inserir o estudante {$objetoModelo->getProfNome() }, contate o analista");
+                parent::setMensagem("Erro ao inserir o Professor {$objetoModelo->getProfNome() }, contate o analista");
                 return false;
             }
             

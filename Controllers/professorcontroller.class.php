@@ -79,7 +79,7 @@ class ProfessorController {
         } catch (ErroNoBD $e) {
             $this->professorView->adicionaMensagem("Erro na inclusão. contate o analista.");
             //descomente para debugar
-            //$this->professorView->adicionaMensagem($e->getMessage());
+            $this->professorView->adicionaMensagem($e->getMessage());
         }
     }
     private function alteraProfessor() {

@@ -6,17 +6,19 @@ class ProfessorView extends MinhaInterface {
 
     public function montaMeio($professormodel) {
         $professoresAdo = new ProfessorAdo();
-        $professores    = $professoresAdo->lista();
+        $professores = $professoresAdo->lista();
 
         $profSiape = $professormodel->getProfSiape();
         $profNome = $professormodel->getProfNome();
-        
+
         $arrayDeBotoes = parent::montaArrayDeBotoes();
 
         $this->meio = " <div id= 'meio'> 
                             <form method='post' action=''>
                                 <select name='profSiape'>";
         if ($professores) {
+            $this->meio .= "        <option value=''> Nenhuma opção selecionada </option>";
+
             foreach ($professores as $professor) {
                 $selecionado = ($profSiape == $professor->prof_siape) ? ' selected="true" ' : null;
                 $this->meio .= "        <option $selecionado value='{$professor->prof_siape}'> {$professor->prof_nome}</option>";
