@@ -32,7 +32,7 @@ class CursoView extends MinhaInterface {
         $this->meio .= " 
                                 {$arrayDeBotoes['con']}
                                 <br><br>
-                                <b>Entre com os dados</b><br>
+                                <b>Entre com os dados do curso</b>
                                 <br>
                                     
                                 <br>Nome    <input type='text' name='cursNome' value='{$cursNome}'>

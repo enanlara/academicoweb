@@ -33,11 +33,10 @@ class DisciplinaView extends MinhaInterface {
 				<input type='text' name='discCodigo'>
                                 {$arrayDeBotoes['con']}
                                 <br><br>
-                                <b>Entre com os dados</b><br>
+                                <b>Entre com os dados da disciplina</b>
                                 <br>
-                
-                    <br>
-                <br>Nome <input type='text' name='discNome' value='{$discNome}'>
+
+                <br>Nome <input type='text' name='discNome' value='{$discNome}'> <br>
                     <br>Ementa <input type='text' name='discEmenta' value='{$discEmenta}'>
                 <br><br>
                 {$arrayDeBotoes['inc']}{$arrayDeBotoes['alt']}{$arrayDeBotoes['exc']}

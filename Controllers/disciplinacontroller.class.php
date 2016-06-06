@@ -99,6 +99,7 @@ class DisciplinaController {
 
         try {
             $this->disciplinaAdo->excluiObjeto($this->disciplinaModel);
+            $this->disciplinaModel = new DisciplinaModel;
             $this->disciplinaView->adicionaMensagem($this->disciplinaAdo->getMensagem());
         } catch (ErroNoBD $e) {
             $this->disciplinaView->adicionaMensagem($e->getMessage());

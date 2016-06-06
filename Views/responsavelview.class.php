@@ -27,25 +27,25 @@ class ResponsavelView extends MinhaInterface {
                 <b>Entre com os dados</b> <br>
                 Disciplina
                 <select name='resp_disc_id'>
-                    <option value='-1'>Selecione a disciplina</option>";
+                    <option value='-1'>Selecione a disciplina</option><br>";
 
         if ($dadosDisc != null && $dadosDisc != '-1') {
             foreach ($dadosDisc as $disc) {
-                $this->meio .="<option value='{$disc->discCodigo}'>{$disc->discNome}</option>";
+                $this->meio .="<option value='{$disc->discCodigo}'>{$disc->discNome}</option><br>";
             }
         }
         $this->meio .="</select>{$arrayDeBotoes['con']}
-                <br>
+                <br><br>
                 Professor Responsavel
                 <select name='resp_prof_siape'>
-                    <option value='-1'>Selecione o professor</option>";
+                    <option value='-1'>Selecione o professor</option><br>";
         if ($dadosProf != null && $dadosProf != '-1')
             foreach ($dadosProf as $prof) {
                 $this->meio .= "<option value='{$prof->profSiape}'>{$prof->profNome}</option>";
             }
-        $this->meio .="</select>
+        $this->meio .="</select><br>
                 <br>Ano <input type='text' name='resp_ano' value='{$respAno}'>
-                    <br>
+                    <br><br>
                 Semestre    
                 <select name='resp_semestre'>
                     <option value='-1'>Selecione o semestre</option>
