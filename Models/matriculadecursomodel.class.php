@@ -1,6 +1,8 @@
 <?php
 
-class matriculasPorCurso extends Model {
+require 'model.class.php';
+
+class MatriculaCursoModel extends Model {
 
     private $matrc_curs_id;
     private $matrc_estu_matricula;

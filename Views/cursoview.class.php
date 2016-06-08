@@ -15,9 +15,10 @@ class CursoView extends MinhaInterface {
 
         $this->meio = " <div id= 'meio'> 
                             <form method='post' action=''>
+                            <input type='hidden' name='cursNome'>
                                 <select name='cursId'>";
         if ($cursos) {
-            $this->meio .= "        <option selected value='-1'> Selecione o curso</option>";
+            $this->meio .= "<option selected value='-1'> Selecione o curso</option>";
 
             foreach ($cursos as $curso) {
 
@@ -25,6 +26,7 @@ class CursoView extends MinhaInterface {
 
                 $this->meio .= "        <option $selecionado value='{$curso->curs_id}'> {$curso->curs_nome}</option>";
             }
+            
         } else {
             $this->meio .= "        <option value=''> Selecione o Curso </option>";
         }

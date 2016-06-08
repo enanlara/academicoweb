@@ -10,14 +10,13 @@ class EstudanteView extends MinhaInterface {
         
         $estuMatricula = $estudantesmodel->getEstuMatricula();
         $estuNome = $estudantesmodel->getEstuNome();
-
+       // echo $estudantesmodel->getEstuMatricula();
         $arrayDeBotoes = parent::montaArrayDeBotoes();
 
         $this->meio = " <div id= 'meio'> 
-                            <form method='post' action=''>
-                                <select name='estuMatricula'>";
+                            <form method='post' action=''>";
 
-        if ($estudantes) {
+        /* if ($estudantes) {
             foreach ($estudantes as $estudante) {
 
                 $selecionado = ($estuMatricula == $estudante->estu_matricula) ? ' selected="true" ' : null;
@@ -27,15 +26,16 @@ class EstudanteView extends MinhaInterface {
         } else {
             $this->meio .= "        <option value=''> Nenhuma opção selecionada </option>";
         }
-        $this->meio .= "        </select>";
+        $this->meio .= "        </select>"; */
         $this->meio .= " 
                                 {$arrayDeBotoes['con']}
                                 <br><br>
                                 <b>Entre com os dados</b><br>
                                 <br>
                 <br>Matricula <input type='text' name='estuMatricula' value='{$estuMatricula}'>
+                    
                     <br>
-                <br>Nome <input type='text' name='estuNome' value='{$estuNome}'>
+                    <input type='text' name='estuNome' value='{$estuNome}'>
                 <br><br>
                 {$arrayDeBotoes['inc']}{$arrayDeBotoes['alt']}{$arrayDeBotoes['exc']}
             </form></div>";

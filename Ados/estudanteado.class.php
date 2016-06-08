@@ -39,6 +39,7 @@ class EstudantesAdo extends ADO {
     }
 
     public function buscaMatriculaPelaMatricula($estuMatricula) {
+        
         $query = "Select * from Estudantes where estu_matricula = ?";
 
         try {
@@ -47,6 +48,7 @@ class EstudantesAdo extends ADO {
             if ($executou) {
                 $estudanteArray = parent::leTabelaBD();
                 $estudanteModel = new EstudantesModel($estudanteArray['estu_matricula'], $estudanteArray['estu_nome']);
+                
                 return $estudanteModel;
             } else {
                 parent::setMensagem("Erro no select.");
