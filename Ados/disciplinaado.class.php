@@ -2,9 +2,7 @@
 
 require_once 'ado.class.php';
 
-class ErroNoBD extends Exception {
-    
-}
+
 
 class DisciplinaAdo extends ADO {
 

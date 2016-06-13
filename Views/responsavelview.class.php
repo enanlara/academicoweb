@@ -1,13 +1,19 @@
 <?php
 
 require_once 'minhainterface.class.php';
+require_once '../Ados/disciplinaado.class.php';
+require_once '../Ados/professorado.class.php';
 
 class ResponsavelView extends MinhaInterface {
 
     public function montaMeio($responsavelmodel) {
         $responsaveisAdo = new ResponsavelAdo();
-        $responsaveis = $responsaveisAdo->lista();
+        $arrayDeDisciplinas = new DisciplinaAdo();
+        $ArrayDisc = $arrayDeDisciplinas->lista();
         
+        $arrayDeProfessores = new ProfessorAdo();
+        $arrayProf = $arrayDeProfessores->lista();
+
         $dadosProf = $responsavelmodel->getProf();
         $dadosDisc = $responsavelmodel->getDisc();
         $respAno = $responsavelmodel->getAno();
@@ -28,20 +34,26 @@ class ResponsavelView extends MinhaInterface {
                 Disciplina
                 <select name='resp_disc_id'>
                     <option value='-1'>Selecione a disciplina</option><br>";
+       
 
-        if ($dadosDisc != null && $dadosDisc != '-1') {
-            foreach ($dadosDisc as $disc) {
-                $this->meio .="<option value='{$disc->discCodigo}'>{$disc->discNome}</option><br>";
+        foreach ($ArrayDisc as $disc) {
+            if($disc->disc_codigo == $dadosDisc){
+                $selected = 'selected';
+            }else{
+                $selected = '';
             }
+            $this->meio .="<option value='{$disc->disc_codigo}' {$selected}>{$disc->disc_nome}</option><br>";
         }
+
         $this->meio .="</select>{$arrayDeBotoes['con']}
                 <br><br>
                 Professor Responsavel
                 <select name='resp_prof_siape'>
                     <option value='-1'>Selecione o professor</option><br>";
-        if ($dadosProf != null && $dadosProf != '-1')
-            foreach ($dadosProf as $prof) {
-                $this->meio .= "<option value='{$prof->profSiape}'>{$prof->profNome}</option>";
+        
+            foreach ($arrayProf as $prof) {
+                $selected = ($prof->prof_siape == $dadosProf)? 'selected': '';
+                $this->meio .= "<option value='{$prof->prof_siape}' {$selected}>{$prof->prof_nome}</option>";
             }
         $this->meio .="</select><br>
                 <br>Ano <input type='text' name='resp_ano' value='{$respAno}'>

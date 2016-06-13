@@ -16,18 +16,55 @@ class ResponsavelAdo extends ADO {
     }
 
     public function alteraObjeto(\Model $objetoModelo) {
-        
-    }
+        $query = "update Responsaveis set resp_prof_siape = ?, resp_ano = ?, resp_semestre = ? where resp_disc_id = ?";
+        try {
+            $arrayDeDados = array($objetoModelo->getProf(), $objetoModelo->getAno(), $objetoModelo->getSemestre(), $objetoModelo->getDisc());
+            $resultado = parent::executaPs($query, $arrayDeDados);
+        if($resultado){
+            parent::setMensagem("A responsabilidade foi alterada com sucesso!");
+            return true;
+        }else{
+            parent::setMensagem("Erro ao alterar a responsabilidade, Contate o analista");
+            return false;
+        }
+                    
+            
+        } catch (PDOException $exc) {
+            throw new ErroNoBD($exc->getMessage());
+            
+        }
+        }
 
     public function consultaArrayDeObjeto() {
         
     }
 
     public function consultaObjetoPeloId($id) {
+        $query = "select * from Responsaveis where resp_disc_id = '{$id}'";
+        $resultado = parent::executaQuery($query);
+        if($resultado){
+            $responsavelArray = parent::leTabelaBD();
+            $responsavelModel = new ResponsavelModel($responsavelArray['resp_disc_id'], $responsavelArray['resp_prof_siape'], $responsavelArray['resp_ano'], $responsavelArray['resp_semestre']);
+
+            return $responsavelModel;
+        }else{
+            parent::setMensagem("Erro no select");
+            return false;
+        }
         
     }
 
     public function excluiObjeto(\Model $objetoModelo) {
+        $query = "delete from Responsaveis where resp_disc_id = {$objetoModelo->getDisc()}";
+        $resultado = parent::executaQuery($query);
+        
+        if($resultado){
+            parent::setMensagem("A responsabilidade foi excluida com sucesso!");
+            return true;
+        }else{
+            parent::setMensagem("Erro ao excluir a resposabilidade, contate o analista!");
+            return false;
+        }
         
     }
 

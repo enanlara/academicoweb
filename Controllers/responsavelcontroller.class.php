@@ -62,8 +62,8 @@ class ResponsavelController {
 
     private function consultaResponsavel() {
         $this->responsavelModel = $this->responsavelView->getDados();
-
-        $this->responsavelModel = $this->responsavelAdo->buscaPeloSiape($this->responsavelModel->getProfSiape());
+        
+        $this->responsavelModel = $this->responsavelAdo->consultaObjetoPeloId($this->responsavelModel->getDisc());
 
         if ($this->responsavelModel) {
             //continue
@@ -114,6 +114,7 @@ class ResponsavelController {
         try {
             $this->responsavelAdo->excluiObjeto($this->responsavelModel);
             $this->responsavelView->adicionaMensagem($this->responsavelAdo->getMensagem());
+            $this->responsavelModel = new ResponsavelModel;
         } catch (ErroNoBD $e) {
             $this->responsavelView->adicionaMensagem($e->getMessage());
         }
