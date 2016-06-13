@@ -21,8 +21,7 @@ class ResponsavelController {
     private $acao = null;
 
     public function __construct() {
-
-
+        
         $this->responsavelView = new ResponsavelView();
         $this->responsavelModel = new ResponsavelModel();
         $this->responsavelAdo = new ResponsavelAdo();
@@ -61,6 +60,7 @@ class ResponsavelController {
     }
 
     private function consultaResponsavel() {
+        
         $this->responsavelModel = $this->responsavelView->getDados();
         
         $this->responsavelModel = $this->responsavelAdo->consultaObjetoPeloId($this->responsavelModel->getDisc());

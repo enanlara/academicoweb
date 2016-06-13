@@ -38,7 +38,7 @@ Abstract Class MinhaInterface {
                             <li><a href='http://localhost/academicoWeb/Modulos/matrizCurso.php'>Matrizes</a></li>
                             <li><a href='http://localhost/academicoWeb/Modulos/responsavel.php'>Responsavel</a></li>
                             <li><a href='http://localhost/academicoWeb/Modulos/matriculaCurso.php'>Matriculas por Curso</a></li>
-                            <li><a href='http://localhost/academicoWeb/Modulos/responsavel.php'>Matriculas por disciplina</a></li>
+                            <li><a href='http://localhost/academicoWeb/Modulos/matriculaDisciplina.php'>Matriculas por disciplina</a></li>
                             
                         </h4>
 

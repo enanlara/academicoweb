@@ -16,6 +16,7 @@ class MatrizCursoView extends MinhaInterface
 
         $this->meio = " <div id= 'meio'> 
                             <form method='post' action=''>
+                            <labe> Cursos: </labe>
                                 <select name='cursId'>";
         if ($cursos) {
             foreach ($cursos as $curso) {
