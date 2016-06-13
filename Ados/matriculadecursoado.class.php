@@ -13,101 +13,43 @@ class MatriculaCursoAdo extends ADO {
         $this->insereObjeto($objetoModelo);
 
     }
-
-    public function consultaArrayDeObjeto() {
-        $query = "select disc_codigo, disc_nome from Disciplinas";
-        try {
-            $executou = parent::executaQuery($query);
-            if ($executou) {
-                $arrayDeDisciplinas = null;
-                while ($linha = parent::leTabelaBD($executou)) {
-                    $disc = new stdClass();
-                    $disc->discCodigo = $linha['disc_codigo'];
-                    $disc->discNome = $linha['disc_nome'];
-                    $disc->checked = null;
-                    $arrayDeDisciplinas[] = $disc;
-                }
-                return $arrayDeDisciplinas;
-            } else {
-                parent::setMensagem("Erro no select.");
+    public function verificaEstudante($objetoModel){
+        $query = "select * from Matriculas_por_curso where matrc_estu_matricula = {$objetoModel->getMatrcEstuMatricula()} ";
+        
+        $resultado = parent::executaQuery($query);
+        if($resultado){
+            if(parent::qtdeLinhas() == 0){
                 return false;
+            }else{
+                return true;
             }
-        } catch (ErroNoBD $exc) {
-            parent::setMensagem($exc->getMessage());
+        }
+        
+    }
+
+    
+    public function consultaMatriculaCurso($estuId){
+        $query = "select * from Matriculas_por_curso where matrc_estu_matricula = {$estuId}";
+        echo $query;
+        $resultado = parent::executaQuery($query);
+        if($resultado){
+            $arrayDeResultado = parent::leTabelaBD();
+            $matriculaPorCurso = new MatriculaCursoModel($arrayDeResultado['matrc_curs_id'], $arrayDeResultado['matrc_estu_matricula'], $arrayDeResultado['matrc_data_inicial'], $arrayDeResultado['matrc_data_final']);
+            return $matriculaPorCurso;
+        }else{
+            parent::setMensagem("Erro no select, contate o analista responsavel!!");
             return false;
         }
     }
 
-    public function consultaObjetoPeloId($id) {
-        $query = "select mc.matrz_disc_codigo, d.disc_nome from Matrizes_de_cursos mc, Disciplinas d "
-                . "where mc.matrz_disc_codigo = d.disc_codigo and"
-                . " mc.matrz_curs_id = {$id}";
-
-        try {
-            $executou = parent::executaQuery($query);
-            echo '<br>' . $query . '<br>';
-            if ($executou) {
-                $arrayDeDisciplinas = null;
-                while ($linha = parent::leTabelaBD($executou)) {
-                    $disc = new stdClass();
-                    $disc->discCodigo = $linha['matrz_disc_codigo'];
-                    $disc->discNome = $linha['disc_nome'];
-                    $disc->checked = null;
-
-                    $arrayDeDisciplinas[] = $disc;
-                }
-                return $arrayDeDisciplinas;
-            }
-        } catch (Exception $ex) {
-            
-        }
-    }
-
-    public function consultaMatriz($id) {
-        $arrayDiscSelecionadas = null;
-
-        $queryMatriz = "select matrz_disc_codigo from Matrizes_de_cursos where matrz_curs_id = {$id} ";
-        try {
-            $executou = parent::executaQuery($queryMatriz);
-            if ($executou) {
-                while ($linha = parent::leTabelaBD()) {
-                    $arrayDiscSelecionadas[] = $linha['matrz_disc_codigo'];
-                }
-            }
-        } catch (PDOException $e) {
-            
-        }
-
-        $query = "select disc_codigo, disc_nome from Disciplinas";
-        try {
-            $executou = parent::executaQuery($query);
-            if ($executou) {
-                $arrayDeDisciplinas = null;
-                while ($linha = parent::leTabelaBD($executou)) {
-                    $disc = new stdClass();
-                    $disc->discCodigo = $linha['disc_codigo'];
-                    $disc->discNome = $linha['disc_nome'];
-                    if ($arrayDiscSelecionadas == null) {
-                        $disc->checked = null;
-                    } elseif (in_array($linha['disc_codigo'], $arrayDiscSelecionadas)) {
-                        $disc->checked = "checked";
-                    } else {
-                        $disc->checked = null;
-                    }
-                    $arrayDeDisciplinas[] = $disc;
-                }
-                return $arrayDeDisciplinas;
-            }
-        } catch (PDOException $e) {
-            throw new ErroNoBD($e->getMessage());
-        }
-    }
-
+    
     public function excluiObjeto(\Model $objetoModelo) {
-        $query = "delete from Matrizes_de_cursos where matrz_curs_id = {$objetoModelo->getMatrzCursId()}";
+        $query = "delete from Matriculas_por_curso where matrc_estu_matricula = {$objetoModelo->getMatrcEstuMatricula()}";
+        echo $query;
         try {
             $executou = parent::executaQuery($query);
             if ($executou) {
+                echo 'eu estou aqui';
                 parent::setMensagem("A matriz foi excluida com sucesso");
                 return true;
             } else {
@@ -120,15 +62,20 @@ class MatriculaCursoAdo extends ADO {
     }
 
     public function insereObjeto(\Model $objetoModelo) {
+        if($this->verificaEstudante($objetoModelo)){
+            parent::setMensagem("Erro , Estudante ja esta matriculado em um Curso!!!");
+            return false;
+        }
         
         $query = "insert into Matriculas_por_curso values ("
-                . "{$objetoModelo->getMatrc_curs_id()}, "
-                . "{$objetoModelo->getMatrc_estu_matricula()}, "
-                . "'{$objetoModelo->getMatrc_data_inicial()}',"
-                . "'{$objetoModelo->getMatrc_data_final()}' "
+                . "{$objetoModelo->getMatrcCursId()}, "
+                . "{$objetoModelo->getMatrcEstuMatricula()}, "
+                . "'{$objetoModelo->getMatrcDataInicial()}',"
+                . "'{$objetoModelo->getMatrcDataFinal()}' "
                 . ")";        
 
         try {
+            
             $resultado = parent::executaQuery($query);
             if ($resultado) {
                 parent::setMensagem("A matriz foi inserida com sucesso");
@@ -140,6 +87,14 @@ class MatriculaCursoAdo extends ADO {
         } catch (PDOException $e) {
             throw ErroNoBD($e->getMessage());
         }
+    }
+
+    public function consultaObjetoPeloId($id) {
+        
+    }
+
+    public function consultaArrayDeObjeto() {
+        
     }
 
 //put your code here

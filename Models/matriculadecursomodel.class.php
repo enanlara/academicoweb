@@ -16,35 +16,35 @@ class MatriculaCursoModel extends Model {
         $this->matrc_data_final = $matrc_data_final;
     }
 
-    function getMatrc_curs_id() {
+    function getMatrcCursId() {
         return $this->matrc_curs_id;
     }
 
-    function getMatrc_estu_matricula() {
+    function getMatrcEstuMatricula() {
         return $this->matrc_estu_matricula;
     }
 
-    function getMatrc_data_inicial() {
+    function getMatrcDataInicial() {
         return $this->matrc_data_inicial;
     }
 
-    function getMatrc_data_final() {
+    function getMatrcDataFinal() {
         return $this->matrc_data_final;
     }
 
-    function setMatrc_curs_id($matrc_curs_id) {
+    function setMatrcCursId($matrc_curs_id) {
         $this->matrc_curs_id = $matrc_curs_id;
     }
 
-    function setMatrc_estu_matricula($matrc_estu_matricula) {
+    function setMatrcEstuMatricula($matrc_estu_matricula) {
         $this->matrc_estu_matricula = $matrc_estu_matricula;
     }
 
-    function setMatrc_data_inicial($matrc_data_inicial) {
+    function setMatrcDataInicial($matrc_data_inicial) {
         $this->matrc_data_inicial = $matrc_data_inicial;
     }
 
-    function setMatrc_data_final($matrc_data_final) {
+    function setMatrcDatafinal($matrc_data_final) {
         $this->matrc_data_final = $matrc_data_final;
     }
 

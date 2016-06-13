@@ -68,7 +68,7 @@ class MatriculaCursoController {
     private function consultaMatriculaCurso() {
         $this->matriculaCursoModel = $this->matriculaCursoView->getDados();
 
-        //$this->matriculaCursoModel->setMatrzDiscCodigo($this->matriculaCursoAdo->consultaMatricula($this->matriculaCursoModel->getMatrzCursId()));
+        $this->matriculaCursoModel =$this->matriculaCursoAdo->consultaMatriculaCurso($this->matriculaCursoModel->getMatrcEstuMatricula());
         
         if ($this->matriculaCursoModel) {
             //continue
@@ -82,7 +82,7 @@ class MatriculaCursoController {
 
     private function buscaDisciplinas() {
 
-        $this->matriculaCursoModel->setMatrzDiscCodigo($this->matriculaCursoAdo->consultaArrayDeObjeto());
+        $this->matriculaCursoModel = $this->matriculaCursoAdo->consultaArrayDeObjeto();
         if ($this->matriculaCursoModel) {
             //continue
         } else {
@@ -122,11 +122,13 @@ class MatriculaCursoController {
     }
 
     private function excluimatriculaCurso() {
+        echo 'kjsdflkasfjlkas;';
         $this->matriculaCursoModel = $this->matriculaCursoView->getDados();
 
         try {
             $this->matriculaCursoAdo->excluiObjeto($this->matriculaCursoModel);
-            $this->buscaDisciplinas();
+            //$this->buscaDisciplinas();
+            $this->matriculaCursoModel = new MatriculaCursoModel;
             $this->matriculaCursoView->adicionaMensagem($this->matriculaCursoAdo->getMensagem());
         } catch (ErroNoBD $e) {
             $this->matriculaCursoView->adicionaMensagem($e->getMessage());

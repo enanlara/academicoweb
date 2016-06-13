@@ -35,7 +35,7 @@ class EstudanteView extends MinhaInterface {
                 <br>Matricula <input type='text' name='estuMatricula' value='{$estuMatricula}'>
                     
                     <br>
-                    <input type='text' name='estuNome' value='{$estuNome}'>
+                    Nome<input type='text' name='estuNome' value='{$estuNome}'>
                 <br><br>
                 {$arrayDeBotoes['inc']}{$arrayDeBotoes['alt']}{$arrayDeBotoes['exc']}
             </form></div>";

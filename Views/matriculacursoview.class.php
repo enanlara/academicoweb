@@ -9,30 +9,34 @@ class MatriculaCursoView extends MinhaInterface {
         $estudanteAdo      = new EstudantesAdo();
         $cursos = $cursoAdo->listaCursos();
         $estudantes = $estudanteAdo->lista();       
-
-        $cursId = $matriculaCursoModel->getMatrc_curs_id();
-        $estuMatricula = $matriculaCursoModel->getMatrc_estu_matricula();
-        $dataInicial = $matriculaCursoModel->getMatrc_data_inicial();
-        $dataFinal = $matriculaCursoModel->getMatrc_data_final();
+        $cursId = $matriculaCursoModel->getMatrcCursId();
+        $estuMatricula = $matriculaCursoModel->getMatrcEstuMatricula();
+        $dataInicial = $matriculaCursoModel->getMatrcDataInicial();
+        $dataFinal = $matriculaCursoModel->getMatrcDataFinal();
         
         $arrayDeBotoes = parent::montaArrayDeBotoes();
 
         $this->meio = " <div id= 'meio'> 
                             <form method='post' action=''>
-                                <select name='cursId'>";
-        $this->meio .= " <select name='estu_matricula'> ";
+                                Estudante <select name='estu_matricula'>";
         
         if ($estudantes) {
+                        $this->meio .= "<option value=''> Nenhuma opção selecionada </option>";
+
             foreach ($estudantes as $estudante) {
                 $selecionado = ($estuMatricula == $estudante->estu_matricula) ? ' selected="true" ' : null;
-                $this->meio .= "        <option value='{$estudante->estu_matricula}'> {$estudante->estu_nome}</option>";
+                $this->meio .= "<option $selecionado value='{$estudante->estu_matricula}'> {$estudante->estu_nome}</option>";
             }
         } else {
-            $this->meio .= "        <option value=''> Nenhuma opção selecionada </option>";
+            $this->meio .= "<option value=''> Nenhuma opção selecionada </option>";
         }
-        $this->meio .= "        </select>";
+        $this->meio .= "</select> {$arrayDeBotoes['con']}<br>";
         
+        $this->meio .= "<br> Curso
+                                <select name='cursId'>";
         if ($cursos) {
+                        $this->meio .= "<option value=''> Nenhuma opção selecionada </option>";
+
             foreach ($cursos as $curso) {
                 
                 $selecionado = ($cursId == $curso->curs_id) ? ' selected="true" ' : null;
@@ -43,21 +47,19 @@ class MatriculaCursoView extends MinhaInterface {
             $this->meio .= "        <option value=''> Nenhuma opção selecionada </option>";
         }
         $this->meio .= "        </select>";
-        $this->meio .= " 
-                                {$arrayDeBotoes['con']}
-                                <br><br><br>               
+        $this->meio .= " <br><br><br>               
                 <fieldset>
                         <legend>Alunos</legend>";
 
         
 
         $this->meio .= " <br><label> Data inicial:  </label>
-                            <input type='text' name='estuDataInicial' value=''>
+                            <input type='date' name='estuDataInicial' value='{$dataInicial}'>
                         <br><label> Data Final:  </label>
-                            <input type='text' name='estuDataFinal' value=''>";
+                            <input type='date' name='estuDataFinal' value='{$dataFinal}'>";
         
         $this->meio .= "</fieldset> <br><br>
-                {$arrayDeBotoes['inc']}{$arrayDeBotoes['alt']}
+                {$arrayDeBotoes['inc']}{$arrayDeBotoes['alt']}{$arrayDeBotoes['exc']}
             </form></div>";
     }
 
@@ -68,10 +70,10 @@ class MatriculaCursoView extends MinhaInterface {
     public function getDados() {
         $cursId = $_POST['cursId'];
         $estuMatricula = $_POST['estu_matricula'];
-        $dataInicial = $_POST['estuDataInicial'];
-        $dataFinal = $_POST['estuDataFinal'];
+        $dataIni = $_POST['estuDataInicial'];
+        $dataFin = $_POST['estuDataFinal'];
         
-        return new MatriculaCursoModel($cursId, $estuMatricula, $dataInicial, $dataFinal);
+        return new MatriculaCursoModel($cursId, $estuMatricula, $dataIni, $dataFin);
     }
 
 }
