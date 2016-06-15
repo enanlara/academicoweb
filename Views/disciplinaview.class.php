@@ -7,17 +7,20 @@ class DisciplinaView extends MinhaInterface {
     public function montaMeio($disciplinamodel) {
         $disciplinaAdo = new DisciplinaAdo();
         $disciplinas = $disciplinaAdo->lista();
-        
+       // echo $disciplinamodel->getDiscCodigo;
+
         $discCodigo = $disciplinamodel->getDiscCodigo();
         $discNome = $disciplinamodel->getDiscNome();
         $discEmenta = $disciplinamodel->getDiscEmenta();
-        
+
         $arrayDeBotoes = parent::montaArrayDeBotoes();
 
-        /*$this->meio = " <div id= 'meio'> 
+        $this->meio = " <div id= 'meio'> 
                             <form method='post' action=''>
-                                <select name='discCodigo'>";
+                                <select name='discCodigoSelect'>";
         if ($disciplinas) {
+            $this->meio .= "        <option value=''> Nenhuma opção selecionada </option>";
+
             foreach ($disciplinas as $disciplina) {
                 $selecionado = ($discCodigo == $disciplina->disc_codigo) ? ' selected="true" ' : null;
                 $this->meio .= "        <option $selecionado value='{$disciplina->disc_codigo}'> {$disciplina->disc_nome}</option>";
@@ -25,17 +28,15 @@ class DisciplinaView extends MinhaInterface {
         } else {
             $this->meio .= "        <option value=''> Nenhuma opção selecionada </option>";
         }
-        $this->meio .= "        </select>";
-        */
+        $this->meio .= "        </select>{$arrayDeBotoes['con']}";
+
         $this->meio .= " 
-<div id= 'meio'> 
                             <form method='post' action=''>
-				<input type='text' name='discCodigo'>
-                                {$arrayDeBotoes['con']}
+                                
                                 <br><br>
                                 <b>Entre com os dados da disciplina</b>
                                 <br>
-
+                    Codigo <input type='text' name='discCodigo' value='$discCodigo'><br>                
                 <br>Nome <input type='text' name='discNome' value='{$discNome}'> <br>
                     <br>Ementa <input type='text' name='discEmenta' value='{$discEmenta}'>
                 <br><br>
@@ -48,15 +49,16 @@ class DisciplinaView extends MinhaInterface {
     }
 
     public function getDados() {
+        
         $discCodigo = $_POST['discCodigo'];
         $discNome = $_POST['discNome'];
         $discEmenta = $_POST['discEmenta'];
+        if($discCodigo == ''){
+            $discCodigo = $_POST['discCodigoSelect'];
+        }
+        echo $discCodigo;
 
         return new DisciplinaModel($discCodigo, $discNome, $discEmenta);
     }
-
-
-
- 
 
 }
