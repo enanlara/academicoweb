@@ -18,14 +18,16 @@ require_once '../Ados/matriculadecursoado.class.php';
 require_once '../Ados/estudanteado.class.php';
 require_once '../Ados/cursoado.class.php';
 
-class MatriculaCursoController {
+class MatriculaCursoController
+{
 
     private $matriculaCursoView = null;
     private $matriculaCursoModel = null;
     private $matriculaCursoAdo = null;
     private $acao = null;
 
-    public function __construct() {
+    public function __construct()
+    {
 
 
         $this->matriculaCursoView = new MatriculaCursoView();
@@ -61,18 +63,20 @@ class MatriculaCursoController {
         $this->matriculaCursoView->displayInterface($this->matriculaCursoModel);
     }
 
-    public function __destruct() {
-        
+    public function __destruct()
+    {
+
     }
 
-    private function consultaMatriculaCurso() {
+    private function consultaMatriculaCurso()
+    {
         $this->matriculaCursoModel = $this->matriculaCursoView->getDados();
 
-        $this->matriculaCursoModel =$this->matriculaCursoAdo->consultaMatriculaCurso($this->matriculaCursoModel->getMatrcEstuMatricula());
-        
+
+        $this->matriculaCursoModel = $this->matriculaCursoAdo->consultaMatriculaCurso($this->matriculaCursoModel->getMatrcEstuMatricula());
         if ($this->matriculaCursoModel) {
             //continue
-            
+
         } else {
             //  $this->matriculaCursoModel = new MatriculaModel();
             $this->matriculaCursoView->adicionaMensagem($this->matriculaCursoAdo->getMensagem());
@@ -80,7 +84,8 @@ class MatriculaCursoController {
         }
     }
 
-    private function buscaDisciplinas() {
+    private function buscaDisciplinas()
+    {
 
         $this->matriculaCursoModel = $this->matriculaCursoAdo->consultaArrayDeObjeto();
         if ($this->matriculaCursoModel) {
@@ -92,16 +97,17 @@ class MatriculaCursoController {
         }
     }
 
-    private function incluimatriculaCurso() {
+    private function incluimatriculaCurso()
+    {
+
         $this->matriculaCursoModel = $this->matriculaCursoView->getDados();
-        
         try {
             if ($this->matriculaCursoAdo->insereObjeto($this->matriculaCursoModel)) {
                 // Limpa os dados
                 $this->matriculaCursoModel = new MatriculaCursoModel();
             }
             $this->matriculaCursoView->adicionaMensagem($this->matriculaCursoAdo->getMensagem());
-            
+
         } catch (ErroNoBD $e) {
             $this->matriculaCursoView->adicionaMensagem("Erro na inclusão. contate o analista.");
             //descomente para debugar
@@ -109,7 +115,8 @@ class MatriculaCursoController {
         }
     }
 
-    private function alteraMatriculaCurso() {
+    private function alteraMatriculaCurso()
+    {
         $this->matriculaCursoModel = $this->matriculaCursoView->getDados();
 
         try {
@@ -121,7 +128,8 @@ class MatriculaCursoController {
         }
     }
 
-    private function excluimatriculaCurso() {
+    private function excluimatriculaCurso()
+    {
         echo 'kjsdflkasfjlkas;';
         $this->matriculaCursoModel = $this->matriculaCursoView->getDados();
 

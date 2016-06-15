@@ -31,7 +31,11 @@ class MatrizCursoView extends MinhaInterface
         $this->meio .= "        </select>";
         $this->meio .= " 
                                 {$arrayDeBotoes['con']}
-                                <br><br><br>               
+                                <br><br><br>       
+                            </form>
+                            
+                            <form method='post' action=''>
+                            <input type='hidden' value='$cursId' name='cursId'>
                 <fieldset>
                         <legend>Disciplinas</legend>";
         if ($discCodigo != null) {

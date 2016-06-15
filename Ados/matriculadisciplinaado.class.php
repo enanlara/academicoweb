@@ -120,12 +120,15 @@ class MatriculaDisciplinaAdo extends ADO {
     }
 
     public function insereObjeto(\Model $objetoModelo) {
-        
+        echo '<pre>';
+        print_r($objetoModelo);
+        echo '</pre>';
+
         $query = "insert into Matriculas_por_curso values ("
-                . "{$objetoModelo->getMatrc_curs_id()}, "
-                . "{$objetoModelo->getMatrc_estu_matricula()}, "
-                . "'{$objetoModelo->getMatrc_data_inicial()}',"
-                . "'{$objetoModelo->getMatrc_data_final()}' "
+                . "{$objetoModelo->getMatrdDiscId()}, "
+                . "{$objetoModelo->getMatrdEstuMatricula()}, "
+                . "'{$objetoModelo->getMatrdDataInicial()}',"
+                . "'{$objetoModelo->getMatrdDataFinal()}' "
                 . ")";        
 
         try {

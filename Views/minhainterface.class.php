@@ -89,7 +89,7 @@ Abstract Class MinhaInterface {
                 echo $this->menu;
 
         echo $this->meio;
-        echo $this->rodape;
+        //echo $this->rodape;
     }
 
     function getCabeçalho() {

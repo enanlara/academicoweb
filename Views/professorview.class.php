@@ -2,9 +2,11 @@
 
 require_once 'minhainterface.class.php';
 
-class ProfessorView extends MinhaInterface {
+class ProfessorView extends MinhaInterface
+{
 
-    public function montaMeio($professormodel) {
+    public function montaMeio($professormodel)
+    {
         $professoresAdo = new ProfessorAdo();
         $professores = $professoresAdo->lista();
 
@@ -29,24 +31,36 @@ class ProfessorView extends MinhaInterface {
         $this->meio .= "        </select>";
         $this->meio .= " 
                                 {$arrayDeBotoes['con']}
+                                </form>
+                                
+                                <form method='post' action=''>
+                                
                                 <br><br>
                                 <b>Entre com os dados</b><br>
                                 
                 
-                    <br>
+                <br>Siape <input type='text' name='profSiape' value='$profSiape'>
                 <br>Nome <input type='text' name='profNome' value='{$profNome}'>
                 <br><br>
-                {$arrayDeBotoes['inc']}{$arrayDeBotoes['alt']}{$arrayDeBotoes['exc']}
-            </form></div>";
+                ";
+
+        if (is_null($profSiape)) {
+            $this->meio .= "{$arrayDeBotoes['inc']}";
+        } else {
+            $this->meio .= "{$arrayDeBotoes['alt']}{$arrayDeBotoes['exc']}";
+        }
+        $this->meio .= "</form></div>";
     }
 
-    public function montaTitulo() {
+    public function montaTitulo()
+    {
         $this->titulo = "Inscrição do professor";
     }
 
-    public function getDados() {
+    public function getDados()
+    {
         $profSiape = $_POST['profSiape'];
-        $profNome = $_POST['profNome'];
+        $profNome = (isset($_POST['profNome'])) ? $_POST['profNome'] : null;
 
         return new professormodel($profSiape, $profNome);
     }

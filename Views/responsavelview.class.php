@@ -10,7 +10,7 @@ class ResponsavelView extends MinhaInterface {
         $responsaveisAdo = new ResponsavelAdo();
         $arrayDeDisciplinas = new DisciplinaAdo();
         $ArrayDisc = $arrayDeDisciplinas->lista();
-        
+
         $arrayDeProfessores = new ProfessorAdo();
         $arrayProf = $arrayDeProfessores->lista();
 
@@ -34,7 +34,7 @@ class ResponsavelView extends MinhaInterface {
                 Disciplina
                 <select name='resp_disc_id'>
                     <option value='-1'>Selecione a disciplina</option><br>";
-       
+
 
         foreach ($ArrayDisc as $disc) {
             if($disc->disc_codigo == $dadosDisc){
@@ -47,10 +47,30 @@ class ResponsavelView extends MinhaInterface {
 
         $this->meio .="</select>{$arrayDeBotoes['con']}
                 <br><br>
+                
+                </form>
+                
+                <form method='post' action=''>
+                <hr><br>               
+                Disciplina
+                <select name='resp_disc_id'>
+                    <option value='-1'>Selecione a disciplina</option><br>";
+
+
+        foreach ($ArrayDisc as $disc) {
+            $selected = ($disc->disc_codigo == $dadosDisc) ? 'selected' : null;
+
+            $this->meio .="<option value='{$disc->disc_codigo}' {$selected}>{$disc->disc_nome}</option>";
+        }
+
+
+        $this->meio .= "
+                </select>
+                <br>
                 Professor Responsavel
                 <select name='resp_prof_siape'>
                     <option value='-1'>Selecione o professor</option><br>";
-        
+
             foreach ($arrayProf as $prof) {
                 $selected = ($prof->prof_siape == $dadosProf)? 'selected': '';
                 $this->meio .= "<option value='{$prof->prof_siape}' {$selected}>{$prof->prof_nome}</option>";
@@ -76,9 +96,9 @@ class ResponsavelView extends MinhaInterface {
 
     public function getDados() {
         $disc = $_POST['resp_disc_id'];
-        $prof = $_POST['resp_prof_siape'];
-        $respAno = $_POST['resp_ano'];
-        $respSemestre = $_POST['resp_semestre'];
+        $prof = (isset($_POST['resp_prof_siape'])) ? $_POST['resp_prof_siape'] : null;
+        $respAno = (isset($_POST['resp_ano'])) ? $_POST['resp_ano'] : null;
+        $respSemestre = (isset($_POST['resp_semestre'])) ? $_POST['resp_semestre'] : null;;
 
         return new ResponsavelModel($disc, $prof, $respAno, $respSemestre);
     }

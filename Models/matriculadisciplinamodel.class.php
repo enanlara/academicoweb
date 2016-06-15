@@ -2,50 +2,124 @@
 
 require 'model.class.php';
 
-class MatriculaDisciplinaModel extends Model {
+class MatriculaDisciplinaModel extends Model
+{
 
-    private $matrc_curs_id;
-    private $matrc_estu_matricula;
-    private $matrc_data_inicial;
-    private $matrc_data_final;
+    private $MatrdEstuMatricula, $MatrdDiscId, $MatrdNota, $MatrdStatus, $MatrdDataInicial, $MatrdDataFinal;
 
-    function __construct($matrc_curs_id = null, $matrc_estu_matricula = null, $matrc_data_inicial = null, $matrc_data_final = null) {
-        $this->matrc_curs_id = $matrc_curs_id;
-        $this->matrc_estu_matricula = $matrc_estu_matricula;
-        $this->matrc_data_inicial = $matrc_data_inicial;
-        $this->matrc_data_final = $matrc_data_final;
+    /**
+     * matriculaPorDisciplina constructor.
+     * @param $MatrdEstuMatricula
+     * @param $MatrdDiscId
+     * @param $MatrdNota
+     * @param $MatrdStatus
+     * @param $MatrdDataInicial
+     * @param $MatrdDataFinal
+     */
+    public function __construct($MatrdEstuMatricula = null, $MatrdDiscId = null, $MatrdNota = null, $MatrdStatus = null, $MatrdDataInicial = null, $MatrdDataFinal = null)
+    {
+        $this->MatrdEstuMatricula = $MatrdEstuMatricula;
+        $this->MatrdDiscId = $MatrdDiscId;
+        $this->MatrdNota = $MatrdNota;
+        $this->MatrdStatus = $MatrdStatus;
+        $this->MatrdDataInicial = $MatrdDataInicial;
+        $this->MatrdDataFinal = $MatrdDataFinal;
     }
 
-    function getMatrc_curs_id() {
-        return $this->matrc_curs_id;
+    /**
+     * @return mixed
+     */
+    public function getMatrdEstuMatricula()
+    {
+        return $this->MatrdEstuMatricula;
     }
 
-    function getMatrc_estu_matricula() {
-        return $this->matrc_estu_matricula;
+    /**
+     * @param mixed $MatrdEstuMatricula
+     */
+    public function setMatrdEstuMatricula($MatrdEstuMatricula)
+    {
+        $this->MatrdEstuMatricula = $MatrdEstuMatricula;
     }
 
-    function getMatrc_data_inicial() {
-        return $this->matrc_data_inicial;
+    /**
+     * @return mixed
+     */
+    public function getMatrdDiscId()
+    {
+        return $this->MatrdDiscId;
     }
 
-    function getMatrc_data_final() {
-        return $this->matrc_data_final;
+    /**
+     * @param mixed $MatrdDiscId
+     */
+    public function setMatrdDiscId($MatrdDiscId)
+    {
+        $this->MatrdDiscId = $MatrdDiscId;
     }
 
-    function setMatrc_curs_id($matrc_curs_id) {
-        $this->matrc_curs_id = $matrc_curs_id;
+    /**
+     * @return mixed
+     */
+    public function getMatrdNota()
+    {
+        return $this->MatrdNota;
     }
 
-    function setMatrc_estu_matricula($matrc_estu_matricula) {
-        $this->matrc_estu_matricula = $matrc_estu_matricula;
+    /**
+     * @param mixed $MatrdNota
+     */
+    public function setMatrdNota($MatrdNota)
+    {
+        $this->MatrdNota = $MatrdNota;
     }
 
-    function setMatrc_data_inicial($matrc_data_inicial) {
-        $this->matrc_data_inicial = $matrc_data_inicial;
+    /**
+     * @return mixed
+     */
+    public function getMatrdStatus()
+    {
+        return $this->MatrdStatus;
     }
 
-    function setMatrc_data_final($matrc_data_final) {
-        $this->matrc_data_final = $matrc_data_final;
+    /**
+     * @param mixed $MatrdStatus
+     */
+    public function setMatrdStatus($MatrdStatus)
+    {
+        $this->MatrdStatus = $MatrdStatus;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMatrdDataInicial()
+    {
+        return $this->MatrdDataInicial;
+    }
+
+    /**
+     * @param mixed $MatrdDataInicial
+     */
+    public function setMatrdDataInicial($MatrdDataInicial)
+    {
+        $this->MatrdDataInicial = $MatrdDataInicial;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMatrdDataFinal()
+    {
+        return $this->MatrdDataFinal;
+    }
+
+    /**
+     * @param mixed $MatrdDataFinal
+     */
+    public function setMatrdDataFinal($MatrdDataFinal)
+    {
+        $this->MatrdDataFinal = $MatrdDataFinal;
     }
 
 }

@@ -18,16 +18,17 @@ require_once '../Ados/matriculadisciplinaado.class.php';
 require_once '../Ados/estudanteado.class.php';
 require_once '../Ados/disciplinaado.class.php';
 
-class MatriculaDisciplinaController {
+class MatriculaDisciplinaController
+{
 
     private $matriculaDisciplinaView = null;
     private $matriculaDisciplinaModel = null;
     private $matriculaDisciplinaAdo = null;
     private $acao = null;
 
-    public function __construct() {
-
-
+    public function __construct()
+    {
+        
         $this->matriculaDisciplinaView = new MatriculaDisciplinaView();
         $this->matriculaDisciplinaModel = new MatriculaDisciplinaModel();
         $this->matriculaDisciplinaAdo = new MatriculaDisciplinaAdo();
@@ -61,18 +62,20 @@ class MatriculaDisciplinaController {
         $this->matriculaDisciplinaView->displayInterface($this->matriculaDisciplinaModel);
     }
 
-    public function __destruct() {
-        
+    public function __destruct()
+    {
+
     }
 
-    private function consultaMatriculaDisciplina() {
+    private function consultaMatriculaDisciplina()
+    {
         $this->matriculaDisciplinaModel = $this->matriculaDisciplinaView->getDados();
 
         //$this->matriculaDisciplinaModel->setMatrzDiscCodigo($this->matriculaDisciplinaAdo->consultaMatricula($this->matriculaDisciplinaModel->getMatrzCursId()));
-        
+
         if ($this->matriculaDisciplinaModel) {
             //continue
-            
+
         } else {
             //  $this->matriculaDisciplinaModel = new MatriculaModel();
             $this->matriculaDisciplinaView->adicionaMensagem($this->matriculaDisciplinaAdo->getMensagem());
@@ -80,7 +83,8 @@ class MatriculaDisciplinaController {
         }
     }
 
-    private function buscaDisciplinas() {
+    private function buscaDisciplinas()
+    {
 
         $this->matriculaDisciplinaModel->setMatrzDiscCodigo($this->matriculaDisciplinaAdo->consultaArrayDeObjeto());
         if ($this->matriculaDisciplinaModel) {
@@ -92,16 +96,17 @@ class MatriculaDisciplinaController {
         }
     }
 
-    private function incluimatriculaDisciplina() {
+    private function incluimatriculaDisciplina()
+    {
         $this->matriculaDisciplinaModel = $this->matriculaDisciplinaView->getDados();
-        
+
         try {
             if ($this->matriculaDisciplinaAdo->insereObjeto($this->matriculaDisciplinaModel)) {
                 // Limpa os dados
                 $this->matriculaDisciplinaModel = new MatriculaDisciplinaModel();
             }
             $this->matriculaDisciplinaView->adicionaMensagem($this->matriculaDisciplinaAdo->getMensagem());
-            
+
         } catch (ErroNoBD $e) {
             $this->matriculaDisciplinaView->adicionaMensagem("Erro na inclusão. contate o analista.");
             //descomente para debugar
@@ -109,7 +114,8 @@ class MatriculaDisciplinaController {
         }
     }
 
-    private function alteraMatriculaDisciplina() {
+    private function alteraMatriculaDisciplina()
+    {
         $this->matriculaDisciplinaModel = $this->matriculaDisciplinaView->getDados();
 
         try {
@@ -121,7 +127,8 @@ class MatriculaDisciplinaController {
         }
     }
 
-    private function excluimatriculaDisciplina() {
+    private function excluimatriculaDisciplina()
+    {
         $this->matriculaDisciplinaModel = $this->matriculaDisciplinaView->getDados();
 
         try {
