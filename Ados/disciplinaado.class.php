@@ -39,6 +39,15 @@ class DisciplinaAdo extends ADO {
         return parent::lista($query);
     }
 
+    function listaDisciplinaPorMatricula($matricula) {
+        $query = " 
+                 SELECT * FROM Matricula_por_disciplina m 
+                 INNER JOIN Disciplinas d ON d.disc_codigo = m.matrd_disc_id
+                 WHERE matrd_estu_matricula = {$matricula}";
+
+        return parent::lista($query);
+    }
+
     public function excluiObjeto(\Model $objetoModelo) {
         $query = "delete from Disciplinas where disc_codigo = ?";
         

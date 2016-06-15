@@ -25,8 +25,7 @@ class matrizCursoController {
     private $acao = null;
 
     public function __construct() {
-
-
+        
         $this->matrizCursoView = new MatrizCursoView();
         $this->matrizCursoModel = new MatrizCursoModel();
         $this->matrizCursoAdo = new MatrizCursoAdo();
