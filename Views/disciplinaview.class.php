@@ -7,7 +7,6 @@ class DisciplinaView extends MinhaInterface {
     public function montaMeio($disciplinamodel) {
         $disciplinaAdo = new DisciplinaAdo();
         $disciplinas = $disciplinaAdo->lista();
-       // echo $disciplinamodel->getDiscCodigo;
 
         $discCodigo = $disciplinamodel->getDiscCodigo();
         $discNome = $disciplinamodel->getDiscNome();
