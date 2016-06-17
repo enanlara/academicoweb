@@ -28,7 +28,7 @@ class MatriculaDisciplinaController
 
     public function __construct()
     {
-        
+
         $this->matriculaDisciplinaView = new MatriculaDisciplinaView();
         $this->matriculaDisciplinaModel = new MatriculaDisciplinaModel();
         $this->matriculaDisciplinaAdo = new MatriculaDisciplinaAdo();
@@ -70,8 +70,11 @@ class MatriculaDisciplinaController
     private function consultaMatriculaDisciplina()
     {
         $this->matriculaDisciplinaModel = $this->matriculaDisciplinaView->getDados();
-
-        //$this->matriculaDisciplinaModel->setMatrzDiscCodigo($this->matriculaDisciplinaAdo->consultaMatricula($this->matriculaDisciplinaModel->getMatrzCursId()));
+        if ($model = $this->matriculaDisciplinaAdo->consulta($this->matriculaDisciplinaModel)) {
+            $this->matriculaDisciplinaModel = $model;
+        } else {
+            // Continua com a model vazia
+        }
 
         if ($this->matriculaDisciplinaModel) {
             //continue

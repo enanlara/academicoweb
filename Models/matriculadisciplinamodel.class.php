@@ -16,7 +16,7 @@ class MatriculaDisciplinaModel extends Model
      * @param $MatrdDataInicial
      * @param $MatrdDataFinal
      */
-    public function __construct($MatrdEstuMatricula = null, $MatrdDiscId = null, $MatrdNota = null, $MatrdStatus = null, $MatrdDataInicial = null, $MatrdDataFinal = null)
+    public function __construct($MatrdEstuMatricula = null, $MatrdDiscId = null, $MatrdDataInicial = null, $MatrdDataFinal = null, $MatrdNota = null, $MatrdStatus = null)
     {
         $this->MatrdEstuMatricula = $MatrdEstuMatricula;
         $this->MatrdDiscId = $MatrdDiscId;

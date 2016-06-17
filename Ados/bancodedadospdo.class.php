@@ -1,5 +1,6 @@
 <?php
-
+set_include_path(get_include_path() .':/var/www/html/');
+require_once 'Usefull/usefull.php';
 /**
  * Este é um Código da Fábrica de Software
  * 

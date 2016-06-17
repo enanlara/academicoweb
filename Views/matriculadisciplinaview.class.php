@@ -12,9 +12,13 @@ class MatriculaDisciplinaView extends MinhaInterface
         $estudantes = $estudanteAdo->lista();
         $disciplinas = $disciplinaAdo->lista();
 
+        $discCodigo = $matriculaDisciplinaModel->getMatrdDiscId();
         $estuMatricula = $matriculaDisciplinaModel->getMatrdEstuMatricula();
         $dataInicial = $matriculaDisciplinaModel->getMatrdDataInicial();
         $dataFinal = $matriculaDisciplinaModel->getMatrdDataFinal();
+        $nota = $matriculaDisciplinaModel->getMatrdNota();
+        $discStatus = $matriculaDisciplinaModel->getMatrdStatus();
+        $readonly = ($estuMatricula) ? 'readonly="true"' : null;
 
         $arrayDeBotoes = parent::montaArrayDeBotoes();
 
@@ -32,47 +36,60 @@ class MatriculaDisciplinaView extends MinhaInterface
         } else {
             $this->meio .= "<option value=''> Nenhuma opção selecionada </option>";
         }
-        $this->meio .= "</select>";
-
-        $this->meio .= " {$arrayDeBotoes['con']}
-                <br>";
-
-
-        $this->meio .= "
-                </form>
-                <hr><br>
-                <form method='post' action=''>
-                <input type='hidden' name='estu_matricula' value='$estuMatricula'>
-                
-                <fieldset>
-                    <legend>Disciplinas</legend>";
-
-        $this->meio .= "
-        <label> Disciplina: </label>";
+        $this->meio .= "</select>
+        <br>
+        <label> Disciplina: </label>
+        <select name='discCodigo' $readonly>";
         if ($disciplinas) {
             foreach ($disciplinas as $disciplina) {
-                $this->meio .= "<input type='checkbox' name='discCodigo' value='{$disciplina->disc_codigo}'> {$disciplina->disc_nome} </input>";
+                $this->meio .= "<option value='{$disciplina->disc_codigo}'> {$disciplina->disc_nome}</option>";
             }
         } else {
-            $this->meio .= "<p> Nenhuma disciplina cadastrada </p>";
+            $this->meio .= "<option value=''> Nenhuma disciplina cadastrada </option>";
         }
+        $this->meio .= "</select>
+        {$arrayDeBotoes['con']}
+                <br>
+                </form>
+                <hr><br>
+                <form method='post' action=''>                
+                
+                <fieldset>
+                    <legend>Disciplina</legend>      
+                    <label> Matricula: </label>
+                    <input type='text' name='estu_matricula' value='$estuMatricula' $readonly>
+                    <br>
+                    <label> Disciplina: </label>
+                    <input type='text' name='discCodigo' value='$discCodigo' $readonly>
+        ";
 
         $this->meio .= "
-                    <br><label> Status </label>
+                    <br><label> Nota: </label>
+                        <input type='text' name='discNota' value='{$nota}'>
+                    <br><label> Status</label>
+                        <select name='discStatus'>";
+                        foreach ((array(0 => 'Reprovado', 1 => 'Aprovado')) as $key => $value) {
+                            $selecionado = ($key == $discStatus) ? 'selected="true"' : null;
+                            $this->meio .= "<option $selecionado value='{$key}'> $value </option>";
+                        }
+                        $this->meio .= "
+                        </select>
                     <br><label> Data inicial:  </label>
-                        <input type='text' name='estuDataInicial' value=''>
+                        <input type='text' name='estuDataInicial' value='$dataInicial'>
                     <br><label> Data Final:  </label>
-                        <input type='text' name='estuDataFinal' value=''>";
+                        <input type='text' name='estuDataFinal' value='$dataFinal'>";
 
 
         $this->meio .= "</fieldset> 
                         <br><br>";
 
         if ($estuMatricula) {
-            $this->meio .= "{$arrayDeBotoes['alt']} </form></div>";
-        } else {
             $this->meio .= "{$arrayDeBotoes['inc']}";
         }
+        if ($nota) {
+            $this->meio .= "{$arrayDeBotoes['alt']}";
+        }
+
         
         $this->meio .= "</form></div>";
     }
@@ -86,9 +103,11 @@ class MatriculaDisciplinaView extends MinhaInterface
     {
         $estuMatricula = $_POST['estu_matricula'];
         $discCodigo = (isset($_POST['discCodigo'])) ? $_POST['discCodigo'] : null;
+        $nota = (isset($_POST['discNota'])) ? $_POST['discNota'] : null;
+        $status = (isset($_POST['discStatus'])) ? $_POST['discStatus'] : null;
         $dataInicial = (isset($_POST['estuDataInicial'])) ? $_POST['estuDataInicial']  : null;
         $dataFinal = (isset($_POST['estuDataFinal'])) ? $_POST['estuDataFinal'] : null;
 
-        return new MatriculaDisciplinaModel($discCodigo, $estuMatricula, $dataInicial, $dataFinal);
+        return new MatriculaDisciplinaModel($estuMatricula, $discCodigo, $dataInicial, $dataFinal, $nota, $status);
     }
 }
