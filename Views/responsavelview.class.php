@@ -51,11 +51,10 @@ class ResponsavelView extends MinhaInterface {
                 </form>
                 
                 <form method='post' action=''>
-                <hr><br>               
+                <hr><br>
                 Disciplina
                 <select name='resp_disc_id'>
                     <option value='-1'>Selecione a disciplina</option><br>";
-
 
         foreach ($ArrayDisc as $disc) {
             $selected = ($disc->disc_codigo == $dadosDisc) ? 'selected' : null;
@@ -85,9 +84,15 @@ class ResponsavelView extends MinhaInterface {
                     <option value='2' {$sem2}>2</option>
                 </select>
                     
-                <br><br>
-                {$arrayDeBotoes['inc']}{$arrayDeBotoes['alt']}{$arrayDeBotoes['exc']}
-            </form></div>";
+                <br><br>";
+
+        if ($dadosDisc)
+            $this->meio .= "{$arrayDeBotoes['novo']}{$arrayDeBotoes['alt']}{$arrayDeBotoes['exc']}";
+        else
+            $this->meio .= " {$arrayDeBotoes['inc']}";
+
+        $this->meio .= "</form></div>";
+
     }
 
     public function montaTitulo() {

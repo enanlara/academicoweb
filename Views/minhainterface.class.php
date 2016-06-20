@@ -20,6 +20,7 @@ Abstract Class MinhaInterface {
     public function montaArrayDeBotoes() {
         $arrayDeBotoes = array(
             "con" => "<button type='submit' name ='bt' value='con'>Consultar</button>",
+            "novo" => "<button type='submit' name ='bt' value='novo'>Novo</button>",
             "inc" => "<button type='submit' name ='bt' value='inc'>Incluir</button>",
             "alt" => "<button type='submit' name ='bt' value='alt'>Alterar</button>",
             "exc" => "<button type='submit' name ='bt' value='exc'>Excluir</button>"

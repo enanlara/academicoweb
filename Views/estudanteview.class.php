@@ -44,12 +44,11 @@ class EstudanteView extends MinhaInterface
                     Nome<input type='text' name='estuNome' value='{$estuNome}'>
                 <br><br>";
 
-        if (is_null($estuMatricula)) {
+        if (is_null($estuMatricula))
             $this->meio .= "{$arrayDeBotoes['inc']}";
-        } else {
-            $this->meio .= "{$arrayDeBotoes['alt']}{$arrayDeBotoes['exc']}";
-        }
-
+        else
+            $this->meio .= "{$arrayDeBotoes['novo']}{$arrayDeBotoes['alt']}{$arrayDeBotoes['exc']}";
+        
         $this->meio .= "</form></div>";
 
     }

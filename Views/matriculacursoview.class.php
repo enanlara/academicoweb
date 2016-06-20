@@ -83,11 +83,11 @@ class MatriculaCursoView extends MinhaInterface
                             </fieldset>
                             <br><br>";
 
-        if ($estuMatricula) {
-            $this->meio .= "{$arrayDeBotoes['alt']}{$arrayDeBotoes['exc']}";
-        } else {
+        if ($estuMatricula)
+            $this->meio .= "{$arrayDeBotoes['novo']}{$arrayDeBotoes['alt']}{$arrayDeBotoes['exc']}";
+        else
             $this->meio .= " {$arrayDeBotoes['inc']}";
-        }
+
         $this->meio .= "</form></div>";
     }
 

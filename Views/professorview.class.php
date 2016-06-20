@@ -44,11 +44,12 @@ class ProfessorView extends MinhaInterface
                 <br><br>
                 ";
 
-        if (is_null($profSiape)) {
+
+        if (is_null($profSiape))
             $this->meio .= "{$arrayDeBotoes['inc']}";
-        } else {
-            $this->meio .= "{$arrayDeBotoes['alt']}{$arrayDeBotoes['exc']}";
-        }
+        else
+            $this->meio .= "{$arrayDeBotoes['novo']}{$arrayDeBotoes['alt']}{$arrayDeBotoes['exc']}";
+
         $this->meio .= "</form></div>";
     }
 

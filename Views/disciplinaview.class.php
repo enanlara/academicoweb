@@ -38,9 +38,14 @@ class DisciplinaView extends MinhaInterface {
                     Codigo <input type='text' name='discCodigo' value='$discCodigo'><br>                
                 <br>Nome <input type='text' name='discNome' value='{$discNome}'> <br>
                     <br>Ementa <input type='text' name='discEmenta' value='{$discEmenta}'>
-                <br><br>
-                {$arrayDeBotoes['inc']}{$arrayDeBotoes['alt']}{$arrayDeBotoes['exc']}
-            </form></div>";
+                <br><br>";
+
+        if (is_null($discCodigo))
+            $this->meio .= "{$arrayDeBotoes['inc']}";
+        else
+            $this->meio .= "{$arrayDeBotoes['novo']}{$arrayDeBotoes['alt']}{$arrayDeBotoes['exc']}";
+
+        $this->meio .= "</form></div>";
     }
 
     public function montaTitulo() {

@@ -1,24 +1,28 @@
 <?php
 
 //class ErroNoBD extends Exception {
-    
+
 //cd }
 
 require_once '../Ados/bancodedadospdo.class.php';
 
-abstract class ADO extends BancoDeDadosPdo {
+abstract class ADO extends BancoDeDadosPdo
+{
 
     private $mensagem = null;
 
-    function getMensagem() {
+    function getMensagem()
+    {
         return $this->mensagem;
     }
 
-    function setMensagem($mensagem) {
+    function setMensagem($mensagem)
+    {
         $this->mensagem = $mensagem;
     }
-    
-    function lista($query) {
+
+    function lista($query)
+    {
         try {
             if ($linhas = parent::executaQuery($query)) {
 
@@ -46,5 +50,6 @@ abstract class ADO extends BancoDeDadosPdo {
 
     abstract public function excluiObjeto(Model $objetoModelo);
 }
+
 ?>
 

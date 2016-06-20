@@ -26,7 +26,7 @@ class MatriculaDisciplinaView extends MinhaInterface
                             <form method='post' action=''>";
 
         $this->meio .= "
-        <label> Matricula: </label>
+        <label> Nome: </label>
         <select name='estu_matricula'>";
         if ($estudantes) {
             foreach ($estudantes as $estudante) {
@@ -41,6 +41,7 @@ class MatriculaDisciplinaView extends MinhaInterface
         <label> Disciplina: </label>
         <select name='discCodigo' $readonly>";
         if ($disciplinas) {
+            $this->meio .= "<option value=''> Selecione uma disciplina </option>";
             foreach ($disciplinas as $disciplina) {
                 $this->meio .= "<option value='{$disciplina->disc_codigo}'> {$disciplina->disc_nome}</option>";
             }
@@ -83,12 +84,12 @@ class MatriculaDisciplinaView extends MinhaInterface
         $this->meio .= "</fieldset> 
                         <br><br>";
 
-        if ($estuMatricula) {
+        if (!$estuMatricula && !$nota)
             $this->meio .= "{$arrayDeBotoes['inc']}";
-        }
-        if ($nota) {
-            $this->meio .= "{$arrayDeBotoes['alt']}";
-        }
+        else if ($estuMatricula && !$nota)
+            $this->meio .= "{$arrayDeBotoes['inc']}";
+        if ($nota)
+            $this->meio .= "{$arrayDeBotoes['novo']}{$arrayDeBotoes['alt']}";
 
         
         $this->meio .= "</form></div>";

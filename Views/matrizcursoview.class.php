@@ -43,9 +43,15 @@ class MatrizCursoView extends MinhaInterface
                 $this->meio .= " <input type='checkbox' name='discCodigo[]' {$dados->checked} value='{$dados->discCodigo}'> {$dados->discNome}<br>";
             }
         }
-        $this->meio .= "</fieldset> <br><br>
-                {$arrayDeBotoes['inc']}{$arrayDeBotoes['alt']}{$arrayDeBotoes['exc']}
-            </form></div>";
+        $this->meio .= "</fieldset><br><br>";
+
+        if ($discCodigo)
+            $this->meio .= "{$arrayDeBotoes['novo']}{$arrayDeBotoes['alt']}{$arrayDeBotoes['exc']}";
+        else
+            $this->meio .= " {$arrayDeBotoes['inc']}";
+
+        $this->meio .= "</form></div>";
+
     }
 
     public function montaTitulo()

@@ -12,8 +12,7 @@ class CursoView extends MinhaInterface {
         $cursId = $cursomodel->getCursId();
         $arrayDeBotoes = parent::montaArrayDeBotoes();
 
-
-        $this->meio = " <div id= 'meio'> 
+        $this->meio = " <div id= 'meio'>
                             <form method='post' action=''>
                             <labe> Cursos: </labe>
                                 <select name='cursId'>";
@@ -21,12 +20,9 @@ class CursoView extends MinhaInterface {
             $this->meio .= "<option selected value='-1'> Selecione o curso</option>";
 
             foreach ($cursos as $curso) {
-
                 $selecionado = ($cursId == $curso->curs_id) ? ' selected="true" ' : null;
-
                 $this->meio .= "        <option $selecionado value='{$curso->curs_id}'> {$curso->curs_nome}</option>";
             }
-            
         } else {
             $this->meio .= "        <option value=''> Selecione o Curso </option>";
         }
@@ -39,10 +35,14 @@ class CursoView extends MinhaInterface {
                                     
                                 <br>Nome    <input type='text' name='cursNome' value='{$cursNome}'>
                                    
-                                <br><br>
-                                {$arrayDeBotoes['inc']}{$arrayDeBotoes['alt']}{$arrayDeBotoes['exc']}
-                            </form>
-                        </div>";
+                                <br><br>";
+
+        if (is_null($cursId))
+            $this->meio .= "{$arrayDeBotoes['inc']}";
+        else
+            $this->meio .= "{$arrayDeBotoes['novo']}{$arrayDeBotoes['alt']}{$arrayDeBotoes['exc']}";
+
+        $this->meio .= "</form></div>";
 
         // Codigo  <input type='text' name='cursId' value='{$cursId}'>
     }
