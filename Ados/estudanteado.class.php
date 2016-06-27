@@ -21,6 +21,7 @@ class EstudantesAdo extends ADO {
     public function insereObjeto(\Model $objetoModelo) {
         $query = "insert into Estudantes (estu_matricula, estu_nome) "
                 . "               values (?,?)";
+        
         $arrayDeValores = array($objetoModelo->getEstuMatricula(), $objetoModelo->getEstuNome());
 
         try {

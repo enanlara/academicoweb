@@ -38,10 +38,10 @@ class EstudanteView extends MinhaInterface
                                 <form action='' method='post'>
                                 <b>Entre com os dados</b><br>
                                 <br>
-                <br>Matricula <input type='text' name='estuMatricula' value='{$estuMatricula}'>
+                <br>Matricula <input type='text' name='estuMatricula' value='{$estuMatricula}' required='true'>
                     
                     <br>
-                    Nome<input type='text' name='estuNome' value='{$estuNome}'>
+                    Nome<input type='text' name='estuNome' value='{$estuNome}' required='true'>
                 <br><br>";
 
         if (is_null($estuMatricula)) {
