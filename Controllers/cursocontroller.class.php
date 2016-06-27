@@ -22,8 +22,8 @@ class CursoController {
         $this->cursoModel = new CursoModel();
         $this->cursoAdo = new CursoAdo();
 
-        
-        
+
+
         $this->acao = $this->cursoView->getAcao();
         switch ($this->acao) {
             case 'con' :
@@ -45,9 +45,9 @@ class CursoController {
                 $this->excluiCurso();
 
                 break;
-            
-             default: 
-                                 
+
+            default:
+
                 break;
         }
 
@@ -61,21 +61,27 @@ class CursoController {
     private function buscaCurso() {
         $this->cursoModel = $this->cursoView->getDados();
 
-        $this->cursoModel = $this->cursoAdo->buscaCurso( $this->cursoModel->getCursId());
+        $this->cursoModel = $this->cursoAdo->buscaCurso($this->cursoModel->getCursId());
 
         if ($this->cursoModel) {
             //continue
-
         } else {
-            
-        //    $this->cursoModel = new MatriculaModel();
+
+            //    $this->cursoModel = new MatriculaModel();
             $this->cursoView->adicionaMensagem($this->cursoAdo->getMensagem());
             return;
         }
     }
-    
+
     private function incluiCurso() {
         $this->cursoModel = $this->cursoView->getDados();
+
+        if ($this->cursoModel->VerificaObjeto($this->cursoModel)) {
+            
+        } else {
+            $this->cursoView->adicionaMensagem('Preencha todos os campos');
+            return false;
+        }
 
         try {
             if ($this->cursoAdo->insereObjeto($this->cursoModel)) {
@@ -89,6 +95,7 @@ class CursoController {
             //$this->cursoView->adicionaMensagem($e->getMessage());
         }
     }
+
     private function alteraCurso() {
         $this->cursoModel = $this->cursoView->getDados();
 
@@ -106,10 +113,12 @@ class CursoController {
         try {
             $this->cursoAdo->excluiObjeto($this->cursoModel);
             $this->cursoView->adicionaMensagem($this->cursoAdo->getMensagem());
+            $this->cursoModel = new CursoModel();
         } catch (ErroNoBD $e) {
             $this->cursoView->adicionaMensagem($e->getMessage());
         }
     }
+
 }
 
 ?>

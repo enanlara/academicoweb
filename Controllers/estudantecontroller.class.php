@@ -71,6 +71,12 @@ class EstudanteController {
     
     private function incluiEstudante() {
         $this->estudanteModel = $this->estudanteView->getDados();
+        
+        if ($this->estudanteModel->VerificaObjeto($this->estudanteModel)) {
+        } else {            
+            $this->estudanteView->adicionaMensagem('Preencha todos os campos');
+            return false;
+        }
 
         try {
             if ($this->estudanteAdo->insereObjeto($this->estudanteModel)) {
@@ -101,6 +107,7 @@ class EstudanteController {
         try {
             $this->estudanteAdo->excluiObjeto($this->estudanteModel);
             $this->estudanteView->adicionaMensagem($this->estudanteAdo->getMensagem());
+            $this->estudanteModel = new EstudantesModel();
         } catch (ErroNoBD $e) {
             $this->estudanteView->adicionaMensagem($e->getMessage());
         }

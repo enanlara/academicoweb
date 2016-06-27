@@ -99,6 +99,7 @@ class ProfessorController {
         try {
             $this->professorAdo->excluiObjeto($this->professorModel);
             $this->professorView->adicionaMensagem($this->professorAdo->getMensagem());
+            $this->professorModel = new ProfessorModel();
         } catch (ErroNoBD $e) {
             $this->professorView->adicionaMensagem($e->getMessage());
         }
