@@ -66,7 +66,6 @@ class matrizCursoController {
         $this->matrizCursoModel = $this->matrizCursoView->getDados();
 
         $this->matrizCursoModel->setMatrzDiscCodigo($this->matrizCursoAdo->consultaMatriz($this->matrizCursoModel->getMatrzCursId()));
-        var_dump($this->matrizCursoModel);
         if ($this->matrizCursoModel) {
             //continue
         } else {

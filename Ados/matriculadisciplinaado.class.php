@@ -168,8 +168,6 @@ class MatriculaDisciplinaAdo extends ADO
             '{$objetoModelo->getMatrdDataFinal()}'
             )";
 
-        /*var_dump($query);
-        die('ee');*/
         try {
             $resultado = parent::executaQuery($query);
             if ($resultado) {

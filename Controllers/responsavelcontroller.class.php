@@ -129,7 +129,6 @@ class ResponsavelController {
         try {
             $this->responsavelModel->setDisc($this->responsavelAdo->buscaDisciplina());
             $this->responsavelModel->setProf($this->responsavelAdo->buscaProfessor());
-            //var_dump($this->responsavelAdo->buscaProfessor());
         } catch (ErroNoBD $e) {
             $this->responsavelView->adicionaMensagem($e->getMessage());
         }

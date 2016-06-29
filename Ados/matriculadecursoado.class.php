@@ -40,7 +40,6 @@ class MatriculaCursoAdo extends ADO
 
         $resultado = parent::executaQuery($query);
 
-        var_dump($estuId, $query, $resultado);
 
         if ($resultado) {
             $arrayDeResultado = parent::leTabelaBD();
@@ -89,7 +88,6 @@ class MatriculaCursoAdo extends ADO
         try {
 
             $resultado = parent::executaQuery($query);
-            var_dump($objetoModelo->getMatrcEstuMatricula(), $query, $resultado);
             if ($resultado) {
                 parent::setMensagem("A matriz foi inserida com sucesso");
                 return true;

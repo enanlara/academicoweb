@@ -62,7 +62,6 @@ class ProfessorAdo extends ADO {
     }
 
     public function insereObjeto(\Model $objetoModelo) {
-        var_dump($objetoModelo);
         
         $query = "insert into Professores (prof_nome) values (?)";
         echo $query;
