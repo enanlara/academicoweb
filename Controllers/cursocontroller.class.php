@@ -76,10 +76,9 @@ class CursoController {
     private function incluiCurso() {
         $this->cursoModel = $this->cursoView->getDados();
 
-        if ($this->cursoModel->VerificaObjeto($this->cursoModel)) {
-            
-        } else {
-            $this->cursoView->adicionaMensagem('Preencha todos os campos');
+        if ($this->cursoModel->VerificaObjeto($this->cursoModel)) {} 
+        else {
+            $this->cursoView->adicionaMsgErro('Preencha todos os campos.');
             return false;
         }
 
@@ -88,7 +87,7 @@ class CursoController {
                 // Limpa os dados
                 $this->cursoModel = new cursomodel();
             }
-            $this->cursoView->adicionaMensagem($this->cursoAdo->getMensagem());
+            $this->cursoView->adicionaMsgSucesso($this->cursoAdo->getMensagem());
         } catch (ErroNoBD $e) {
             $this->cursoView->adicionaMensagem("Erro na inclusão. contate o analista.");
             //descomente para debugar
@@ -112,7 +111,7 @@ class CursoController {
 
         try {
             $this->cursoAdo->excluiObjeto($this->cursoModel);
-            $this->cursoView->adicionaMensagem($this->cursoAdo->getMensagem());
+            $this->cursoView->adicionaMsgSucesso($this->cursoAdo->getMensagem());
             $this->cursoModel = new CursoModel();
         } catch (ErroNoBD $e) {
             $this->cursoView->adicionaMensagem($e->getMessage());

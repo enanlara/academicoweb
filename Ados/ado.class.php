@@ -11,7 +11,7 @@ abstract class ADO extends BancoDeDadosPdo
 
     private $mensagem = null;
 
-    function getMensagem()
+    function getMensagem()    
     {
         return $this->mensagem;
     }

@@ -124,6 +124,14 @@ Abstract Class MinhaInterface {
     public function adicionaMensagem($mensagem) {
         $this->mensagem .= "<p>" . $mensagem . "</p>";
     }
+    
+    public function adicionaMsgErro($mensagem) {
+        $this->mensagem .= "<p class='mensagem erro'>" . $mensagem . "</p>";
+    }
+    
+    public function adicionaMsgSucesso($mensagem) {
+        $this->mensagem .= "<p class='mensagem sucesso'>" . $mensagem . "</p>";
+    }
 
     abstract public function montaTitulo();
 

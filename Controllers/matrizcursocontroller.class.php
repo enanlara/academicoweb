@@ -91,6 +91,12 @@ class matrizCursoController {
     private function incluimatrizCurso() {
         $this->matrizCursoModel = $this->matrizCursoView->getDados();
 
+        if ($this->matrizCursoModel->VerificaObjeto($this->matrizCursoModel)) {}
+        else {
+            $this->matrizCursoView->adicionaMsgErro('Preencha todos os campos.');
+            return false;
+        }
+        
         try {
             if ($this->matrizCursoAdo->insereObjeto($this->matrizCursoModel)) {
                 // Limpa os dados
@@ -110,7 +116,7 @@ class matrizCursoController {
 
         try {
             $this->matrizCursoAdo->alteraObjeto($this->matrizCursoModel);
-            $this->matrizCursoView->adicionaMensagem("A matriz foi alterada com sucesso");
+            $this->matrizCursoView->adicionaMsgSucesso("A matriz foi alterada com sucesso");
             $this->consultaMatrizCurso();
         } catch (ErroNoBD $e) {
             $this->matrizCursoView->adicionaMensagem($e->getMessage());

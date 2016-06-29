@@ -101,6 +101,13 @@ class MatriculaCursoController
     {
 
         $this->matriculaCursoModel = $this->matriculaCursoView->getDados();
+
+        if ($this->matriculaCursoModel->VerificaObjeto($this->matriculaCursoModel)) {}
+        else {
+            $this->matriculaCursoView->adicionaMsgErro('Preencha todos os campos.');
+            return false;
+        }
+        
         try {
             if ($this->matriculaCursoAdo->insereObjeto($this->matriculaCursoModel)) {
                 // Limpa os dados
@@ -121,7 +128,7 @@ class MatriculaCursoController
 
         try {
             $this->matriculaCursoAdo->alteraObjeto($this->matriculaCursoModel);
-            $this->matriculaCursoView->adicionaMensagem("A matricula foi alterada com sucesso");
+            $this->matriculaCursoView->adicionaMsgSucesso("A matricula foi alterada com sucesso");
             $this->consultaMatriculaCurso();
         } catch (ErroNoBD $e) {
             $this->matriculaCursoView->adicionaMensagem($e->getMessage());

@@ -160,7 +160,7 @@ class MatriculaDisciplinaAdo extends ADO
     {
 
         $query = "insert into Matricula_por_disciplina values ( 
-            {$objetoModelo->getMatrdEstuMatricula()},
+            '{$objetoModelo->getMatrdEstuMatricula()}',
             {$objetoModelo->getMatrdDiscId()},
             '{$objetoModelo->getMatrdNota()}',
             {$objetoModelo->getMatrdStatus()},
@@ -168,8 +168,8 @@ class MatriculaDisciplinaAdo extends ADO
             '{$objetoModelo->getMatrdDataFinal()}'
             )";
 
-        var_dump($query);
-        die('ee');
+        /*var_dump($query);
+        die('ee');*/
         try {
             $resultado = parent::executaQuery($query);
             if ($resultado) {

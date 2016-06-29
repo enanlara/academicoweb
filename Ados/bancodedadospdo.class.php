@@ -46,8 +46,8 @@ class BancoDeDadosPdo extends PDO {
         //atributosBd será utilizado quando se precisar de uma transação 
         //envolvendo mais de um objeto.
 
-        $this->usuario = "admin";
-        $this->senha = "admin";
+        $this->usuario = "root";
+        $this->senha = "root";
         $this->bdNome = "academicoweb";
         try {
             parent::__construct("mysql:host=localhost;dbname={$this->bdNome};{$this->confUTF8}", $this->usuario, $this->senha, $this->options);

@@ -80,7 +80,12 @@ class ResponsavelController {
             $this->responsavelView->adicionaMensagem("Selecione uma Disciplina!!!");
             
         }
-        
+
+        if ($this->responsavelModel->VerificaObjeto($this->responsavelModel)) {}
+        else {
+            $this->responsavelView->adicionaMsgErro('Preencha todos os campos.');
+            return false;
+        }
 
         try {
             if ($this->responsavelAdo->insereObjeto($this->responsavelModel)) {

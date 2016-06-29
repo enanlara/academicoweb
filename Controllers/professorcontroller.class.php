@@ -70,12 +70,18 @@ class ProfessorController {
     private function incluiProfessor() {
         $this->professorModel = $this->professorView->getDados();
 
+        if ($this->professorModel->VerificaObjeto($this->professorModel)) {}
+        else {
+            $this->professorView->adicionaMsgErro('Preencha todos os campos.');
+            return false;
+        }
+        
         try {
             if ($this->professorAdo->insereObjeto($this->professorModel)) {
                 // Limpa os dados
                 $this->professorModel = new professormodel();
             }
-            $this->professorView->adicionaMensagem($this->professorAdo->getMensagem());
+            $this->professorView->adicionaMsgSucesso($this->professorAdo->getMensagem());
         } catch (ErroNoBD $e) {
             $this->professorView->adicionaMensagem("Erro na inclusão. contate o analista.");
             //descomente para debugar
@@ -87,7 +93,7 @@ class ProfessorController {
 
         try {
             $this->professorAdo->alteraObjeto($this->professorModel);
-            $this->professorView->adicionaMensagem($this->professorAdo->getMensagem());
+            $this->professorView->adicionaMsgSucesso($this->professorAdo->getMensagem());
         } catch (ErroNoBD $e) {
             $this->professorView->adicionaMensagem($e->getMessage());
         }

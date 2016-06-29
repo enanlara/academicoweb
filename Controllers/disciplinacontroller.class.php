@@ -75,8 +75,11 @@ class DisciplinaController {
             if ($this->disciplinaAdo->insereObjeto($this->disciplinaModel)) {
                 // Limpa os dados
                 $this->disciplinaModel = new DisciplinaModel();
+                $this->disciplinaView->adicionaMsgSucesso($this->disciplinaAdo->getMensagem());
+            } else  {
+                $this->disciplinaView->adicionaMsgErro($this->disciplinaAdo->getMensagem());
             }
-            $this->disciplinaView->adicionaMensagem($this->disciplinaAdo->getMensagem());
+
         } catch (ErroNoBD $e) {
             $this->disciplinaView->adicionaMensagem("Erro na inclusão. contate o analista.");
             //descomente para debugar
@@ -88,7 +91,7 @@ class DisciplinaController {
 
         try {
             $this->disciplinaAdo->alteraObjeto($this->disciplinaModel);
-            $this->disciplinaView->adicionaMensagem($this->disciplinaAdo->getMensagem());
+            $this->disciplinaView->adicionaMsgSucesso($this->disciplinaAdo->getMensagem());
         } catch (ErroNoBD $e) {
             $this->disciplinaView->adicionaMensagem($e->getMessage());
         }

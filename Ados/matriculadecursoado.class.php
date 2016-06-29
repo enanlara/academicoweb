@@ -81,7 +81,7 @@ class MatriculaCursoAdo extends ADO
 
         $query = "insert into Matriculas_por_curso values ("
             . "{$objetoModelo->getMatrcCursId()}, "
-            . "{$objetoModelo->getMatrcEstuMatricula()}, "
+            . "'{$objetoModelo->getMatrcEstuMatricula()}', "
             . "'{$objetoModelo->getMatrcDataInicial()}',"
             . "'{$objetoModelo->getMatrcDataFinal()}' "
             . ")";

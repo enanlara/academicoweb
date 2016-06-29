@@ -103,12 +103,20 @@ class MatriculaDisciplinaController
     {
         $this->matriculaDisciplinaModel = $this->matriculaDisciplinaView->getDados();
 
+        if ($this->matriculaDisciplinaModel->VerificaObjeto($this->matriculaDisciplinaModel)) {}
+        else {
+            $this->matriculaDisciplinaView->adicionaMsgErro('Preencha todos os campos.');
+            return false;
+        }
+        
         try {
             if ($this->matriculaDisciplinaAdo->insereObjeto($this->matriculaDisciplinaModel)) {
                 // Limpa os dados
                 $this->matriculaDisciplinaModel = new MatriculaDisciplinaModel();
+                $this->matriculaDisciplinaView->adicionaMsgSucesso($this->matriculaDisciplinaAdo->getMensagem());
+            } else {
+                $this->matriculaDisciplinaView->adicionaMsgErro($this->matriculaDisciplinaAdo->getMensagem());
             }
-            $this->matriculaDisciplinaView->adicionaMensagem($this->matriculaDisciplinaAdo->getMensagem());
 
         } catch (ErroNoBD $e) {
             $this->matriculaDisciplinaView->adicionaMensagem("Erro na inclusão. contate o analista.");
@@ -123,7 +131,7 @@ class MatriculaDisciplinaController
 
         try {
             $this->matriculaDisciplinaAdo->alteraObjeto($this->matriculaDisciplinaModel);
-            $this->matriculaDisciplinaView->adicionaMensagem("A matricula foi alterada com sucesso");
+            $this->matriculaDisciplinaView->adicionaMsgSucesso("A matricula foi alterada com sucesso");
             $this->consultaMatriculaDisciplina();
         } catch (ErroNoBD $e) {
             $this->matriculaDisciplinaView->adicionaMensagem($e->getMessage());

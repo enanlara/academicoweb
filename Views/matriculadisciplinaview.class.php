@@ -69,16 +69,16 @@ class MatriculaDisciplinaView extends MinhaInterface
                         <input type='text' name='discNota' value='{$nota}'>
                     <br><label> Status</label>
                         <select name='discStatus'>";
-                        foreach ((array(0 => 'Reprovado', 1 => 'Aprovado')) as $key => $value) {
-                            $selecionado = ($key == $discStatus) ? 'selected="true"' : null;
-                            $this->meio .= "<option $selecionado value='{$key}'> $value </option>";
-                        }
-                        $this->meio .= "
+        foreach ((array(0 => 'Reprovado', 1 => 'Aprovado')) as $key => $value) {
+            $selecionado = ($key == $discStatus) ? 'selected="true"' : null;
+            $this->meio .= "<option $selecionado value='{$key}'> $value </option>";
+        }
+        $this->meio .= "
                         </select>
                     <br><label> Data inicial:  </label>
-                        <input type='text' name='estuDataInicial' value='$dataInicial'>
+                        <input type='date' name='estuDataInicial' value='$dataInicial'>
                     <br><label> Data Final:  </label>
-                        <input type='text' name='estuDataFinal' value='$dataFinal'>";
+                        <input type='date' name='estuDataFinal' value='$dataFinal'>";
 
 
         $this->meio .= "</fieldset> 
@@ -91,7 +91,7 @@ class MatriculaDisciplinaView extends MinhaInterface
         if ($nota)
             $this->meio .= "{$arrayDeBotoes['novo']}{$arrayDeBotoes['alt']}";
 
-        
+
         $this->meio .= "</form></div>";
     }
 
@@ -106,7 +106,7 @@ class MatriculaDisciplinaView extends MinhaInterface
         $discCodigo = (isset($_POST['discCodigo'])) ? $_POST['discCodigo'] : null;
         $nota = (isset($_POST['discNota'])) ? $_POST['discNota'] : null;
         $status = (isset($_POST['discStatus'])) ? $_POST['discStatus'] : null;
-        $dataInicial = (isset($_POST['estuDataInicial'])) ? $_POST['estuDataInicial']  : null;
+        $dataInicial = (isset($_POST['estuDataInicial'])) ? $_POST['estuDataInicial'] : null;
         $dataFinal = (isset($_POST['estuDataFinal'])) ? $_POST['estuDataFinal'] : null;
 
         return new MatriculaDisciplinaModel($estuMatricula, $discCodigo, $dataInicial, $dataFinal, $nota, $status);
