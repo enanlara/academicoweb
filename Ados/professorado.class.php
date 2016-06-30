@@ -3,101 +3,108 @@
 require_once 'ado.class.php';
 
 
+class ProfessorAdo extends ADO
+{
 
-class ProfessorAdo extends ADO {
-
-    public function alteraObjeto(\Model $objetoModelo) {
+    public function alteraObjeto(\Model $objetoModelo)
+    {
         $query = "update Professores set prof_nome = ? where prof_siape = ?";
-        
+
         $arrayDeValores = array($objetoModelo->getProfNome(), $objetoModelo->getProfSiape());
-        
-        try{
+
+        try {
             $resultado = parent::executaPs($query, $arrayDeValores);
-            
-            if($resultado){
+
+            if ($resultado) {
                 parent::setMensagem("O professor {$objetoModelo->getProfNome()} foi alterado com sucesso!");
-                return true;                         
-            }else{
+                return true;
+            } else {
                 parent::setMensagem("Erro ao alterar o professor {$objetoModelo->getProfNome()}, contate o analista!");
                 return false;
             }
-        }  catch (PDOException $e){
-            
+        } catch (PDOException $e) {
+
             throw new ErroNoBD($e->getMessage());
         }
     }
 
-    function lista() {
+    function lista()
+    {
         $query = " SELECT * FROM Professores ";
 
         return parent::lista($query);
     }
 
-    public function consultaArrayDeObjeto() {
-        
+    public function consultaArrayDeObjeto()
+    {
+
     }
 
-    public function consultaObjetoPeloId($id) {
-        
+    public function consultaObjetoPeloId($id)
+    {
+
     }
 
-    public function excluiObjeto(\Model $objetoModelo) {
+    public function excluiObjeto(\Model $objetoModelo)
+    {
         $query = "delete from Professores where prof_siape = ?";
-        
+
         $arrayDeValores = array($objetoModelo->getProfSiape());
-        
-        try{
+
+        try {
             $resultado = parent::executaPs($query, $arrayDeValores);
-            
-            if($resultado){
+
+            if ($resultado) {
                 parent::setMensagem("O professor {$objetoModelo->getProfNome()} foi excluido com sucesso!");
                 return true;
-            }else{
+            } else {
                 parent::setMensagem("Erro ao excluir o professro {$objetoModelo->getProfNome()}, contate o analista");
                 return false;
             }
-        }  catch (PDOException $e){
+        } catch (PDOException $e) {
             throw new ErroNoBD($e->getMessage());
         }
     }
 
-    public function insereObjeto(\Model $objetoModelo) {
-        
-        $query = "insert into Professores (prof_nome) values (?)";
-        echo $query;
-        $arrayDeValores = array( $objetoModelo->getProfNome());
-         echo $objetoModelo->getProfSiape();
-        try{
+    public function insereObjeto(\Model $objetoModelo)
+    {
+
+        $query = "insert into Professores (prof_siape, prof_nome) values (?, ?)";
+        $arrayDeValores = array($objetoModelo->getProfSiape(), $objetoModelo->getProfNome());
+        echo $objetoModelo->getProfSiape();
+        try {
             $resultado = parent::executaPs($query, $arrayDeValores);
-            if($resultado){
-            parent::setMensagem("O professor{$objetoModelo->getProfNome()}, foi inserido com sucesso!");
-            return true;
-            }else {
+            if ($resultado) {
+                parent::setMensagem("O professor{$objetoModelo->getProfNome()}, foi inserido com sucesso!");
+                return true;
+            } else {
                 parent::setMensagem("Erro ao inserir o Professor {$objetoModelo->getProfNome() }, contate o analista");
                 return false;
             }
-            
-        }  catch (PDOException $e){
+
+        } catch (PDOException $e) {
             throw new ErroNoBD($e->getMessage());
         }
-        
+
     }
-    public function buscaPeloSiape($profSiape){
+
+    public function buscaPeloSiape($profSiape)
+    {
         $query = "select * from Professores where prof_siape = ?";
-        
-        try{
+
+        try {
             $executou = parent::executaPs($query, array($profSiape));
-            if($executou){
+            if ($executou) {
                 $professorArray = parent::leTabelaBD();
                 $professorModel = new ProfessorModel($professorArray['prof_siape'], $professorArray['prof_nome']);
                 return $professorModel;
-            }else {
+            } else {
                 parent::setMensagem("Erro no select");
                 return false;
             }
-            
-            
-        }  catch (ErroNoBD $e){
+
+
+        } catch (ErroNoBD $e) {
             parent::setMensagem($e->getMessage());
             return false;
         }

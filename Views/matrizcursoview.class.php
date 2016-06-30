@@ -16,7 +16,7 @@ class MatrizCursoView extends MinhaInterface
 
         $this->meio = " <div id= 'meio'> 
                             <form method='post' action=''>
-                            <labe> Cursos: </labe>
+                            <label> Cursos: </labe>
                                 <select name='cursId'>";
         if ($cursos) {
             foreach ($cursos as $curso) {
@@ -46,9 +46,7 @@ class MatrizCursoView extends MinhaInterface
         $this->meio .= "</fieldset><br><br>";
 
         if ($discCodigo)
-            $this->meio .= "{$arrayDeBotoes['novo']}{$arrayDeBotoes['alt']}{$arrayDeBotoes['exc']}";
-        else
-            $this->meio .= " {$arrayDeBotoes['inc']}";
+            $this->meio .= "{$arrayDeBotoes['inc']}{$arrayDeBotoes['alt']}{$arrayDeBotoes['exc']}";
 
         $this->meio .= "</form></div>";
 

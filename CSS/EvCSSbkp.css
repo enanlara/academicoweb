@@ -1,0 +1,92 @@
+/* CSS Document */
+
+div#cabecalho {
+    background-color: #f3f3f2;
+    background-image: url("../IMG/foto.png");
+    background-repeat: no-repeat;
+/ / text-align: center;
+    padding: 10px;
+
+/ / margin: - 22 px - 100 px 0 px 0 px;
+}
+
+/*remorve o sublinhado dos link's*/
+a:link {
+    text-decoration: none;
+}
+
+div#menu {
+    float: left;
+    border-style: groove;
+    margin: 0px 0px auto 0px;
+    width: 200px;
+
+}
+
+div#menu h4 li a {
+    color: gray;
+}
+
+#meio {
+    text-align: left;
+    margin: 0px 19% 10%;
+}
+
+div#boasVindas {
+    /*    float: right;*/
+    text-align: left;
+    margin-left: 255px;
+    border-style: solid;
+    width: 50%;
+    margin: 0px 500px 0px 0px;
+}
+
+div#rodape {
+    clear: both;
+    background-color: green;
+    color: white;
+/ / text-align: center;
+    padding: 10px;
+/ / margin-left: 10 %;
+/ / margin-right: 10 %;
+    margin: 0px 260px 0px 240px;
+}
+
+div#conteudo {
+    padding: 1%;
+}
+
+body {
+    background-color: #f3f3f2;
+
+    font-family: Arial;
+    margin: 2px 2px 2px 2px;
+    color: #101213;
+}
+
+h1#topo {
+    font-size: x-large;
+
+    margin-top: 150px;
+}
+
+#corpo {
+    background-color: rgb(255, 255, 255);
+    color: black;
+    text-align: center;
+    padding: 25px;
+}
+
+.mensagem {
+    padding: 7px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.erro {
+    background-color: #ff744a;
+}
+
+.sucesso {
+    background-color: #27db1c;
+}

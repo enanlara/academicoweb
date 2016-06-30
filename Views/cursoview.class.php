@@ -14,7 +14,7 @@ class CursoView extends MinhaInterface {
 
         $this->meio = " <div id= 'meio'>
                             <form method='post' action=''>
-                            <labe> Cursos: </labe>
+                            <label> Cursos: </labe>
                                 <select name='cursId'>";
         if ($cursos) {
             $this->meio .= "<option selected value='-1'> Selecione o curso</option>";

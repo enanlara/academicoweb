@@ -1,0 +1,223 @@
+$verdeBase: #00ac5b;
+$corErro: #ff744a;
+
+div#cabecalho {
+  text-align: center;
+  background: white;
+  margin: 0px 0px 20px 15%;
+
+  #topo {
+    //position: relative;
+    padding-bottom: 30px;
+  }
+
+  img {
+    padding-top: 30px;
+  }
+
+}
+
+body {
+  margin: 0;
+  background-color: #f3f3f2;
+  font-family: Arial;
+  color: #101213;
+}
+
+@mixin clean {
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+#wrapper {
+  @include clean();
+  min-height: 100%;
+  //position: relative;
+}
+
+div#menu {
+
+  ul {
+    list-style-type: none;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    padding-top: 150px;
+    width: 15%;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    background: $verdeBase;
+
+    li {
+      margin-top: 10px;
+      left: 0;
+
+      a {
+        display: block;
+        color: white;
+        padding: 8px 0 8px 16px;
+        text-decoration: none;
+      }
+
+    }
+
+    a:hover {
+      color: #167a16;
+    }
+  }
+}
+
+#wrapper-page {
+  margin-left: 15%;
+  left: 15%;
+
+  #meio {
+    width: 95%;
+    text-align: left;
+    background: white;
+    margin: 0px 0px 0px 10px;
+    padding: 20px;
+    border-radius: 6px;
+  }
+}
+
+hr {
+  border-color: rgba(134, 144, 108, 0.42);
+  border: 0.1px solid rgba(134, 144, 108, 0.42);
+  width: 80%;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+div#boasVindas {
+  text-align: left;
+  margin-left: 255px;
+  border-style: solid;
+  width: 50%;
+}
+
+#rodape {
+  //bottom: 0;
+  margin-top: 100px;
+  margin-left: 15%;
+  left: 15%;
+  padding: 5px;
+  clear: both;
+  background-color: white;
+  text-align: center;
+}
+
+#corpo {
+  background-color: rgb(255, 255, 255);
+  color: black;
+  text-align: center;
+  padding: 25px;
+}
+
+@mixin msg($bkg) {
+  //width: 95%;
+  padding: 7px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 3px;
+  border-color: #000;
+  background: $bkg;
+}
+
+.mensagem {
+  /*@include msg($bkg);*/
+}
+
+.erro {
+  /*background-color: $corErro;*/
+  @include msg($corErro);
+}
+
+.sucesso {
+  /*background-color: #27db1c;*/
+  @include msg(#27db1c);
+}
+
+/* Elementos Formularios */
+$altura: 35px;
+
+@mixin formElementos() {
+  width: 100%;
+  height: $altura;
+  border-radius: 4px;
+  border: 0.5px solid gray;
+  margin: 10px 0px 10px 0px;
+  font-size: 17px;
+  padding: 10px;
+  border-color: rgba(134, 144, 108, 0.42);
+
+  &:focus {
+    border-color: lighten($verdeBase, 60);
+  }
+}
+
+form {
+
+  label {
+    font-weight: bold;
+  }
+
+  input[type="text"] {
+    @include formElementos();
+
+  }
+
+  select {
+    @include formElementos();
+    background: rgba(207, 217, 158, 0.1);
+    font-family: cursive;
+    padding: 0px 0px 0px 10px;
+
+  }
+
+}
+
+/* Fim Elementos Formularios */
+
+/* Botoes */
+@mixin btn($bkg, $borderColor: $bkg, $fontColor: white) {
+  min-width: 90px;
+  min-height: 30px;
+  padding: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+  border-radius: 4.5px;
+  border: 0.1px solid lighten($borderColor, 40);
+  font-size: 16px;
+  color: $fontColor;
+  background: $bkg;
+
+  &:hover {
+    background: darken($bkg, 5);
+  }
+
+  &:active {
+    background: darken($bkg, 15);
+  }
+}
+
+.btn-con {
+  @include btn(#2176ac);
+}
+
+.btn-inc {
+  @include btn(#68D47B);
+}
+
+.btn-exc {
+  @include btn(darken($corErro, 20));
+}
+
+.btn-padrao {
+  @include btn(white, black, black);
+}
+
+/* Fim Botoes */
