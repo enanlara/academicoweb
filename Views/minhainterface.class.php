@@ -31,19 +31,28 @@ Abstract Class MinhaInterface
         return $arrayDeBotoes;
     }
 
+    function checaMenu($menu) {
+
+        $modulo = explode('/', $_SERVER['REQUEST_URI']);
+        $modulo = end($modulo);
+
+        return ($modulo == $menu) ? 'class="active"' : null;
+    }
+
     final private function montaMenu()
     {
+
         $this->menu = "<div id='menu' > 
                         
                         <ul>
-                            <li><a href='http://localhost/academicoWeb/Modulos/estudante.php'>Alunos</a></li> 
-                            <li><a href='http://localhost/academicoWeb/Modulos/professor.php'>Professores</a></li> 
-                            <li><a href='http://localhost/academicoWeb/Modulos/disciplina.php'>Disciplinas</a></li>
-                            <li><a href='http://localhost/academicoWeb/Modulos/curso.php'>Cursos</a></li>
-                            <li><a href='http://localhost/academicoWeb/Modulos/matrizCurso.php'>Matrizes</a></li>
-                            <li><a href='http://localhost/academicoWeb/Modulos/responsavel.php'>Responsavel</a></li>
-                            <li><a href='http://localhost/academicoWeb/Modulos/matriculaCurso.php'>Matriculas por Curso</a></li>
-                            <li><a href='http://localhost/academicoWeb/Modulos/matriculaDisciplina.php'>Matriculas por disciplina</a></li>
+                            <li><a href='http://localhost/academicoWeb/Modulos/estudante.php'" . $this->checaMenu('estudante.php') . ">Alunos</a></li> 
+                            <li><a href='http://localhost/academicoWeb/Modulos/professor.php'" . $this->checaMenu('professor.php') . ">Professores</a></li> 
+                            <li><a href='http://localhost/academicoWeb/Modulos/disciplina.php'" . $this->checaMenu('disciplina.php') . ">Disciplinas</a></li>
+                            <li><a href='http://localhost/academicoWeb/Modulos/curso.php'" . $this->checaMenu('curso.php') . ">Cursos</a></li>
+                            <li><a href='http://localhost/academicoWeb/Modulos/matrizCurso.php'" . $this->checaMenu('matrizCurso.php') . ">Matrizes</a></li>
+                            <li><a href='http://localhost/academicoWeb/Modulos/responsavel.php'" . $this->checaMenu('responsavel.php') . ">Responsavel</a></li>
+                            <li><a href='http://localhost/academicoWeb/Modulos/matriculaCurso.php'" . $this->checaMenu('matriculaCurso.php') . ">Matriculas por Curso</a></li>
+                            <li><a href='http://localhost/academicoWeb/Modulos/matriculaDisciplina.php'" . $this->checaMenu('matriculaDisciplina.php') . ">Matriculas por disciplina</a></li>
                             
                         </ul>
 

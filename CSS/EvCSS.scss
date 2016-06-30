@@ -65,8 +65,13 @@ div#menu {
     }
 
     a:hover {
-      color: #167a16;
+      background: darken($verdeBase, 20);
     }
+
+    a.active {
+      background: darken($verdeBase, 15);
+    }
+
   }
 }
 

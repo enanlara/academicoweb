@@ -40,7 +40,9 @@ div#menu ul {
       padding: 8px 0 8px 16px;
       text-decoration: none; }
   div#menu ul a:hover {
-    color: #167a16; }
+    background: #004625; }
+  div#menu ul a.active {
+    background: #006033; }
 
 #wrapper-page {
   margin-left: 15%;
