@@ -5,7 +5,8 @@ div#cabecalho {
   div#cabecalho #topo {
     padding-bottom: 30px; }
   div#cabecalho img {
-    padding-top: 30px; }
+    padding-top: 30px;
+    padding-bottom: 30px; }
 
 body {
   margin: 0;
@@ -138,11 +139,11 @@ form select {
 .btn-con {
   min-width: 90px;
   min-height: 30px;
-  padding: 5px;
+  padding: 7px;
   margin-right: 5px;
   cursor: pointer;
-  border-radius: 4.5px;
-  border: 0.1px solid #aad4ef;
+  border-radius: 4.1px;
+  border: none;
   font-size: 16px;
   color: white;
   background: #2176ac; }
@@ -154,11 +155,11 @@ form select {
 .btn-inc {
   min-width: 90px;
   min-height: 30px;
-  padding: 5px;
+  padding: 7px;
   margin-right: 5px;
   cursor: pointer;
-  border-radius: 4.5px;
-  border: 0.1px solid white;
+  border-radius: 4.1px;
+  border: none;
   font-size: 16px;
   color: white;
   background: #68D47B; }
@@ -170,11 +171,11 @@ form select {
 .btn-exc {
   min-width: 90px;
   min-height: 30px;
-  padding: 5px;
+  padding: 7px;
   margin-right: 5px;
   cursor: pointer;
-  border-radius: 4.5px;
-  border: 0.1px solid #ffc2b0;
+  border-radius: 4.1px;
+  border: none;
   font-size: 16px;
   color: white;
   background: #e33500; }
@@ -186,14 +187,15 @@ form select {
 .btn-padrao {
   min-width: 90px;
   min-height: 30px;
-  padding: 5px;
+  padding: 7px;
   margin-right: 5px;
   cursor: pointer;
-  border-radius: 4.5px;
-  border: 0.1px solid #666666;
+  border-radius: 4.1px;
+  border: none;
   font-size: 16px;
   color: black;
-  background: white; }
+  background: white;
+  border: 0.1px solid #666666; }
   .btn-padrao:hover {
     background: #f2f2f2; }
   .btn-padrao:active {

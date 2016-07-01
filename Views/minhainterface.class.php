@@ -84,7 +84,7 @@ Abstract Class MinhaInterface
             </head>
             <body>
                 <div id='cabecalho'>
-                  <img src='../IMG/ifg.jpg' width='80%' height='120px'>
+                  <img src='../IMG/ifg.jpg' width='70%' height='120px'>
                   <h1 id='topo'><center>Academico Web</center></h1>
                 </div>";
     }

@@ -13,6 +13,7 @@ div#cabecalho {
 
   img {
     padding-top: 30px;
+    padding-bottom: 30px;
   }
 
 }
@@ -188,14 +189,14 @@ form {
 /* Fim Elementos Formularios */
 
 /* Botoes */
-@mixin btn($bkg, $borderColor: $bkg, $fontColor: white) {
+@mixin btn($bkg, $fontColor: white) {
   min-width: 90px;
   min-height: 30px;
-  padding: 5px;
+  padding: 7px;
   margin-right: 5px;
   cursor: pointer;
-  border-radius: 4.5px;
-  border: 0.1px solid lighten($borderColor, 40);
+  border-radius: 4.1px;
+  border: none;
   font-size: 16px;
   color: $fontColor;
   background: $bkg;
@@ -222,7 +223,8 @@ form {
 }
 
 .btn-padrao {
-  @include btn(white, black, black);
+  @include btn(white, black);
+  border: 0.1px solid lighten(black, 40);
 }
 
 /* Fim Botoes */
