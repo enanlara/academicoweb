@@ -4,11 +4,12 @@ $corErro: #ff744a;
 div#cabecalho {
   text-align: center;
   background: white;
-  margin: 0px 0px 20px 15%;
+  margin: 0px 10px 20px 15.5%;
+  max-height: 150px;
+  border-radius: 6px;
 
   #topo {
-    //position: relative;
-    padding-bottom: 30px;
+    padding: 60px 0px 60px 0px;
   }
 
   img {
@@ -29,31 +30,35 @@ body {
   top: 0;
   left: 0;
   bottom: 0;
+  right: 0;
 }
 
 #wrapper {
   @include clean();
   min-height: 100%;
-  //position: relative;
 }
 
 div#menu {
-
   ul {
     list-style-type: none;
     top: 0;
     margin: 0;
     padding: 0;
-    padding-top: 150px;
     width: 15%;
-    background-color: #f1f1f1;
     position: fixed;
     height: 100%;
     overflow: auto;
     background: $verdeBase;
 
+    .menu-cabecalho {
+      background-color: darken($verdeBase, 20);
+      margin-bottom: 50px;
+      padding: 20px;
+      max-height: 150px;
+    }
+
     li {
-      margin-top: 10px;
+      margin-bottom: 10px;
       left: 0;
 
       a {
@@ -82,16 +87,17 @@ div#menu {
 
   #meio {
     width: 95%;
+    margin: 0px 0px 0px 10px;
     text-align: left;
     background: white;
-    margin: 0px 0px 0px 10px;
     padding: 20px;
     border-radius: 6px;
   }
 }
 
 hr {
-  border-color: rgba(134, 144, 108, 0.42);
+  display: none;
+  //border-color: rgba(134, 144, 108, 0.42);
   border: 0.1px solid rgba(134, 144, 108, 0.42);
   width: 80%;
   margin-top: 30px;
@@ -212,6 +218,7 @@ form {
 
 .btn-con {
   @include btn(#2176ac);
+  margin-bottom: 40px;
 }
 
 .btn-inc {

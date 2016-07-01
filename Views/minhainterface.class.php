@@ -42,9 +42,13 @@ Abstract Class MinhaInterface
     final private function montaMenu()
     {
 
-        $this->menu = "<div id='menu' > 
+        $this->menu = "<div id='menu'>                      
                         
-                        <ul>
+                        <ul>                       
+                            <li class='menu-cabecalho'>
+                                <img src='../IMG/AApagar.png' width='100px' height='100px'>
+                            </li>
+                            
                             <li><a href='http://localhost/academicoWeb/Modulos/estudante.php'" . $this->checaMenu('estudante.php') . ">Alunos</a></li> 
                             <li><a href='http://localhost/academicoWeb/Modulos/professor.php'" . $this->checaMenu('professor.php') . ">Professores</a></li> 
                             <li><a href='http://localhost/academicoWeb/Modulos/disciplina.php'" . $this->checaMenu('disciplina.php') . ">Disciplinas</a></li>
@@ -84,7 +88,7 @@ Abstract Class MinhaInterface
             </head>
             <body>
                 <div id='cabecalho'>
-                  <img src='../IMG/ifg.jpg' width='70%' height='120px'>
+                  <!--<img src='../IMG/ifg.jpg' width='70%' height='120px'>-->
                   <h1 id='topo'><center>Academico Web</center></h1>
                 </div>";
     }
