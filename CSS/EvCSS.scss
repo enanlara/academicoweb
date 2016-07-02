@@ -1,12 +1,19 @@
 $verdeBase: #00ac5b;
 $corErro: #ff744a;
 
+@mixin menuFix() {
+  margin-left: 15%;
+  left: 15%;
+  width: 95%;
+}
+
 div#cabecalho {
   text-align: center;
   background: white;
-  margin: 0px 10px 20px 15.5%;
+  margin: 5px 10px 20px 15.7%;
   max-height: 150px;
   border-radius: 6px;
+  box-shadow: 5px 3px 5px #888888;
 
   #topo {
     padding: 60px 0px 60px 0px;
@@ -82,16 +89,20 @@ div#menu {
 }
 
 #wrapper-page {
-  margin-left: 15%;
-  left: 15%;
+  /*margin-left: 15%;
+  left: 15%;*/
 
   #meio {
-    width: 95%;
-    margin: 0px 0px 0px 10px;
+    margin: 0px 10px 20px 15.7%;
+
+
+    //width: 95%;
+    //margin: 0px 0px 0px 10px;
     text-align: left;
     background: white;
     padding: 20px;
     border-radius: 6px;
+    box-shadow: 5px 7px 5px #888888;
   }
 }
 
@@ -177,9 +188,8 @@ form {
     font-weight: bold;
   }
 
-  input[type="text"] {
+  input[type="text"], input[type="date"] {
     @include formElementos();
-
   }
 
   select {
