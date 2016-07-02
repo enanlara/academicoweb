@@ -8,6 +8,9 @@ require_once 'ado.class.php';
 
 class CursoAdo extends ADO {
 
+    /*
+     * altera curso
+     */
     public function alteraObjeto(\Model $objetoModelo) {
 
         $query = "update Cursos set curs_nome= ? where curs_id = ?";
@@ -31,7 +34,10 @@ class CursoAdo extends ADO {
     public function consultaArrayDeObjeto() {
         
     }
-    
+
+    /*
+     * listar cursos
+     */
     function listaCursos() {
         $query = " SELECT * FROM Cursos";
 
@@ -55,6 +61,9 @@ class CursoAdo extends ADO {
         }
     }
 
+    /*
+     * exclui curso
+     */
     public function excluiObjeto(\Model $objetoModelo) {
         
          //echo ;
@@ -76,6 +85,9 @@ class CursoAdo extends ADO {
         }
     }
 
+    /*
+     * inclui curso
+     */
     public function insereObjeto(\Model $objetoModelo) {
         $curs_nome = $objetoModelo->getCursNome();
 

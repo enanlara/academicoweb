@@ -1,6 +1,6 @@
 <?php
 
-    require_once "../Controllers/cursocontroller.class.php";
+require_once "../Controllers/cursocontroller.class.php";
 
 $cursoController = new CursoController();
 

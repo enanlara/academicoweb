@@ -6,6 +6,9 @@ require_once 'ado.class.php';
 class ProfessorAdo extends ADO
 {
 
+    /*
+     * Metodo para alterar o professor
+     */
     public function alteraObjeto(\Model $objetoModelo)
     {
         $query = "update Professores set prof_nome = ? where prof_siape = ?";
@@ -28,6 +31,9 @@ class ProfessorAdo extends ADO
         }
     }
 
+    /*
+     * Listar Professores
+     */
     function lista()
     {
         $query = " SELECT * FROM Professores ";
@@ -45,6 +51,9 @@ class ProfessorAdo extends ADO
 
     }
 
+    /*
+     * Excluir Professores
+     */
     public function excluiObjeto(\Model $objetoModelo)
     {
         $query = "delete from Professores where prof_siape = ?";
@@ -66,6 +75,9 @@ class ProfessorAdo extends ADO
         }
     }
 
+    /*
+     * Inserir Professor
+     */
     public function insereObjeto(\Model $objetoModelo)
     {
 
@@ -88,6 +100,9 @@ class ProfessorAdo extends ADO
 
     }
 
+    /*
+     * Buscar professor pelo siape
+     */
     public function buscaPeloSiape($profSiape)
     {
         $query = "select * from Professores where prof_siape = ?";

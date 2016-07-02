@@ -6,6 +6,9 @@ require_once 'ado.class.php';
 
 class DisciplinaAdo extends ADO {
 
+    /*
+     * altera disciplina
+     */
     public function alteraObjeto(\Model $objetoModelo) {
         $query = "update Disciplinas set disc_nome = ?, disc_ementa = ? where disc_codigo = ?";
 
@@ -33,12 +36,18 @@ class DisciplinaAdo extends ADO {
         
     }
 
+    /*
+     * Lista disciplinas
+     */
     function lista() {
         $query = " SELECT * FROM Disciplinas ";
 
         return parent::lista($query);
     }
 
+    /*
+     * metodo para listar disciplina por matricula
+     */
     function listaDisciplinaPorMatricula($matricula) {
         $query = " 
                  SELECT * FROM Matricula_por_disciplina m 
@@ -48,6 +57,9 @@ class DisciplinaAdo extends ADO {
         return parent::lista($query);
     }
 
+    /*
+     * exclui disciplina
+     */
     public function excluiObjeto(\Model $objetoModelo) {
         $query = "delete from Disciplinas where disc_codigo = ?";
         
@@ -68,6 +80,9 @@ class DisciplinaAdo extends ADO {
         }
     }
 
+    /*
+     * insere disciplina
+     */
     public function insereObjeto(\Model $objetoModelo) {
         $query = "insert into Disciplinas (disc_codigo, disc_nome, disc_ementa) values (?,?,?)";
 
@@ -89,6 +104,9 @@ class DisciplinaAdo extends ADO {
         }
     }
 
+    /*
+     * busca e retorna disciplina por codigo
+     */
     public function buscaDisciplinaPeloCodigo($discCodigo) {
         $query = "select * from Disciplinas where disc_codigo = ?";
 

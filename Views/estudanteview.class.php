@@ -42,24 +42,25 @@ class EstudanteView extends MinhaInterface
                     <br>
                     Nome<input type='text' name='estuNome' value='{$estuNome}' required='true'>
                 <br><br>";
-        
+
         if (is_null($estuMatricula))
             $this->meio .= "{$arrayDeBotoes['inc']}";
         else
             $this->meio .= "{$arrayDeBotoes['novo']}{$arrayDeBotoes['alt']}{$arrayDeBotoes['exc']}";
-        
+
         $this->meio .= "</form></div>";
 
     }
 
-    public
-    function montaTitulo()
+    public function montaTitulo()
     {
         $this->titulo = "Inscrição do discente";
     }
 
-    public
-    function getDados()
+    /*
+     * recebe dados inseridos no formulário e retorna a model
+     */
+    public function getDados()
     {
         $estuMatricula = $_POST['estuMatricula'];
         $estuNome = (isset($_POST['estuNome'])) ? $_POST['estuNome'] : null;

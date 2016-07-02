@@ -140,7 +140,6 @@ form select {
   form select:focus {
     border-color: #dffff0; }
 
-/* Fim Elementos Formularios */
 /* Botoes */
 .btn-con {
   min-width: 90px;
@@ -209,5 +208,6 @@ form select {
     background: #d9d9d9; }
 
 /* Fim Botoes */
+/* Fim Elementos Formularios */
 
 /*# sourceMappingURL=EvCSS.css.map */

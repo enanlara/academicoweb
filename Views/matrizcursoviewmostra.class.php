@@ -21,6 +21,9 @@ class MatrizCursoViewMostra extends MinhaInterface {
         $this->titulo = "Inscrição do discente";
     }
 
+    /*
+     * recebe dados inseridos no formulário e retorna a model
+     */
     public function getDados() {
         $cursId = $_POST['cursId'];
         $discCodigo = $_POST['discCodigo'];

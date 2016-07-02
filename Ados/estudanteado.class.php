@@ -12,12 +12,18 @@ class EstudantesAdo extends ADO {
         
     }
 
+    /*
+     * lista estudantes
+     */
     function lista() {
         $query = " SELECT * FROM Estudantes ";
 
         return parent::lista($query);
     }
 
+    /*
+     * insere estudante
+     */
     public function insereObjeto(\Model $objetoModelo) {
         $query = "insert into Estudantes (estu_matricula, estu_nome) "
                 . "               values (?,?)";
@@ -39,6 +45,9 @@ class EstudantesAdo extends ADO {
         }
     }
 
+    /*
+     * busca estudante por matricula
+     */
     public function buscaMatriculaPelaMatricula($estuMatricula) {
         
         $query = "Select * from Estudantes where estu_matricula = ?";
@@ -61,6 +70,9 @@ class EstudantesAdo extends ADO {
         }
     }
 
+    /*
+     * altera estudante
+     */
     public function alteraObjeto(\Model $estudanteModel) {
         $query = "update Estudantes "
                 . "  set estu_nome = ? "
@@ -83,6 +95,9 @@ class EstudantesAdo extends ADO {
         }
     }
 
+    /*
+     * exclui estudante
+     */
     public function excluiObjeto(\Model $objetoModelo) {
         $query = "delete from Estudantes "
                 . "where estu_matricula = ? ";

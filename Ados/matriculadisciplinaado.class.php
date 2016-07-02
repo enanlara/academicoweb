@@ -10,6 +10,9 @@ class ErroNoBD extends Exception
 class MatriculaDisciplinaAdo extends ADO
 {
 
+    /*
+     * altera matricula por disciplina
+     */
     public function alteraObjeto(\Model $objetoModelo)
     {
         $this->excluiObjeto($objetoModelo);
@@ -17,6 +20,9 @@ class MatriculaDisciplinaAdo extends ADO
 
     }
 
+    /*
+     * consulta array de matricula por disciplina
+     */
     public function consultaArrayDeObjeto()
     {
         $query = "SELECT * FROM Matricula_por_disciplina WHERE matrd_estu_matricula = {$objetoModelo->getMatrdEstuMatricula()} AND matrd_disc_id = {$objetoModelo->getMatrdDiscId()}";
@@ -44,6 +50,9 @@ class MatriculaDisciplinaAdo extends ADO
         }
     }
 
+    /*
+     * consulta matricula por disciplina
+     */
     public function consulta(\Model $objetoModelo)
     {
         $query = "SELECT * FROM Matricula_por_disciplina WHERE matrd_estu_matricula = {$objetoModelo->getMatrdEstuMatricula()} AND matrd_disc_id = {$objetoModelo->getMatrdDiscId()}";
@@ -72,6 +81,9 @@ class MatriculaDisciplinaAdo extends ADO
         }
     }
 
+    /*
+     * consulta matricula/disciplina por id
+     */
     public function consultaObjetoPeloId($id)
     {
         $query = "select mc.matrz_disc_codigo, d.disc_nome from Matrizes_de_cursos mc, Disciplinas d "
@@ -98,6 +110,9 @@ class MatriculaDisciplinaAdo extends ADO
         }
     }
 
+    /*
+     * consulta matriz
+     */
     public function consultaMatriz($id)
     {
         $arrayDiscSelecionadas = null;
@@ -139,6 +154,9 @@ class MatriculaDisciplinaAdo extends ADO
         }
     }
 
+    /*
+     * exclui matricula por disciplina
+     */
     public function excluiObjeto(\Model $objetoModelo)
     {
         $query = "delete from Matricula_por_disciplina where matrd_estu_matricula = {$objetoModelo->getMatrdEstuMatricula()}";
@@ -156,6 +174,9 @@ class MatriculaDisciplinaAdo extends ADO
         }
     }
 
+    /*
+     * insere matricula por disciplina
+     */
     public function insereObjeto(\Model $objetoModelo)
     {
 

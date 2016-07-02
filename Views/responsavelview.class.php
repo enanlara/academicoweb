@@ -99,6 +99,9 @@ class ResponsavelView extends MinhaInterface {
         $this->titulo = "Inscrição da Disciplina";
     }
 
+    /*
+     * recebe dados inseridos no formulário e retorna a model
+     */
     public function getDados() {
         $disc = $_POST['resp_disc_id'];
         $prof = (isset($_POST['resp_prof_siape'])) ? $_POST['resp_prof_siape'] : null;

@@ -21,6 +21,9 @@ class ProfessorViewMostra extends MinhaInterface {
         $this->titulo = "Inscrição do professor";
     }
 
+    /*
+     * recebe dados inseridos no formulário e retorna a model
+     */
     public function getDados() {
         $matricula = $_POST['siape'];
         $nome = $_POST['nome'];

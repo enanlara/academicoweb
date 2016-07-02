@@ -19,6 +19,9 @@ Abstract Class MinhaInterface
         $this->montaRodape();
     }
 
+    /*
+     * retorna o botão escolhido
+     */
     public function montaArrayDeBotoes()
     {
         $arrayDeBotoes = array(
@@ -31,6 +34,9 @@ Abstract Class MinhaInterface
         return $arrayDeBotoes;
     }
 
+    /*
+     * Método para checar em qual menu o usúario está navegando
+     */
     function checaMenu($menu) {
 
         $modulo = explode('/', $_SERVER['REQUEST_URI']);
@@ -39,6 +45,9 @@ Abstract Class MinhaInterface
         return ($modulo == $menu) ? 'class="active"' : null;
     }
 
+    /*
+     * Monta o menu da interface
+     */
     final private function montaMenu()
     {
 
@@ -76,6 +85,9 @@ Abstract Class MinhaInterface
             . "</div>";
     }
 
+    /*
+     * Monta o cabeçalho do sistema
+     */
     final private function montaCabecalho()
     {
         $this->cabecalho = "
@@ -93,6 +105,9 @@ Abstract Class MinhaInterface
                 </div>";
     }
 
+    /*
+     * Monta o rodapé do sistema
+     */
     final private function montaRodape()
     {
         $this->rodape = "
@@ -103,6 +118,9 @@ Abstract Class MinhaInterface
                 </html>";
     }
 
+    /*
+     * Monta as partes do sistema
+     */
     final public function displayInterface($objetoModel)
     {
         echo $this->cabecalho;
@@ -132,6 +150,9 @@ Abstract Class MinhaInterface
         return $this->titulo;
     }
 
+    /*
+     * Identifica a ação
+     */
     public function getAcao()
     {
         if (isset($_POST['bt'])) {
@@ -141,26 +162,40 @@ Abstract Class MinhaInterface
         }
     }
 
+    /*
+     * Pega mensagem
+     */
     function getMensagem()
     {
         return $this->mensagem;
     }
-
+    /*
+     * seta mensagem
+     */
     function setMensagem($mensagem)
     {
         $this->mensagem = "<p>" . $mensagem . "</p>";
     }
 
+    /*
+     * Adiciona mensagem no sistema
+     */
     public function adicionaMensagem($mensagem)
     {
         $this->mensagem .= "<p>" . $mensagem . "</p>";
     }
 
+    /*
+     * Adiciona mensagem de erro no sistema
+     */
     public function adicionaMsgErro($mensagem)
     {
         $this->mensagem .= "<p class='mensagem erro'>" . $mensagem . "</p>";
     }
 
+    /*
+     * Adiciona mensagem de sucesso no sistema
+     */
     public function adicionaMsgSucesso($mensagem)
     {
         $this->mensagem .= "<p class='mensagem sucesso'>" . $mensagem . "</p>";

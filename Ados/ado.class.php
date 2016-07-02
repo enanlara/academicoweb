@@ -11,16 +11,25 @@ abstract class ADO extends BancoDeDadosPdo
 
     private $mensagem = null;
 
+    /*
+     * retorna mensagem setada
+     */
     function getMensagem()    
     {
         return $this->mensagem;
     }
 
+    /*
+     * Seta mensagem
+     */
     function setMensagem($mensagem)
     {
         $this->mensagem = $mensagem;
     }
 
+    /*
+     * Método para listar, retorna um conjunto de objetos
+     */
     function lista($query)
     {
         try {

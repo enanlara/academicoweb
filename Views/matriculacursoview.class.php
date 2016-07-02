@@ -96,6 +96,9 @@ class MatriculaCursoView extends MinhaInterface
         $this->titulo = "Inscrição do curso";
     }
 
+    /*
+     * recebe dados inseridos no formulário e retorna a model
+     */
     public function getDados()
     {
         $estuMatricula = $_POST['estu_matricula'];

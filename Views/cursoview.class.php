@@ -51,6 +51,9 @@ class CursoView extends MinhaInterface {
         $this->titulo = "Inscrição do curso";
     }
 
+    /*
+     * recebe dados inseridos no formulário e retorna a model
+     */
     public function getDados() {
         $cursNome = $_POST['cursNome'];
         $cursId = $_POST['cursId'];

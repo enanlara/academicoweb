@@ -57,6 +57,9 @@ class MatrizCursoView extends MinhaInterface
         $this->titulo = "Inscrição do curso";
     }
 
+    /*
+     * recebe dados inseridos no formulário e retorna a model
+     */
     public function getDados()
     {
         $cursId = $_POST['cursId'];

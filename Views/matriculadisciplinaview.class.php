@@ -100,6 +100,9 @@ class MatriculaDisciplinaView extends MinhaInterface
         $this->titulo = "Matriculas por disciplina";
     }
 
+    /*
+     * recebe dados inseridos no formulário e retorna a model
+     */
     public function getDados()
     {
         $estuMatricula = $_POST['estu_matricula'];

@@ -52,6 +52,9 @@ class DisciplinaView extends MinhaInterface {
         $this->titulo = "Inscrição da Disciplina";
     }
 
+    /*
+     * recebe dados inseridos no formulário e retorna a model
+     */    
     public function getDados() {
         
         $discCodigo = $_POST['discCodigo'];

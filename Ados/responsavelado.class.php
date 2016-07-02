@@ -9,12 +9,18 @@ class ErroNoBD extends Exception {
 
 class ResponsavelAdo extends ADO {
 
+    /*
+     * Lista responsaveis
+     */
     function lista() {
         $query = " SELECT * FROM Responsaveis ";
 
         return parent::lista($query);
     }
 
+    /*
+     * Altera Responsavel
+     */
     public function alteraObjeto(\Model $objetoModelo) {
         $query = "update Responsaveis set resp_prof_siape = ?, resp_ano = ?, resp_semestre = ? where resp_disc_id = ?";
         try {
@@ -39,6 +45,9 @@ class ResponsavelAdo extends ADO {
         
     }
 
+    /*
+     * Consulta responsavel pelo id
+     */
     public function consultaObjetoPeloId($id) {
         $query = "select * from Responsaveis where resp_disc_id = '{$id}'";
         $resultado = parent::executaQuery($query);
@@ -54,6 +63,9 @@ class ResponsavelAdo extends ADO {
         
     }
 
+    /*
+     * Exclui Responsavel
+     */
     public function excluiObjeto(\Model $objetoModelo) {
         $query = "delete from Responsaveis where resp_disc_id = {$objetoModelo->getDisc()}";
         $resultado = parent::executaQuery($query);
@@ -68,6 +80,9 @@ class ResponsavelAdo extends ADO {
         
     }
 
+    /*
+     * Insere responsavel
+     */
     public function insereObjeto(\Model $objetoModelo) {
         $query = "insert into Responsaveis values (?,?,?,?)";
         
@@ -92,6 +107,9 @@ class ResponsavelAdo extends ADO {
         
     }
 
+    /*
+     * Busca professores
+     */
     public function buscaProfessor() {
         $query = "select * from Professores ";
 
@@ -117,6 +135,9 @@ class ResponsavelAdo extends ADO {
         }
     }
 
+    /*
+     * Busca disciplinas
+     */
     public function buscaDisciplina() {
         $query = "select * from Disciplinas ";
 

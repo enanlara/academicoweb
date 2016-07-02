@@ -10,6 +10,9 @@ class ErroNoBD extends Exception
 class MatriculaCursoAdo extends ADO
 {
 
+    /*
+     * altera matricula curso
+     */
     public function alteraObjeto(\Model $objetoModelo)
     {
         $this->excluiObjeto($objetoModelo);
@@ -17,6 +20,9 @@ class MatriculaCursoAdo extends ADO
 
     }
 
+    /*
+     * verifica estudante
+     */
     public function verificaEstudante($objetoModel)
     {
         $query = "select * from Matriculas_por_curso where matrc_estu_matricula = {$objetoModel->getMatrcEstuMatricula()} ";
@@ -32,7 +38,9 @@ class MatriculaCursoAdo extends ADO
 
     }
 
-
+    /*
+     * consultar e retornar matricula por curso
+     */
     public function consultaMatriculaCurso($estuId)
     {
 
@@ -52,6 +60,9 @@ class MatriculaCursoAdo extends ADO
     }
 
 
+    /*
+     * exclui matricula por curso
+     */
     public function excluiObjeto(\Model $objetoModelo)
     {
         $query = "delete from Matriculas_por_curso where matrc_estu_matricula = {$objetoModelo->getMatrcEstuMatricula()}";
@@ -71,6 +82,9 @@ class MatriculaCursoAdo extends ADO
         }
     }
 
+    /*
+     * insere matricula por curso
+     */
     public function insereObjeto(\Model $objetoModelo)
     {
         if ($this->verificaEstudante($objetoModelo)) {
