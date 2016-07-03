@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * classe view de MatrizCurso
+ */
 require_once 'minhainterface.class.php';
 
 class MatrizCursoView extends MinhaInterface

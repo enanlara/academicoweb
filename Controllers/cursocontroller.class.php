@@ -1,12 +1,10 @@
 <?php
 
 /**
- * Classe View da inscrição de ouvintes.
+ * Classe Controller de Cursos
  *
- * @author Elymar Pereira Cabral <elymar.cabral@ifg.edu.br>
  */
 require_once "../Views/cursoview.class.php";
-require_once "../Views/cursoviewmostra.class.php";
 require_once "../Models/cursomodel.class.php";
 require_once "../Ados/cursoado.class.php";
 
@@ -57,7 +55,10 @@ class CursoController {
     public function __destruct() {
         
     }
-
+    /**
+     * Busca cursos 
+     * 
+     */
     private function buscaCurso() {
         $this->cursoModel = $this->cursoView->getDados();
 
@@ -72,7 +73,10 @@ class CursoController {
             return;
         }
     }
-
+    /**
+     * Inclui cursos
+     * 
+     */
     private function incluiCurso() {
         $this->cursoModel = $this->cursoView->getDados();
 
@@ -94,7 +98,9 @@ class CursoController {
             //$this->cursoView->adicionaMensagem($e->getMessage());
         }
     }
-
+    /**
+     * altera cursos
+     */
     private function alteraCurso() {
         $this->cursoModel = $this->cursoView->getDados();
 
@@ -105,7 +111,9 @@ class CursoController {
             $this->cursoView->adicionaMensagem($e->getMessage());
         }
     }
-
+    /**
+     * exclui cursos
+     */
     private function excluiCurso() {
         $this->cursoModel = $this->cursoView->getDados();
 

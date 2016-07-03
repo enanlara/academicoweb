@@ -1,15 +1,9 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
- * Description of matriculadisciplinacontroller
+ * Classer Controller de matriculaDisciplina
  *
- * @author enan
  */
 require_once '../Views/matriculadisciplinaview.class.php';
 //require_once '../Views/matriculadisciplinaviewmostra.class.php';
@@ -66,7 +60,10 @@ class MatriculaDisciplinaController
     {
 
     }
-
+    /**
+     * consulta matriculaDisciplina
+     * 
+     */
     private function consultaMatriculaDisciplina()
     {
         $this->matriculaDisciplinaModel = $this->matriculaDisciplinaView->getDados();
@@ -85,7 +82,10 @@ class MatriculaDisciplinaController
             return;
         }
     }
-
+    /**
+     * busca disciplinas
+     * 
+     */
     private function buscaDisciplinas()
     {
 
@@ -98,7 +98,10 @@ class MatriculaDisciplinaController
             return;
         }
     }
-
+    /**
+     * inclui matriculaDisciplina
+     * 
+     */
     private function incluimatriculaDisciplina()
     {
         $this->matriculaDisciplinaModel = $this->matriculaDisciplinaView->getDados();
@@ -124,7 +127,9 @@ class MatriculaDisciplinaController
             //$this->matriculaDisciplinaView->adicionaMensagem($e->getMessage());
         }
     }
-
+    /**
+     * altera matriculaDisciplina
+     */
     private function alteraMatriculaDisciplina()
     {
         $this->matriculaDisciplinaModel = $this->matriculaDisciplinaView->getDados();
@@ -137,7 +142,9 @@ class MatriculaDisciplinaController
             $this->matriculaDisciplinaView->adicionaMensagem($e->getMessage());
         }
     }
-
+    /**
+     * exclui matriculaDisciplina
+     */
     private function excluimatriculaDisciplina()
     {
         $this->matriculaDisciplinaModel = $this->matriculaDisciplinaView->getDados();

@@ -2,23 +2,15 @@
 set_include_path(get_include_path() .':/var/www/html/');
 ;//require_once 'Usefull/usefull.php';
 /**
- * Este é um Código da Fábrica de Software
- * 
- * Coordenador: Elymar Pereira Cabral
- * 
- * @date 01/12/2014
+ 
  * 
  * Descrição de BancoDeDadosPdo:
- * Esta classe cuida da camada de persistência do banco de dados e será extendida 
- * diretamente pela classe AdoPdoAbstract02 ou instanciada pela AdoPdoAbstract. 
- * 
+ * Esta classe cuida da camada de persistência do banco de dados 
  * Todos os métodos a serem execudados diretamente pela classe PDO devem ser 
  * implementados nesta.
  * 
  * Esta classe extende a classe PDO.
- * 
- * @author Elymar Pereira Cabral <elymar.cabral@ifg.edu.br>
- * @author Flayson Potenciano e Silva, Elymar Pereira Cabral e Markley da Silva Mendes
+ *  
  */
 class BancoDeDadosPdo extends PDO {
 
@@ -46,8 +38,8 @@ class BancoDeDadosPdo extends PDO {
         //atributosBd será utilizado quando se precisar de uma transação 
         //envolvendo mais de um objeto.
 
-        $this->usuario = "root";
-        $this->senha = "root";
+        $this->usuario = "admin";
+        $this->senha = "admin";
         $this->bdNome = "academicoweb";
         try {
             parent::__construct("mysql:host=localhost;dbname={$this->bdNome};{$this->confUTF8}", $this->usuario, $this->senha, $this->options);

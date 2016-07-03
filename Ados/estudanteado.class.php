@@ -1,6 +1,9 @@
 <?php
 
 require_once 'ado.class.php';
+/**
+ * Classe de crud de estudantes
+ */
 
 class EstudantesAdo extends ADO {
 
@@ -12,8 +15,9 @@ class EstudantesAdo extends ADO {
         
     }
 
-    /*
+    /**
      * lista estudantes
+     * @return array
      */
     function lista() {
         $query = " SELECT * FROM Estudantes ";
@@ -21,8 +25,9 @@ class EstudantesAdo extends ADO {
         return parent::lista($query);
     }
 
-    /*
+    /**
      * insere estudante
+     * @return boolean
      */
     public function insereObjeto(\Model $objetoModelo) {
         $query = "insert into Estudantes (estu_matricula, estu_nome) "
@@ -45,8 +50,10 @@ class EstudantesAdo extends ADO {
         }
     }
 
-    /*
+    /**
      * busca estudante por matricula
+     * @param matricula do estudante
+     * @return model de Estudantes
      */
     public function buscaMatriculaPelaMatricula($estuMatricula) {
         
@@ -70,8 +77,10 @@ class EstudantesAdo extends ADO {
         }
     }
 
-    /*
+    /**
      * altera estudante
+     * @param model de Estudantes
+     * @return boolean
      */
     public function alteraObjeto(\Model $estudanteModel) {
         $query = "update Estudantes "
@@ -95,8 +104,11 @@ class EstudantesAdo extends ADO {
         }
     }
 
-    /*
+    /**
      * exclui estudante
+     * @param model de Estudantes
+     * @return boolean 
+     *  
      */
     public function excluiObjeto(\Model $objetoModelo) {
         $query = "delete from Estudantes "

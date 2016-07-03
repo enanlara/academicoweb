@@ -1,12 +1,11 @@
 <?php
 
 /**
- * Classe View da inscrição de ouvintes.
+ * Classe Controller de Estudantes
  *
- * @author Elymar Pereira Cabral <elymar.cabral@ifg.edu.br>
+ * 
  */
 require_once "../Views/estudanteview.class.php";
-require_once "../Views/estudanteviewmostra.class.php";
 require_once "../Models/estudantemodel.class.php";
 require_once "../Ados/estudanteado.class.php";
 
@@ -54,7 +53,10 @@ class EstudanteController
     {
 
     }
-
+    /**
+     * consulta estudante pela matricula
+     * 
+     */
     private function consultaMatricula()
     {
 
@@ -71,7 +73,10 @@ class EstudanteController
             return;
         }
     }
-
+    /**
+     * inclui estudantes
+     * 
+     */
     private function incluiEstudante()
     {
         $this->estudanteModel = $this->estudanteView->getDados();
@@ -97,7 +102,9 @@ class EstudanteController
             //$this->estudanteView->adicionaMensagem($e->getMessage());
         }
     }
-
+    /**
+     * altera estudantes
+     */
     private function alteraEstudante()
     {
         $this->estudanteModel = $this->estudanteView->getDados();
@@ -109,7 +116,9 @@ class EstudanteController
             $this->estudanteView->adicionaMensagem($e->getMessage());
         }
     }
-
+    /**
+     * exclui estudantes
+     */
     private function excluiEstudante()
     {
         $this->estudanteModel = $this->estudanteView->getDados();

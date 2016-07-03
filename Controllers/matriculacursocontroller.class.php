@@ -1,15 +1,10 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
- * Description of matriculacursocontroller
+ * Classe Controller de matriculaCurso
  *
- * @author enan
+ * 
  */
 require_once '../Views/matriculacursoview.class.php';
 //require_once '../Views/matriculacursoviewmostra.class.php';
@@ -67,7 +62,10 @@ class MatriculaCursoController
     {
 
     }
-
+/**
+ * consulta matricual curso
+ * 
+ */
     private function consultaMatriculaCurso()
     {
         $this->matriculaCursoModel = $this->matriculaCursoView->getDados();
@@ -83,7 +81,10 @@ class MatriculaCursoController
             return;
         }
     }
-
+    /**
+     * busca disciplinas
+     * 
+     */
     private function buscaDisciplinas()
     {
 
@@ -96,7 +97,10 @@ class MatriculaCursoController
             return;
         }
     }
-
+/**
+ * inclui matricula curso
+ * 
+ */
     private function incluimatriculaCurso()
     {
 
@@ -121,7 +125,9 @@ class MatriculaCursoController
             //$this->matriculaCursoView->adicionaMensagem($e->getMessage());
         }
     }
-
+/**
+ * altera matriculacurso
+ */
     private function alteraMatriculaCurso()
     {
         $this->matriculaCursoModel = $this->matriculaCursoView->getDados();
@@ -134,7 +140,9 @@ class MatriculaCursoController
             $this->matriculaCursoView->adicionaMensagem($e->getMessage());
         }
     }
-
+/**
+ * exclui matricula curso
+ */
     private function excluimatriculaCurso()
     {
         echo 'kjsdflkasfjlkas;';

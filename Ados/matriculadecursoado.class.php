@@ -6,6 +6,9 @@ class ErroNoBD extends Exception
 {
 
 }
+/**
+ * Classe crud de matriculaCurso
+ */
 
 class MatriculaCursoAdo extends ADO
 {

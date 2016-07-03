@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Classe view de Disciplinas
+ */
 require_once 'minhainterface.class.php';
 
 class DisciplinaView extends MinhaInterface {

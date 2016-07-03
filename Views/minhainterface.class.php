@@ -1,5 +1,7 @@
 <?php
-
+    /**
+     * classe abstrata de Interface
+     */
 Abstract Class MinhaInterface
 {
 

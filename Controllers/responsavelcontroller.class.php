@@ -1,12 +1,10 @@
 <?php
 
 /**
- * Classe View da inscrição de ouvintes.
+ * Classe Controller de responsavel
  *
- * @author Elymar Pereira Cabral <elymar.cabral@ifg.edu.br>
  */
 require_once "../Views/responsavelview.class.php";
-require_once "../Views/responsavelviewmostra.class.php";
 require_once "../Models/responsavelmodel.class.php";
 require_once "../Ados/responsavelado.class.php";
 //require "../Ados/professorado.class.php";
@@ -58,7 +56,10 @@ class ResponsavelController {
     public function __destruct() {
         
     }
-
+    /**
+     * consulta responsavel
+     * 
+     */
     private function consultaResponsavel() {
         
         $this->responsavelModel = $this->responsavelView->getDados();
@@ -73,7 +74,10 @@ class ResponsavelController {
             return;
         }
     }
-
+    /**
+     * inclui responsavel
+     * 
+     */
     private function incluiResponsavel() {
         $this->responsavelModel = $this->responsavelView->getDados();
         if($this->responsavelModel->getDisc() == '-1' || $this->responsavelModel->getProf()){
@@ -101,7 +105,9 @@ class ResponsavelController {
             //$this->responsavelView->adicionaMensagem($e->getMessage());
         }
     }
-
+/**
+ * altera responsavel
+ */
     private function alteraResponsavel() {
         $this->responsavelModel = $this->responsavelView->getDados();
 
@@ -112,7 +118,9 @@ class ResponsavelController {
             $this->responsavelView->adicionaMensagem($e->getMessage());
         }
     }
-
+/**
+ * exclui responsavel
+ */
     private function excluiResponsavel() {
         $this->responsavelModel = $this->responsavelView->getDados();
 
@@ -124,7 +132,9 @@ class ResponsavelController {
             $this->responsavelView->adicionaMensagem($e->getMessage());
         }
     }
-
+/**
+ * busca disciplinas e professores
+ */
     private function buscaDados() {
         try {
             $this->responsavelModel->setDisc($this->responsavelAdo->buscaDisciplina());

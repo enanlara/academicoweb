@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Classe view de Responsavel
+ */
 require_once 'minhainterface.class.php';
 require_once '../Ados/disciplinaado.class.php';
 require_once '../Ados/professorado.class.php';

@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * classe view de matriculaDisciplina
+ */
 require_once 'minhainterface.class.php';
 
 class MatriculaDisciplinaView extends MinhaInterface

@@ -1,18 +1,9 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of matrizcursocontroller
- *
- * @author enan
+ * Classe Controller MatrizCurso
  */
 require_once '../Views/matrizcursoview.class.php';
-require_once '../Views/matrizcursoviewmostra.class.php';
 require_once '../Models/matrizdecursomodel.class.php';
 require_once '../Ados/matrizdecursoado.class.php';
 require_once '../Ados/cursoado.class.php';
@@ -61,7 +52,10 @@ class matrizCursoController {
     public function __destruct() {
         
     }
-
+/**
+ * Consulta matrizCurso
+ * 
+ */
     private function consultaMatrizCurso() {
         $this->matrizCursoModel = $this->matrizCursoView->getDados();
 
@@ -74,7 +68,10 @@ class matrizCursoController {
             return;
         }
     }
-
+/**
+ * busca Disciplinas
+ * 
+ */
     private function buscaDisciplinas() {
 
         $this->matrizCursoModel->setMatrzDiscCodigo($this->matrizCursoAdo->consultaArrayDeObjeto());
@@ -86,7 +83,10 @@ class matrizCursoController {
             return;
         }
     }
-
+/**
+ * inclui matriz
+ * 
+ */
     private function incluimatrizCurso() {
         $this->matrizCursoModel = $this->matrizCursoView->getDados();
 
@@ -109,7 +109,9 @@ class matrizCursoController {
             //$this->matrizCursoView->adicionaMensagem($e->getMessage());
         }
     }
-
+/**
+ * altera matriz
+ */
     private function alteraMatrizCurso() {
         $this->matrizCursoModel = $this->matrizCursoView->getDados();
 
@@ -121,7 +123,9 @@ class matrizCursoController {
             $this->matrizCursoView->adicionaMensagem($e->getMessage());
         }
     }
-
+/**
+ * exclui matriz
+ */
     private function excluimatrizCurso() {
         $this->matrizCursoModel = $this->matrizCursoView->getDados();
 

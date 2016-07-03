@@ -1,12 +1,11 @@
 <?php
 
 /**
- * Classe View da inscrição de ouvintes.
+ * Classe Controller de Disciplinas
  *
  * @author Joao Victor <joao.joao.joao>
  */
 require_once "../Views/disciplinaview.class.php";
-require_once "../Views/disciplinaviewmostra.class.php";
 require_once "../Models/disciplinamodel.class.php";
 require_once "../Ados/disciplinaado.class.php";
 
@@ -51,7 +50,10 @@ class DisciplinaController {
     public function __destruct() {
         
     }
-
+    /**
+     * consulta Disciplinas
+     * 
+     */
     private function consultaDisciplina() {
         $this->disciplinaModel = $this->disciplinaView->getDados();
 
@@ -67,7 +69,9 @@ class DisciplinaController {
             return;
         }
     }
-    
+    /**
+     * inclui disciplinas
+     */
     private function incluiDisciplina() {
         $this->disciplinaModel = $this->disciplinaView->getDados();
 
@@ -86,6 +90,9 @@ class DisciplinaController {
             //$this->disciplinaView->adicionaMensagem($e->getMessage());
         }
     }
+    /**
+     * altera disciplinas
+     */
     private function alteraDisciplina() {
         $this->disciplinaModel = $this->disciplinaView->getDados();
 
@@ -96,7 +103,9 @@ class DisciplinaController {
             $this->disciplinaView->adicionaMensagem($e->getMessage());
         }
     }
-
+    /**
+     * exclui disciplinas
+     */
     private function excluiDisciplina() {
         $this->disciplinaModel = $this->disciplinaView->getDados();
 

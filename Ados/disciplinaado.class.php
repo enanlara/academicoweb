@@ -1,14 +1,18 @@
 <?php
 
 require_once 'ado.class.php';
-
+/**
+ * Esta é uma classe de crud de disciplinas com o bd
+ */
 
 
 class DisciplinaAdo extends ADO {
 
-    /*
+    /**
      * altera disciplina
-     */
+     * @param objeto model Disciplina
+     * @return boolean 
+     **/
     public function alteraObjeto(\Model $objetoModelo) {
         $query = "update Disciplinas set disc_nome = ?, disc_ementa = ? where disc_codigo = ?";
 
@@ -36,18 +40,21 @@ class DisciplinaAdo extends ADO {
         
     }
 
-    /*
-     * Lista disciplinas
-     */
+   /**
+    * busca todas as disciplinas
+    * @return array de Disciplinas
+    */
     function lista() {
         $query = " SELECT * FROM Disciplinas ";
 
         return parent::lista($query);
     }
 
-    /*
+    /**
      * metodo para listar disciplina por matricula
-     */
+     * @param matricula a ser consultada
+     * @return array
+     **/
     function listaDisciplinaPorMatricula($matricula) {
         $query = " 
                  SELECT * FROM Matricula_por_disciplina m 
@@ -57,8 +64,11 @@ class DisciplinaAdo extends ADO {
         return parent::lista($query);
     }
 
-    /*
+    /**
      * exclui disciplina
+     * @param \Model $objetoModelo model de Disciplinas
+     * @return boolean
+     * @throws ErroNoBD
      */
     public function excluiObjeto(\Model $objetoModelo) {
         $query = "delete from Disciplinas where disc_codigo = ?";
@@ -80,8 +90,11 @@ class DisciplinaAdo extends ADO {
         }
     }
 
-    /*
+    /**
      * insere disciplina
+     * @param \Model $objetoModelo model de Disciplinas
+     * @return boolean
+     * @throws ErroNoBD
      */
     public function insereObjeto(\Model $objetoModelo) {
         $query = "insert into Disciplinas (disc_codigo, disc_nome, disc_ementa) values (?,?,?)";
@@ -104,8 +117,10 @@ class DisciplinaAdo extends ADO {
         }
     }
 
-    /*
+    /**
      * busca e retorna disciplina por codigo
+     * @param type $discCodigo codigo da disciplina
+     * @return boolean
      */
     public function buscaDisciplinaPeloCodigo($discCodigo) {
         $query = "select * from Disciplinas where disc_codigo = ?";

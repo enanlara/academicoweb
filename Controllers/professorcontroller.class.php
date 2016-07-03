@@ -1,12 +1,10 @@
 <?php
 
 /**
- * Classe View da inscrição de ouvintes.
+ * Classe Controller de Professor
  *
- * @author Elymar Pereira Cabral <elymar.cabral@ifg.edu.br>
  */
 require_once "../Views/professorview.class.php";
-require_once "../Views/professorviewmostra.class.php";
 require_once "../Models/professormodel.class.php";
 require_once "../Ados/professorado.class.php";
 
@@ -52,7 +50,10 @@ class ProfessorController {
     public function __destruct() {
         
     }
-
+/**
+ * consulta professor pelo siape
+ * 
+ */
     private function consultaSiape() {
         $this->professorModel = $this->professorView->getDados();
 
@@ -66,7 +67,10 @@ class ProfessorController {
             return;
         }
     }
-    
+    /**
+     * inclui professor
+     * 
+     */
     private function incluiProfessor() {
         $this->professorModel = $this->professorView->getDados();
 
@@ -88,6 +92,9 @@ class ProfessorController {
             $this->professorView->adicionaMensagem($e->getMessage());
         }
     }
+    /**
+     * altera professor
+     */
     private function alteraProfessor() {
         $this->professorModel = $this->professorView->getDados();
 
@@ -98,7 +105,9 @@ class ProfessorController {
             $this->professorView->adicionaMensagem($e->getMessage());
         }
     }
-
+/**
+ * exclui professor
+ */
     private function excluiProfessor() {
         $this->professorModel = $this->professorView->getDados();
 

@@ -2,14 +2,17 @@
 
 require_once 'ado.class.php';
 
-/*class ErroNoBD extends Exception {
-
-}*/
+/**
+ * Esta é uma classe de crud de cursos com o banco de dados
+ */
 
 class CursoAdo extends ADO {
 
-    /*
+    /**
      * altera curso
+     * @param recebe um objeto model curso
+     * @return  retorno booleano
+     * 
      */
     public function alteraObjeto(\Model $objetoModelo) {
 
@@ -35,15 +38,21 @@ class CursoAdo extends ADO {
         
     }
 
-    /*
+    /**
      * listar cursos
+     * @return  retorna um  array de cursos
      */
     function listaCursos() {
         $query = " SELECT * FROM Cursos";
 
         return parent::lista($query);
     }
-
+    /**
+     * 
+     * @param type $nome recebe o nome do curso a ser buscado
+     * @return boolean
+     * @throws ErroNoBD
+     */
     public function buscaCurso($nome) {
         $query = "select * from Cursos where curs_id = {$nome}";
         try{
@@ -61,8 +70,10 @@ class CursoAdo extends ADO {
         }
     }
 
-    /*
+    /**
      * exclui curso
+     * @param objeto model Cursos
+     * @return retorna um resulado booleano 
      */
     public function excluiObjeto(\Model $objetoModelo) {
         
@@ -85,8 +96,10 @@ class CursoAdo extends ADO {
         }
     }
 
-    /*
+    /**
      * inclui curso
+     * @param objeto model Cursos
+     * @return retorna um resultado booleano
      */
     public function insereObjeto(\Model $objetoModelo) {
         $curs_nome = $objetoModelo->getCursNome();
