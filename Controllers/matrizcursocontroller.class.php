@@ -64,7 +64,7 @@ class matrizCursoController {
             //continue
         } else {
             //  $this->matrizCursoModel = new MatriculaModel();
-            $this->matrizCursoView->adicionaMensagem($this->matrizCursoAdo->getMensagem());
+            $this->matrizCursoView->adicionaMsgErro($this->matrizCursoAdo->getMensagem());
             return;
         }
     }
@@ -79,7 +79,7 @@ class matrizCursoController {
             //continue
         } else {
             //  $this->matrizCursoModel = new MatriculaModel();
-            $this->matrizCursoView->adicionaMensagem($this->matrizCursoAdo->getMensagem());
+            $this->matrizCursoView->adicionaMsgErro($this->matrizCursoAdo->getMensagem());
             return;
         }
     }
@@ -101,10 +101,10 @@ class matrizCursoController {
                 // Limpa os dados
                 $this->matrizCursoModel = new MatrizCursoModel();
             }
-            $this->matrizCursoView->adicionaMensagem($this->matrizCursoAdo->getMensagem());
+            $this->matrizCursoView->adicionaMsgSucesso($this->matrizCursoAdo->getMensagem());
             $this->buscaDisciplinas();
         } catch (ErroNoBD $e) {
-            $this->matrizCursoView->adicionaMensagem("Erro na inclusão. contate o analista.");
+            $this->matrizCursoView->adicionaMsgErro("Erro na inclusão. contate o analista.");
             //descomente para debugar
             //$this->matrizCursoView->adicionaMensagem($e->getMessage());
         }
@@ -120,7 +120,7 @@ class matrizCursoController {
             $this->matrizCursoView->adicionaMsgSucesso("A matriz foi alterada com sucesso");
             $this->consultaMatrizCurso();
         } catch (ErroNoBD $e) {
-            $this->matrizCursoView->adicionaMensagem($e->getMessage());
+            $this->matrizCursoView->adicionaMsgErro($e->getMessage());
         }
     }
 /**
@@ -132,9 +132,9 @@ class matrizCursoController {
         try {
             $this->matrizCursoAdo->excluiObjeto($this->matrizCursoModel);
             $this->buscaDisciplinas();
-            $this->matrizCursoView->adicionaMensagem($this->matrizCursoAdo->getMensagem());
+            $this->matrizCursoView->adicionaMsgSucesso($this->matrizCursoAdo->getMensagem());
         } catch (ErroNoBD $e) {
-            $this->matrizCursoView->adicionaMensagem($e->getMessage());
+            $this->matrizCursoView->adicionaMsgErro($e->getMessage());
         }
     }
 

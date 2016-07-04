@@ -77,7 +77,7 @@ class MatriculaCursoController
 
         } else {
             //  $this->matriculaCursoModel = new MatriculaModel();
-            $this->matriculaCursoView->adicionaMensagem($this->matriculaCursoAdo->getMensagem());
+            $this->matriculaCursoView->adicionaMsgErro($this->matriculaCursoAdo->getMensagem());
             return;
         }
     }
@@ -93,7 +93,7 @@ class MatriculaCursoController
             //continue
         } else {
             //  $this->matriculaCursoModel = new MatriculaModel();
-            $this->matriculaCursoView->adicionaMensagem($this->matriculaCursoAdo->getMensagem());
+            $this->matriculaCursoView->adicionaMsgErro($this->matriculaCursoAdo->getMensagem());
             return;
         }
     }
@@ -117,10 +117,10 @@ class MatriculaCursoController
                 // Limpa os dados
                 $this->matriculaCursoModel = new MatriculaCursoModel();
             }
-            $this->matriculaCursoView->adicionaMensagem($this->matriculaCursoAdo->getMensagem());
+            $this->matriculaCursoView->adicionaMsgSucesso($this->matriculaCursoAdo->getMensagem());
 
         } catch (ErroNoBD $e) {
-            $this->matriculaCursoView->adicionaMensagem("Erro na inclusão. contate o analista.");
+            $this->matriculaCursoView->adicionaMsgErro("Erro na inclusão. contate o analista.");
             //descomente para debugar
             //$this->matriculaCursoView->adicionaMensagem($e->getMessage());
         }
@@ -137,7 +137,7 @@ class MatriculaCursoController
             $this->matriculaCursoView->adicionaMsgSucesso("A matricula foi alterada com sucesso");
             $this->consultaMatriculaCurso();
         } catch (ErroNoBD $e) {
-            $this->matriculaCursoView->adicionaMensagem($e->getMessage());
+            $this->matriculaCursoView->adicionaMsgErro($e->getMessage());
         }
     }
 /**
@@ -152,9 +152,9 @@ class MatriculaCursoController
             $this->matriculaCursoAdo->excluiObjeto($this->matriculaCursoModel);
             //$this->buscaDisciplinas();
             $this->matriculaCursoModel = new MatriculaCursoModel;
-            $this->matriculaCursoView->adicionaMensagem($this->matriculaCursoAdo->getMensagem());
+            $this->matriculaCursoView->adicionaMsgSucesso($this->matriculaCursoAdo->getMensagem());
         } catch (ErroNoBD $e) {
-            $this->matriculaCursoView->adicionaMensagem($e->getMessage());
+            $this->matriculaCursoView->adicionaMsgErro($e->getMessage());
         }
     }
 

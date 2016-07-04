@@ -69,7 +69,7 @@ class EstudanteController
         } else {
 
             //    $this->estudanteModel = new MatriculaModel();
-            $this->estudanteView->adicionaMensagem($this->estudanteAdo->getMensagem());
+            $this->estudanteView->adicionaMsgErro($this->estudanteAdo->getMensagem());
             return;
         }
     }
@@ -97,7 +97,7 @@ class EstudanteController
             }
 
         } catch (ErroNoBD $e) {
-            $this->estudanteView->adicionaMensagem("Erro na inclusão. contate o analista.");
+            $this->estudanteView->adicionaMsgErro("Erro na inclusão. contate o analista.");
             //descomente para debugar
             //$this->estudanteView->adicionaMensagem($e->getMessage());
         }
@@ -113,7 +113,7 @@ class EstudanteController
             $this->estudanteAdo->alteraObjeto($this->estudanteModel);
             $this->estudanteView->adicionaMsgSucesso($this->estudanteAdo->getMensagem());
         } catch (ErroNoBD $e) {
-            $this->estudanteView->adicionaMensagem($e->getMessage());
+            $this->estudanteView->adicionaMsgErro($e->getMessage());
         }
     }
     /**
@@ -125,10 +125,10 @@ class EstudanteController
 
         try {
             $this->estudanteAdo->excluiObjeto($this->estudanteModel);
-            $this->estudanteView->adicionaMensagem($this->estudanteAdo->getMensagem());
+            $this->estudanteView->adicionaMsgSucesso($this->estudanteAdo->getMensagem());
             $this->estudanteModel = new EstudantesModel();
         } catch (ErroNoBD $e) {
-            $this->estudanteView->adicionaMensagem($e->getMessage());
+            $this->estudanteView->adicionaMsgErro($e->getMessage());
         }
     }
 }

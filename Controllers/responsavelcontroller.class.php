@@ -70,7 +70,7 @@ class ResponsavelController {
             //continue
         } else {
             //  $this->responsavelModel = new MatriculaModel();
-            $this->responsavelView->adicionaMensagem($this->responsavelAdo->getMensagem());
+            $this->responsavelView->adicionaMsgErro($this->responsavelAdo->getMensagem());
             return;
         }
     }
@@ -98,9 +98,9 @@ class ResponsavelController {
                                 $this->buscaDados();
 
             }
-            $this->responsavelView->adicionaMensagem($this->responsavelAdo->getMensagem());
+            $this->responsavelView->adicionaMsgSucesso($this->responsavelAdo->getMensagem());
         } catch (ErroNoBD $e) {
-            $this->responsavelView->adicionaMensagem("Erro na inclusão. contate o analista.");
+            $this->responsavelView->adicionaMsgErro("Erro na inclusão. contate o analista.");
             //descomente para debugar
             //$this->responsavelView->adicionaMensagem($e->getMessage());
         }
@@ -113,9 +113,9 @@ class ResponsavelController {
 
         try {
             $this->responsavelAdo->alteraObjeto($this->responsavelModel);
-            $this->responsavelView->adicionaMensagem($this->responsavelAdo->getMensagem());
+            $this->responsavelView->adicionaMsgSucesso($this->responsavelAdo->getMensagem());
         } catch (ErroNoBD $e) {
-            $this->responsavelView->adicionaMensagem($e->getMessage());
+            $this->responsavelView->adicionaMsgSucesso($e->getMessage());
         }
     }
 /**
@@ -129,7 +129,7 @@ class ResponsavelController {
             $this->responsavelView->adicionaMensagem($this->responsavelAdo->getMensagem());
             $this->responsavelModel = new ResponsavelModel;
         } catch (ErroNoBD $e) {
-            $this->responsavelView->adicionaMensagem($e->getMessage());
+            $this->responsavelView->adicionaMsgErro($e->getMessage());
         }
     }
 /**
@@ -140,7 +140,7 @@ class ResponsavelController {
             $this->responsavelModel->setDisc($this->responsavelAdo->buscaDisciplina());
             $this->responsavelModel->setProf($this->responsavelAdo->buscaProfessor());
         } catch (ErroNoBD $e) {
-            $this->responsavelView->adicionaMensagem($e->getMessage());
+            $this->responsavelView->adicionaMsgErro($e->getMessage());
         }
     }
 

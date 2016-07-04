@@ -69,7 +69,7 @@ class CursoController {
         } else {
 
             //    $this->cursoModel = new MatriculaModel();
-            $this->cursoView->adicionaMensagem($this->cursoAdo->getMensagem());
+            $this->cursoView->adicionaMsgSucesso($this->cursoAdo->getMensagem());
             return;
         }
     }

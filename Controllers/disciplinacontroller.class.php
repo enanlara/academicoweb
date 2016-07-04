@@ -65,7 +65,7 @@ class DisciplinaController {
         } else {
             
         //    $this->disciplinaModel = new MatriculaModel();
-            $this->disciplinaView->adicionaMensagem($this->disciplinaAdo->getMensagem());
+            $this->disciplinaView->adicionaMsgErro($this->disciplinaAdo->getMensagem());
             return;
         }
     }
@@ -85,7 +85,7 @@ class DisciplinaController {
             }
 
         } catch (ErroNoBD $e) {
-            $this->disciplinaView->adicionaMensagem("Erro na inclusão. contate o analista.");
+            $this->disciplinaView->adicionaMsgErro("Erro na inclusão. contate o analista.");
             //descomente para debugar
             //$this->disciplinaView->adicionaMensagem($e->getMessage());
         }
@@ -100,7 +100,7 @@ class DisciplinaController {
             $this->disciplinaAdo->alteraObjeto($this->disciplinaModel);
             $this->disciplinaView->adicionaMsgSucesso($this->disciplinaAdo->getMensagem());
         } catch (ErroNoBD $e) {
-            $this->disciplinaView->adicionaMensagem($e->getMessage());
+            $this->disciplinaView->adicionaMsgErro($e->getMessage());
         }
     }
     /**
@@ -112,9 +112,9 @@ class DisciplinaController {
         try {
             $this->disciplinaAdo->excluiObjeto($this->disciplinaModel);
             $this->disciplinaModel = new DisciplinaModel;
-            $this->disciplinaView->adicionaMensagem($this->disciplinaAdo->getMensagem());
+            $this->disciplinaView->adicionaMsgSucesso($this->disciplinaAdo->getMensagem());
         } catch (ErroNoBD $e) {
-            $this->disciplinaView->adicionaMensagem($e->getMessage());
+            $this->disciplinaView->adicionaMsgErro($e->getMessage());
         }
     }
 }

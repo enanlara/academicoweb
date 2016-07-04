@@ -78,7 +78,7 @@ class MatriculaDisciplinaController
 
         } else {
             //  $this->matriculaDisciplinaModel = new MatriculaModel();
-            $this->matriculaDisciplinaView->adicionaMensagem($this->matriculaDisciplinaAdo->getMensagem());
+            $this->matriculaDisciplinaView->adicionaMsgErro($this->matriculaDisciplinaAdo->getMensagem());
             return;
         }
     }
@@ -94,7 +94,7 @@ class MatriculaDisciplinaController
             //continue
         } else {
             //  $this->matriculaDisciplinaModel = new MatriculaModel();
-            $this->matriculaDisciplinaView->adicionaMensagem($this->matriculaDisciplinaAdo->getMensagem());
+            $this->matriculaDisciplinaView->adicionaMsgErro($this->matriculaDisciplinaAdo->getMensagem());
             return;
         }
     }
@@ -122,7 +122,7 @@ class MatriculaDisciplinaController
             }
 
         } catch (ErroNoBD $e) {
-            $this->matriculaDisciplinaView->adicionaMensagem("Erro na inclusão. contate o analista.");
+            $this->matriculaDisciplinaView->adicionaMsgErro("Erro na inclusão. contate o analista.");
             //descomente para debugar
             //$this->matriculaDisciplinaView->adicionaMensagem($e->getMessage());
         }
@@ -139,7 +139,7 @@ class MatriculaDisciplinaController
             $this->matriculaDisciplinaView->adicionaMsgSucesso("A matricula foi alterada com sucesso");
             $this->consultaMatriculaDisciplina();
         } catch (ErroNoBD $e) {
-            $this->matriculaDisciplinaView->adicionaMensagem($e->getMessage());
+            $this->matriculaDisciplinaView->adicionaMsgErro($e->getMessage());
         }
     }
     /**
@@ -152,9 +152,9 @@ class MatriculaDisciplinaController
         try {
             $this->matriculaDisciplinaAdo->excluiObjeto($this->matriculaDisciplinaModel);
             $this->buscaDisciplinas();
-            $this->matriculaDisciplinaView->adicionaMensagem($this->matriculaDisciplinaAdo->getMensagem());
+            $this->matriculaDisciplinaView->adicionaMsgSucesso($this->matriculaDisciplinaAdo->getMensagem());
         } catch (ErroNoBD $e) {
-            $this->matriculaDisciplinaView->adicionaMensagem($e->getMessage());
+            $this->matriculaDisciplinaView->adicionaMsgErro($e->getMessage());
         }
     }
 

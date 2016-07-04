@@ -63,7 +63,7 @@ class ProfessorController {
             //continue
         } else {
           //  $this->professorModel = new MatriculaModel();
-            $this->professorView->adicionaMensagem($this->professorAdo->getMensagem());
+            $this->professorView->adicionaMsgErro($this->professorAdo->getMensagem());
             return;
         }
     }
@@ -89,7 +89,7 @@ class ProfessorController {
         } catch (ErroNoBD $e) {
             $this->professorView->adicionaMensagem("Erro na inclusão. contate o analista.");
             //descomente para debugar
-            $this->professorView->adicionaMensagem($e->getMessage());
+            $this->professorView->adicionaMsgErro($e->getMessage());
         }
     }
     /**
@@ -102,7 +102,7 @@ class ProfessorController {
             $this->professorAdo->alteraObjeto($this->professorModel);
             $this->professorView->adicionaMsgSucesso($this->professorAdo->getMensagem());
         } catch (ErroNoBD $e) {
-            $this->professorView->adicionaMensagem($e->getMessage());
+            $this->professorView->adicionaMsgErro($e->getMessage());
         }
     }
 /**
@@ -113,10 +113,10 @@ class ProfessorController {
 
         try {
             $this->professorAdo->excluiObjeto($this->professorModel);
-            $this->professorView->adicionaMensagem($this->professorAdo->getMensagem());
+            $this->professorView->adicionaMsgSucesso($this->professorAdo->getMensagem());
             $this->professorModel = new ProfessorModel();
         } catch (ErroNoBD $e) {
-            $this->professorView->adicionaMensagem($e->getMessage());
+            $this->professorView->adicionaMsgErro($e->getMessage());
         }
     }
 }
